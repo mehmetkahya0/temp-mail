@@ -1,0 +1,214 @@
+/* Author: Mehmet Kahya */
+/* Created: 17 March 2024 */
+
+:root {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--light-color);
+  color: var(--font-color);
+  font-size: var(--font-size);
+  transition: var(--transition);
+  --primary-color: #050505;
+  --secondary-color: #6c757d;
+  --dark-color: #343a40;
+  --light-color: #f8f9fa;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
+  --warning-color: #ffc107;
+  --info-color: #17a2b8;
+  --font-color: #212529;
+  --font-size: 1.2rem;
+  --border-radius: 0.25rem;
+  --transition: all 0.5s ease;
+}
+
+header {
+  background-color: var(--primary-color);
+  color: var(--dark-color);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+header img {
+  width: 70%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  max-width: 800px;
+}
+
+header img:hover {
+  filter: brightness(0.9);
+  filter: blur(0.5px);
+  filter: grayscale(100%);
+  filter: sepia(100%);
+  cursor: crosshair;
+  filter: saturate(8);
+  filter: hue-rotate(90deg);
+  filter: invert(100%);
+}
+header p {
+  margin: 0;
+  font-weight: bolder;
+  font-size: 60%;
+  width: fit-content;
+  text-align: center;
+  margin: 0 auto;
+}
+
+header p:hover {
+  color: rgb(30, 255, 0);
+}
+
+footer:hover {
+  color: rgb(30, 255, 0);
+}
+
+button {
+  padding: 0.45rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: var(--transition);
+  margin: 0.25rem;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+}
+
+button:hover {
+  filter: brightness(0.9);
+  border: 2px solid var(--light-color);
+}
+
+button.primary {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+button.danger {
+  background-color: var(--danger-color);
+  color: var(--light-color);
+}
+
+button.success {
+  background-color: var(--success-color);
+  color: var(--light-color);
+}
+
+input {
+  padding: 0.25rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--secondary-color);
+  margin: 0.25rem;
+  width: 100%;
+  outline: none;
+}
+
+input:focus {
+  border: 1px solid var(--primary-color);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  border: 1px solid var(--secondary-color);
+}
+
+table th,
+table td {
+  border: 1px solid var(--secondary-color);
+  padding: 0.5rem;
+  text-align: center;
+}
+
+table th {
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+table tr:nth-child(even) {
+  background-color: var(--light-color);
+}
+
+table tr:nth-child(odd) {
+  background-color: var(--secondary-color);
+}
+
+/* Path: index.php */
+
+.horizontalContainer {
+  background-color: #00000018;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+footer {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-align: center;
+  font-size: small;
+  padding: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.social {
+  width: fit-content;
+  height: auto;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    margin: 0 auto;
+}
+.social a {
+    margin: 5px;
+    font-size: 0.75rem;
+    text-align: center;
+    display: inline-block;
+    color: var(--main-fonts-color);
+}
+
+.social a:hover {
+  color: var(--light-color);
+}
+
+/*add madia func for mobile devices*/
+
+@media (max-width: 768px) {
+  button {
+    font-size: 0.5rem;
+  }
+  input {
+    font-size: 0.76rem;
+  }
+  table {
+    font-size: 0.76rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.2rem;
+  }
+
+  header img {
+    width: 100%;
+  }
+  header p {
+    font-size: 50%;
+  }
+  footer {
+    font-size: 50%;
+  }
+}

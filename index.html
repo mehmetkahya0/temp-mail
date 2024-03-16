@@ -1,0 +1,54 @@
+<!--------------------------------
+    Author: Mehmet Kahya
+    Created: 17 March 2024
+-------------------------------->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TempMail</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="//cdn.repl.email/styles/water.css" />
+    <link rel="manifest" href="manifest.json" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"
+    />
+    <script src="api.js"></script>
+  </head>
+  <body>
+    <header>
+      <img src="header.png" alt="HEADER" />
+      <p>Created by Mehmet Kahya</p>
+    </header>
+
+    <hr />
+    <div class="horizontalContainer">
+      <input id="addr" placeholder="email address" style="width: 49%" />
+      <button onclick="refreshMail()">Load Mail</button>
+      <button onclick="genEmail()">New Address</button>
+    </div>
+    <hr />
+    <table id="emails"></table>
+
+    <footer>
+      Mehmet Kahya - 2024 
+      <div class="social">
+        <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank"
+          ><i class="fas fa-envelope"></i
+        ></a>
+        <a href="https://github.com/mehmetkahya0" target="_blank"
+          ><i class="fab fa-github"></i
+        ></a>
+        <a href="https://www.reddit.com/user/mehmettkahya" target="_blank"
+          ><i class="fab fa-reddit"></i
+        ></a>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery.min.js"></script>
+    <script src="api.js"></script>
+  </body>
+</html>
