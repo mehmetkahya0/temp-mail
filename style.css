@@ -59,8 +59,8 @@ header img:hover {
   filter: saturate(8);
   filter: hue-rotate(90deg);
   filter: invert(100%);
- mix-blend-mode:hard-light;
-  animation: blink 0.1s linear infinite;
+  mix-blend-mode: hard-light;
+  animation: blink 0.3s linear infinite;
 }
 
 header p {
@@ -185,14 +185,14 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-    margin: 0 auto;
+  margin: 0 auto;
 }
 .social a {
-    margin: 5px;
-    font-size: 0.75rem;
-    text-align: center;
-    display: inline-block;
-    color: var(--main-fonts-color);
+  margin: 5px;
+  font-size: 0.75rem;
+  text-align: center;
+  display: inline-block;
+  color: var(--main-fonts-color);
 }
 
 .social a:hover {
