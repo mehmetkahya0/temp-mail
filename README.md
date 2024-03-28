@@ -41,7 +41,7 @@ View email content and download attachments
 
 - Water.css: Used for basic styling.
 ## Author
-Created by Mehmet Kahya.
+Created by Mehmet Kahya. @mehmetkahya0
 
 ## License
 This project is open source and available under the MIT License.
