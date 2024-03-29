@@ -8,7 +8,7 @@
 
 
 # TempMail
-- TempMail is a simple web application that allows you to generate temporary email addresses and view the emails received by these addresses. It uses the 1secmail API to generate the email addresses and fetch the emails.
+- TempMail is a simple web application that allows you to generate temporary email addresses and view the emails received by these addresses. 
 
  
 ⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. Use it legally ⚠️
