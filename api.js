@@ -57,7 +57,6 @@ function getUserAndDomain() {
       }
     );
   }
-  
   function loadEmail(id) {
     const { user, domain } = getUserAndDomain();
   
