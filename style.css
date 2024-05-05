@@ -174,8 +174,9 @@ footer {
   text-align: center;
   font-size: small;
   padding: 0.5rem;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  
   width: 100%;
   font-weight: bolder !important;
 }
@@ -200,8 +201,6 @@ footer {
 .social a:hover {
   color: rgb(0, 255, 0);
 }
-
-/*add madia func for mobile devices*/
 
 @media (max-width: 768px) {
   button {
