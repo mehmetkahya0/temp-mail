@@ -57,25 +57,6 @@ function getUserAndDomain() {
       }
     );
   }
-
-  function deleteAndCreateEmail(id) {
-    const { user, domain } = getUserAndDomain();
-  
-    if (!user || !domain) return;
-  
-    $.getJSON(
-      `https://www.1secmail.com/api/v1/?action=delMessage&login=${user}&domain=${domain}&id=${id}`,
-      (res) => {
-        if (res === 1) {
-          alert("Email deleted successfully!");
-          createEmail(); // Assuming you have a function that creates a new email
-        } else {
-          alert("Failed to delete email!");
-        }
-      }
-    );
-  }
-  
   function loadEmail(id) {
     const { user, domain } = getUserAndDomain();
   

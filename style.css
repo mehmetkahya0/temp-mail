@@ -3,7 +3,7 @@
 /* Last Updated: 29 April 2024 */
 
 :root {
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif !important;
   height: 100vh;
   width: 100%;
   background-color: var(--light-color);
@@ -174,8 +174,9 @@ footer {
   text-align: center;
   font-size: small;
   padding: 0.5rem;
-  position: absolute;
+  position: fixed;
   bottom: 0;
+  
   width: 100%;
   font-weight: bolder !important;
 }
