@@ -1,6 +1,6 @@
 /* Author: Mehmet Kahya */
 /* Created: 17 March 2024 */
-/* Last Updated: 29 April 2024 */
+/* Last Updated: 5 May 2024 */
 
 :root {
   font-family: "Inter", sans-serif !important;
@@ -201,8 +201,6 @@ footer {
 .social a:hover {
   color: rgb(0, 255, 0);
 }
-
-/*add madia func for mobile devices*/
 
 @media (max-width: 768px) {
   button {
