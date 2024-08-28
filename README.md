@@ -46,3 +46,6 @@ Created by Mehmet Kahya. @mehmetkahya0
 
 ## License
 This project is open source and available under the Apache License.
+
+## Important note!
+This project uses 1secmail API for creating e-mails
