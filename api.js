@@ -15,7 +15,7 @@ console.log("API is ready!");
 
 function warningAlert() {
   alert(
-    "⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. Use it legally ⚠️"
+    "⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project use 1secmail's api for create e-mails. Use it legally ⚠️"
   );
 }
 
