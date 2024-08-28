@@ -31,6 +31,7 @@
 header ::selection {
   background-color: transparent;
 }
+
 header {
   background-color: var(--primary-color);
   color: var(--dark-color);
@@ -43,7 +44,7 @@ header {
 }
 
 header .ascii-art {
-  font-size: 0.4rem;
+  font-size: 0.6rem;
   font-weight: bolder;
   color: rgb(255, 255, 255);
   margin: 0;
@@ -207,5 +208,65 @@ footer {
   }
   footer {
     font-size: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .ascii-art {
+    font-size: 0.5rem !important;
+  }
+  button {
+    font-size: 0.4rem;
+  }
+  input {
+    font-size: 0.6rem;
+  }
+  table {
+    font-size: 0.6rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.2rem;
+  }
+
+  header img {
+    width: 100%;
+  }
+  header p {
+    font-size: 40%;
+  }
+  footer {
+    font-size: 40%;
+  }
+}
+
+@media (max-width: 320px) {
+  .ascii-art {
+    font-size: 0.4rem !important;
+  }
+  button {
+    font-size: 0.3rem;
+  }
+  input {
+    font-size: 0.5rem;
+  }
+  table {
+    font-size: 0.5rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.2rem;
+  }
+
+  header img {
+    width: 100%;
+  }
+  header p {
+    font-size: 30%;
+  }
+  footer {
+    font-size: 30%;
   }
 }
