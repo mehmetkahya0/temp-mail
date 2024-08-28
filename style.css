@@ -10,7 +10,7 @@
   color: var(--font-color);
   font-size: var(--font-size);
   transition: var(--transition);
-  --primary-color: #050505;
+  --primary-color: #040e66;
   --secondary-color: #6c757d;
   --dark-color: #343a40;
   --light-color: #f8f9fa;
@@ -29,63 +29,35 @@ header {
   color: var(--dark-color);
   padding: 1rem 0;
   text-align: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
 }
 
-header img {
-  width: 70%;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-  max-width: 800px;
-}
-
-@keyframes blink {
-  0% {
-    opacity: 0.5;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.2;
-  }
-}
-
-header img:hover {
-  filter: brightness(0.9);
-  filter: blur(0.5px);
-  filter: grayscale(100%);
-  filter: sepia(100%);
-  cursor: crosshair;
-  filter: saturate(8);
-  filter: hue-rotate(90deg);
-  filter: invert(100%);
-  mix-blend-mode: hard-light;
-  animation: blink 0.3s linear infinite;
+header .ascii-art {
+  font-size: 0.4rem;
+  font-weight: bolder;
+  color: rgb(255, 255, 255);
+  margin: 0;
 }
 
 header p {
   margin: 0;
-  font-weight: bolder;
   font-size: 60%;
   width: fit-content;
   text-align: center;
   margin: 0 auto;
-}
-
-header p:hover {
-  color: rgb(30, 255, 0);
-}
-
-footer:hover {
-  color: rgb(255, 255, 255);
+  color: white;
+  font-weight: bolder !important;
 }
 
 button {
   padding: 0.45rem 0.75rem;
   font-size: 0.75rem;
   font-weight: bold;
-  border: none;
+  border: 1px solid var(--dark-color);
   border-radius: var(--border-radius);
   cursor: pointer;
   transition: var(--transition);
@@ -97,8 +69,9 @@ button {
 }
 
 button:hover {
-  filter: brightness(0.9);
-  border: 2px solid var(--light-color);
+  background-color: #06138b;
+  color: white  !important;
+
 }
 
 button.primary {
@@ -160,7 +133,6 @@ table tr:nth-child(odd) {
 /* Path: index.php */
 
 .horizontalContainer {
-  background-color: #00000018;
   text-align: center;
   display: flex;
   justify-content: center;
@@ -176,9 +148,11 @@ footer {
   padding: 0.5rem;
   position: fixed;
   bottom: 0;
-  
+  left: 0;
+  margin: 0;
   width: 100%;
   font-weight: bolder !important;
+
 }
 
 .social {
@@ -192,7 +166,7 @@ footer {
 }
 .social a {
   margin: 5px;
-  font-size: 0.75rem;
+  font-size: 1rem;
   text-align: center;
   display: inline-block;
   color: var(--main-fonts-color);

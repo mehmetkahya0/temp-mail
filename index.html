@@ -20,21 +20,31 @@
   </head>
   <body>
     <header>
-      <img src="header.png" alt="HEADER" draggable="false"/>
+      <div class="ascii-art">
+        <pre>
+          ████████╗███████╗███╗   ███╗██████╗     ███╗   ███╗ █████╗ ██╗██╗     
+          ╚══██╔══╝██╔════╝████╗ ████║██╔══██╗    ████╗ ████║██╔══██╗██║██║     
+             ██║   █████╗  ██╔████╔██║██████╔╝    ██╔████╔██║███████║██║██║     
+             ██║   ██╔══╝  ██║╚██╔╝██║██╔═══╝     ██║╚██╔╝██║██╔══██║██║██║     
+             ██║   ███████╗██║ ╚═╝ ██║██║         ██║ ╚═╝ ██║██║  ██║██║███████╗
+             ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝         ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
+                                                                                
+        </pre>
+      </div>
+
       <p>Created by Mehmet Kahya</p>
     </header>
 
-    <hr />
+
     <div class="horizontalContainer">
       <input id="addr" placeholder="email address" style="width: 49%" />
       <button onclick="refreshMail()">Load Mail</button>
       <button onclick="genEmail()">New Address</button>
     </div>
-    <hr />
     <table id="emails"></table>
 
     <footer>
-      Mehmet Kahya - 2024 - TempMail 
+      Mehmet Kahya - 2024 - TempMail
       <div class="social">
         <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank"
           ><i class="fas fa-envelope"></i
@@ -49,4 +59,3 @@
     <script src="api.js"></script>
   </body>
 </html>
-
