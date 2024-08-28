@@ -13,7 +13,8 @@
  
 ⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. Use it legally ⚠️
 
-  [![HitCount](https://hits.dwyl.com/mehmetkahya0/temp-mail.svg?style=flat-square)](http://hits.dwyl.com/mehmetkahya0/temp-mail)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmehmetkahya0%2Ftemp-mail&label=VISITORS&labelColor=%23d9e3f0&countColor=%23263759)
+
 ## Live
 - [Live Website!](https://mehmetkahya0.github.io/temp-mail/)
 ## Features
