@@ -39,6 +39,7 @@ header {
   text-align: center;
   top: 0;
   left: 0;
+  margin: 0;
   width: 100%;
   z-index: 1000;
 }
@@ -108,6 +109,47 @@ input {
 input:focus {
   border: 1px solid var(--primary-color);
 }
+
+.popup {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1001; /* Above other elements */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+}
+
+.popup .main {
+  font-weight: bolder;
+}
+
+.popup-content {
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: red;
+  width: 25px;
+  height: 25px;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
 .horizontalContainer {
   display: flex;
   gap: 10px;

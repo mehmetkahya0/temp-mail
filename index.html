@@ -33,9 +33,24 @@
         </pre>
       </div>
     </header>
-
+    <div id="popupNotification" class="popup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <p class="main">Welcome to the TempMail!</p>
+        <p>
+          TempMail is a simple web application that allows you to generate
+          temporary email addresses and view the emails received by these
+          addresses.
+        </p>
+        <p>
+          ⚠️ This project is purely for educational purposes. We do not allow
+          illegal things to be done with this project and we are not responsible
+          for any incidents that may occur. Use it legally ⚠️
+        </p>
+      </div>
+    </div>
     <div class="horizontalContainer">
-      <input id="addr" placeholder="email address"/>
+      <input id="addr" placeholder="email address" />
       <button onclick="refreshMail()">Load Mail</button>
       <button onclick="genEmail()">New Address</button>
     </div>
@@ -55,5 +70,15 @@
 
     <script src="//code.jquery.com/jquery.min.js"></script>
     <script src="api.js"></script>
+
+    <script>
+      window.onload = function () {
+        document.getElementById("popupNotification").style.display = "block";
+      };
+
+      function closePopup() {
+        document.getElementById("popupNotification").style.display = "none";
+      }
+    </script>
   </body>
 </html>
