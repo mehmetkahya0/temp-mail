@@ -10,6 +10,10 @@
   color: var(--font-color);
   font-size: var(--font-size);
   transition: var(--transition);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
   --primary-color: #040e66;
   --secondary-color: #6c757d;
   --dark-color: #343a40;
@@ -24,6 +28,9 @@
   --transition: all 0.5s ease;
 }
 
+header ::selection {
+  background-color: transparent;
+}
 header {
   background-color: var(--primary-color);
   color: var(--dark-color);
@@ -107,7 +114,6 @@ input:focus {
   width: 100%;
   justify-content: center;
   margin: 0 auto;
-  
 }
 
 #addr {
@@ -139,7 +145,7 @@ input:focus {
 
 #emails th {
   background-color: #f2f2f2;
-  text-align: left;
+  text-align: center;
 }
 
 footer {
@@ -174,7 +180,7 @@ footer {
 }
 
 .social a:hover {
-  color: rgb(0, 255, 0);
+  color: rgb(214, 227, 243);
 }
 
 @media (max-width: 768px) {
