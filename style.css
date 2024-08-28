@@ -33,7 +33,6 @@ header {
   left: 0;
   width: 100%;
   z-index: 1000;
-
 }
 
 header .ascii-art {
@@ -70,8 +69,7 @@ button {
 
 button:hover {
   background-color: #06138b;
-  color: white  !important;
-
+  color: white !important;
 }
 
 button.primary {
@@ -102,42 +100,46 @@ input {
 input:focus {
   border: 1px solid var(--primary-color);
 }
+.horizontalContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  margin: 0 auto;
+  
+}
 
-table {
+#addr {
+  flex: 1;
+  max-width: 49%;
+}
+
+.horizontalContainer button {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#emails {
   width: 100%;
   border-collapse: collapse;
-  margin: 1rem 0;
-  border: 1px solid var(--secondary-color);
-}
-
-table th,
-table td {
-  border: 1px solid var(--secondary-color);
-  padding: 0.5rem;
+  margin-top: 20px;
   text-align: center;
-}
-
-table th {
-  background-color: var(--dark-color);
-  color: var(--light-color);
-}
-
-table tr:nth-child(even) {
-  background-color: var(--light-color);
-}
-
-table tr:nth-child(odd) {
-  background-color: var(--secondary-color);
-}
-
-/* Path: index.php */
-
-.horizontalContainer {
-  text-align: center;
-  display: flex;
-  justify-content: center;
+  margin: 0 auto;
   align-items: center;
-  padding: 1rem;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#emails th,
+#emails td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#emails th {
+  background-color: #f2f2f2;
+  text-align: left;
 }
 
 footer {
@@ -152,7 +154,6 @@ footer {
   margin: 0;
   width: 100%;
   font-weight: bolder !important;
-
 }
 
 .social {
