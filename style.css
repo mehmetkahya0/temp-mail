@@ -64,7 +64,7 @@ header p {
 button {
   padding: 0.45rem 0.75rem;
   font-size: 0.75rem;
-  font-weight: bold;
+  font-weight: bolder !important;
   border: 1px solid var(--dark-color);
   border-radius: var(--border-radius);
   cursor: pointer;
