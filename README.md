@@ -15,14 +15,28 @@
 
 ![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmehmetkahya0%2Ftemp-mail&label=VISITORS&labelColor=%23d9e3f0&countColor=%23263759)
 (visitor since 28 august 2024)
+
+
+
 ## Live
 - [Live Website!](https://mehmetkahya0.github.io/temp-mail/)
+
+
+## Star History
+
+<a href="https://star-history.com/#mehmetkahya0/temp-mail&Date">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date" />
+ </picture>
+</a>
+
+
 ## Features
-Generate a new temporary email address
-
-Load emails for the current temporary email address
-
-View email content and download attachments
+- Generate a new temporary email address
+- Load emails for the current temporary email address
+- View email content and download attachments
 
 ## Usage
 - Open index.html in your web browser.
