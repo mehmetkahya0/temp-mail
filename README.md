@@ -51,10 +51,8 @@
 
 ## Dependencies
 - jQuery: Used for making API requests and manipulating the DOM.
-
 - Font Awesome: Used for icons.
 
-- Water.css: Used for basic styling.
 ## Author
 Created by Mehmet Kahya. @mehmetkahya0
 
