@@ -55,8 +55,7 @@ body {
   flex-direction: column;
   gap: 2rem;
 }
-
-/* Header */
+/* **Header Styles** */
 header {
   text-align: center;
   padding: 2rem;
@@ -67,15 +66,109 @@ header {
   overflow: hidden;
 }
 
-.ascii-art {
-  color: white;
-  font-size: 0.7rem;
-  line-height: 1.2;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  position: relative;
-  z-index: 1;
+/* **Header Content Styles** */
+.header-content {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center;    /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    padding: 2rem 0;        /* Add some vertical padding */
+    position: relative;     /* Establish a positioning context */
 }
 
+/* **ASCII Art Styles** */
+.ascii-art {
+    color: white;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;      /* Center the text within the container */
+    font-weight: bold;
+    padding: 1rem;           /* Add some padding around the ASCII art */
+    border-radius: 0.5rem;   /* Optional: Round the corners */
+    max-width: 100%;         /* Ensure it doesn't overflow */
+    word-wrap: break-word;   /* Handle long lines gracefully */
+    font-family: 'Courier New', Courier, monospace; /* Ensure monospace font */
+    transition: transform 0.3s ease; /* Optional: Add transition */
+}
+
+.ascii-art:hover {
+    transform: scale(1.05); /* Optional: Add hover effect */
+}
+
+/* **System Status Styles** */
+.system-status {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;        /* Space between ASCII art and status */
+}
+
+/* **Status LED Styles** */
+.status-led {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 8px;
+    background-color: gray; /* Default color */
+    transition: background-color 0.3s ease;
+}
+
+.status-led.online {
+    background-color: #34D399; /* Green */
+}
+
+.status-led.offline {
+    background-color: #F87171; /* Red */
+}
+
+.status-led.loading {
+    background-color: #FCD34D; /* Yellow */
+}
+
+#status-text {
+    font-size: 14px;
+    color: #374151; /* Text color */
+}
+
+
+.email-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.email-modal-content {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* **Responsive Adjustments** */
+@media (max-width: 768px) {
+    .ascii-art {
+        font-size: 0.6rem; /* Adjust font size for smaller screens */
+    }
+}
 /* Theme Switch */
 .theme-switch {
   position: absolute;
@@ -465,6 +558,17 @@ footer {
   .app-container {
     padding: 1rem;
   }
+  
+  .ascii-art {
+    font-size: 0.5rem;
+    padding: 0;
+    text-align: left;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
 
   .email-controls {
     grid-template-columns: 1fr;
@@ -730,4 +834,40 @@ button:hover .fa-rotate {
 button:hover .fa-wand-magic-sparkles {
   filter: brightness(1.2);
   transform: rotate(-10deg) scale(1.1);
+}
+
+
+@media (max-width: 400px) {
+  .ascii-art {
+    font-size: 0.3rem !important;
+
+  }
+
+  .status-led {
+    width: 10px;
+    height: 10px;
+    font-weight: bolder;
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 0 !important;
+    font-weight: bolder;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bolder;
+    font-size: 0.8rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
 }

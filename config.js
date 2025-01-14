@@ -15,10 +15,24 @@ const CONFIG = {
         'grr.la',
         'pokemail.net',
         'spam4.me'
-    ]
+    ],
+    STATUS: {
+        ONLINE: {
+            text: 'Online',
+            class: 'online'
+        },
+        OFFLINE: {
+            text: 'Offline',
+            class: 'offline'
+        },
+        LOADING: {
+            text: 'Loading',
+            class: 'loading'
+        }
+    }
 };
 
 // Prevent modification of config
 Object.freeze(CONFIG);
 
-export default CONFIG; 
+export default CONFIG;

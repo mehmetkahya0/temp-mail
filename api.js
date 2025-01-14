@@ -22,7 +22,9 @@ const elements = {
     errorMessage: document.getElementById('error-message'),
     autoRefreshCheckbox: document.getElementById('auto-refresh'),
     refreshIntervalSelect: document.getElementById('refresh-interval'),
-    emailSearch: document.getElementById('email-search')
+    emailSearch: document.getElementById('email-search'),
+    statusLed: document.getElementById('status-led'), // **Added**
+    statusText: document.getElementById('status-text')  // **Added**
 };
 
 // Error handling
@@ -46,6 +48,43 @@ function setLoading(isLoading) {
     }
 }
 
+/**
+ * Updates the system status LED and text.
+ * @param {string} status - The status type (e.g., 'ONLINE', 'OFFLINE', 'LOADING').
+ */
+function updateSystemStatus(status) {
+    // Remove existing status classes
+    elements.statusLed.classList.remove('online', 'offline', 'loading');
+    
+    // Add the new status class
+    elements.statusLed.classList.add(CONFIG.STATUS[status].class);
+    
+    // Update the status text
+    elements.statusText.textContent = CONFIG.STATUS[status].text;
+}
+
+/**
+ * Shows the system as Online.
+ */
+function setOnline() {
+    updateSystemStatus('ONLINE');
+}
+
+/**
+ * Shows the system as Offline.
+ */
+function setOffline() {
+    updateSystemStatus('OFFLINE');
+}
+
+/**
+ * Shows the system as Loading.
+ */
+function setLoadingStatus() {
+    updateSystemStatus('LOADING');
+}
+
+
 // Get session ID
 async function getSession() {
     try {
@@ -60,6 +99,7 @@ async function getSession() {
         currentEmail = data.email_addr;
         setStoredSession(sessionId);
         setStoredEmail(currentEmail);
+        setOnline(); // **Set status to Online**
         return sessionId;
     } catch (error) {
         console.error('Error getting session:', error);
