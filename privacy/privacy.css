@@ -1,0 +1,269 @@
+/* privacy.css */
+
+
+:root {
+    --primary-color: #3B82F6;
+    --secondary-color: #60A5FA;
+    --accent-color: #2563EB;
+    --success-color: #10B981;
+    --error-color: #EF4444;
+    --text-color: #1F2937;
+    --text-secondary: #6B7280;
+    --bg-color: #F3F4F6;
+    --card-bg: #FFFFFF;
+    --border-color: #E5E7EB;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  [data-theme="dark"] {
+    --primary-color: #60A5FA;
+    --secondary-color: #93C5FD;
+    --accent-color: #3B82F6;
+    --success-color: #34D399;
+    --error-color: #F87171;
+    --text-color: #F9FAFB;
+    --text-secondary: #D1D5DB;
+    --bg-color: #111827;
+    --card-bg: #1F2937;
+    --border-color: #374151;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  /* **Header Styles** */
+  header {
+    text-align: center;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* **Header Content Styles** */
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    /* Stack children vertically */
+    align-items: center;
+    /* Center horizontally */
+    justify-content: center;
+    /* Center vertically */
+    padding: 2rem 0;
+    /* Add some vertical padding */
+    position: relative;
+    /* Establish a positioning context */
+  }
+  
+  /* **ASCII Art Styles** */
+  .ascii-art {
+    color: white;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    /* Center the text within the container */
+    font-weight: bold;
+    padding: 1rem;
+    /* Add some padding around the ASCII art */
+    border-radius: 0.5rem;
+    /* Optional: Round the corners */
+    max-width: 100%;
+    /* Ensure it doesn't overflow */
+    word-wrap: break-word;
+    /* Handle long lines gracefully */
+    font-family: 'Courier New', Courier, monospace;
+    /* Ensure monospace font */
+    transition: transform 0.3s ease;
+    /* Optional: Add transition */
+  }
+  
+  .ascii-art:hover {
+    transform: scale(1.05);
+    /* Optional: Add hover effect */
+  }
+
+/* **General Privacy Policy Styles** */
+.privacy-policy {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem 1.5rem;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.privacy-policy h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+    font-size: 2rem;
+}
+
+.privacy-policy h2 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #111827;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+}
+
+.privacy-policy p {
+    line-height: 1.6;
+    color: #374151;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-policy a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+.privacy-policy a:hover {
+    text-decoration: underline;
+}
+
+/* **Responsive Typography** */
+@media (max-width: 768px) {
+    .privacy-policy {
+        padding: 1.5rem 1rem;
+    }
+
+    .privacy-policy h1 {
+        font-size: 1.75rem;
+    }
+
+    .privacy-policy h2 {
+        font-size: 1.25rem;
+    }
+
+    .privacy-policy p {
+        font-size: 0.95rem;
+    }
+}
+
+/* **Additional Styling for Lists (If Any)** */
+.privacy-policy ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-policy ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-policy li {
+    margin-bottom: 0.5rem;
+}
+
+/* **Footer Styling (Consistency with Main Site)** */
+.footer-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem 0;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+.footer-link {
+    color: #3b82f6;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+/* **Update Notification Pop-up (Reused from Main Site)** */
+.update-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #10B981; /* Teal/GREEN tone */
+    color: white;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 250px;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.update-notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.close-notification {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+@media (max-width: 600px) {
+    .update-notification {
+        right: 10px;
+        left: 10px;
+        min-width: unset;
+    }
+}
+
+/* **Typography Enhancements** */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: #374151;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: #3b82f6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

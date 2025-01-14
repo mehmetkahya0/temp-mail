@@ -1,6 +1,6 @@
-/* Author: Mehmet Kahya */
+/* Mehmet Kahya */
 /* Created: 17 March 2024 */
-/* Last Updated: 5 May 2024 */
+/* Last Updated: 15 January 2025 */
 
 :root {
   --primary-color: #3B82F6;
@@ -514,6 +514,33 @@ footer {
   align-items: center;
   gap: 1rem;
   text-align: center;
+}
+
+.footer-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+} 
+
+.warning-button {
+  font-weight: bolder;
+  background-color: rgb(243, 24, 24) !important;
+  border: 1px solid #434446 !important;
+}
+
+.warning-button:hover {
+  background-color: rgb(253, 2, 2) !important;
+}
+
+.privacy-button {
+  font-weight: bolder;
+  background-color: rgb(0, 0, 0) !important;
+  border: 1px solid #434446 !important;
+}
+
+.privacy-button:hover {
+  background-color: rgb(0, 0, 0) !important;
+  border: 1px solid #434446 !important;
 }
 
 .social {

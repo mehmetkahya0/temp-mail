@@ -55,7 +55,7 @@
 
     <!-- Yeni Pop-up Bildirimi -->
     <div id="update-notification" class="update-notification">
-      <span>Temp Mail V2 is out🔥 <br>  Check new features🚀</span>
+      <span>Temp Mail V2 is out🔥 <br> Check new features🚀</span>
       <button id="close-notification" class="close-notification">&times;</button>
     </div>
 
@@ -140,10 +140,20 @@
             <i class="fa-brands fa-linkedin"></i>
           </a>
         </div>
-        <button class="warning-button" onclick="showWarning()"
-          style="font-weight: bolder; background-color: rgb(246, 49, 49);">
-          <i class="fa-solid fa-triangle-exclamation"></i> Warning Note
-        </button>
+
+        <div class="footer-buttons">
+          <button class="warning-button" onclick="showWarning()">
+            <i class="fa-solid fa-triangle-exclamation"></i> Warning Note
+          </button>
+
+          <button class="privacy-button">
+            <a href="privacy/privacy.html" target="_blank" style="text-decoration: none; color: inherit;">
+              <i class="fa-solid fa-shield"></i> Privacy Policy
+            </a>
+          </button>
+        </div>
+
+
       </div>
     </footer>
   </div>
@@ -153,6 +163,8 @@
       alert("⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project uses mail.gw's API for creating temporary emails. Use it legally and responsibly ⚠️");
     }
   </script>
+
+
 
   <script>
     alert("Hello, If you see the failed to load message, please clicked the 'New Address' button multiple times. If you see the failed to load message again, please contact me on GitHub or LinkedIn. Thank you for using my project. ❤️. I'm still developing this project. ");
