@@ -255,7 +255,7 @@ input:checked+.slider:before {
 .update-notification {
   position: fixed;
   top: 20px;
-  right: 20px;
+  left: 20px;
   background-color: #020d2f;
   font-weight: bolder;
   border: 1px solid #434446;
