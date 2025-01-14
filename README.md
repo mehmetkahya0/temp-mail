@@ -7,9 +7,10 @@
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 
-# TempMail
+# TempMail V2
 - TempMail is a simple web application that allows you to generate temporary email addresses and view the emails received by these addresses. 
 
+- V2 is a new version of the project that uses guerrillamail API for creating e-mails!
  
 ⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. Use it legally ⚠️
 
