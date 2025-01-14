@@ -13,11 +13,6 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
-    <script id="_wau776">
-        var _wau = _wau || [];
-        _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
-    </script>
-    <script async src="//waust.at/d.js"></script>Ï
   </head>
   <body>
     <div class="app-container">
@@ -30,10 +25,10 @@
         <i class="fa-solid fa-sun"></i>
       </div>
 
-      <header>
-        <div class="header-content">
-          <div class="ascii-art">
-            <pre>
+    <header>
+      <div class="header-content">
+        <div class="ascii-art">
+          <pre>
               ████████╗███████╗███╗   ███╗██████╗     ███╗   ███╗ █████╗ ██╗██╗     
               ╚══██╔══╝██╔════╝████╗ ████║██╔══██╗    ████╗ ████║██╔══██╗██║██║     
                  ██║   █████╗  ██╔████╔██║██████╔╝    ██╔████╔██║███████║██║██║     
@@ -41,105 +36,106 @@
                  ██║   ███████╗██║ ╚═╝ ██║██║         ██║ ╚═╝ ██║██║  ██║██║███████╗
                  ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝         ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
             </pre>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <div class="card">
+        <div class="email-controls">
+          <div class="email-input-group">
+            <i class="fa-solid fa-at input-icon"></i>
+            <input id="addr" placeholder="Email address" readonly />
+            <button onclick="copyEmail()" title="Copy email" class="icon-button">
+              <i class="fa-solid fa-copy"></i>
+            </button>
+          </div>
+          <div class="button-group">
+            <button onclick="refreshMail()" class="primary-button">
+              <i class="fa-solid fa-rotate"></i> Load Mail
+            </button>
+            <button onclick="genEmail()" class="primary-button">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> New Address
+            </button>
+          </div>
+          <div class="auto-refresh">
+            <label class="checkbox-label">
+              <i class="fa-solid fa-arrows-rotate"></i>
+              <input type="checkbox" id="auto-refresh">
+              <span>Auto refresh</span>
+            </label>
+            <select id="refresh-interval" class="select-input">
+              <option value="10">10s</option>
+              <option value="30">30s</option>
+              <option value="60">1m</option>
+            </select>
           </div>
         </div>
-      </header>
+      </div>
 
-      <main class="main-content">
-        <div class="card">
-          <div class="email-controls">
-            <div class="email-input-group">
-              <i class="fa-solid fa-at input-icon"></i>
-              <input id="addr" placeholder="Email address" readonly />
-              <button onclick="copyEmail()" title="Copy email" class="icon-button">
-                <i class="fa-solid fa-copy"></i>
-              </button>
-            </div>
-            <div class="button-group">
-              <button onclick="refreshMail()" class="primary-button">
-                <i class="fa-solid fa-rotate"></i> Load Mail
-              </button>
-              <button onclick="genEmail()" class="primary-button">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> New Address
-              </button>
-            </div>
-            <div class="auto-refresh">
-              <label class="checkbox-label">
-                <i class="fa-solid fa-arrows-rotate"></i>
-                <input type="checkbox" id="auto-refresh">
-                <span>Auto refresh</span>
-              </label>
-              <select id="refresh-interval" class="select-input">
-                <option value="10">10s</option>
-                <option value="30">30s</option>
-                <option value="60">1m</option>
-              </select>
-            </div>
+      <div class="card">
+        <div class="search-container">
+          <div class="search-input-group">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="email-search" placeholder="Search emails..." />
           </div>
         </div>
 
-        <div class="card">
-          <div class="search-container">
-            <div class="search-input-group">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="text" id="email-search" placeholder="Search emails..." />
-            </div>
-          </div>
+        <div id="loading-spinner" class="spinner hidden" style="display: none;"></div>
+        <div id="error-message" class="error-message hidden"></div>
 
-          <div id="loading-spinner" class="spinner hidden" style="display: none;"></div>
-          <div id="error-message" class="error-message hidden"></div>
-          
-          <div class="table-container">
-            <table id="emails">
-              <thead>
-                <tr>
-                  <th><i class="fa-solid fa-hashtag"></i> ID</th>
-                  <th><i class="fa-solid fa-user"></i> From</th>
-                  <th><i class="fa-solid fa-envelope"></i> Subject</th>
-                  <th><i class="fa-solid fa-calendar"></i> Date</th>
-                  <th><i class="fa-solid fa-gear"></i> Actions</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
+        <div class="table-container">
+          <table id="emails">
+            <thead>
+              <tr>
+                <th><i class="fa-solid fa-hashtag"></i> ID</th>
+                <th><i class="fa-solid fa-user"></i> From</th>
+                <th><i class="fa-solid fa-envelope"></i> Subject</th>
+                <th><i class="fa-solid fa-calendar"></i> Date</th>
+                <th><i class="fa-solid fa-gear"></i> Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </div>
-      </main>
+      </div>
+    </main>
 
-      <footer>
-        <div class="footer-content">
-          <p>
-            <i class="fa-solid fa-code"></i> 
-            Mehmet Kahya - 2025 - TempMail - 
-            <a href="https://www.guerrillamail.com" target="_blank">
-              <i class="fa-solid fa-link"></i> guerrillamail.com
-            </a>
-          </p>
-          <div class="social">
-            <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank" title="Email">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-            <a href="https://github.com/mehmetkahya0" target="_blank" title="GitHub">
-              <i class="fa-brands fa-github"></i>
-            </a>
-            <a href="https://linkedin.com/in/mehmetkahya0" target="_blank" title="LinkedIn">
-              <i class="fa-brands fa-linkedin"></i>
-            </a>
-          </div>
-          <button class="warning-button" onclick="showWarning()">
-            <i class="fa-solid fa-triangle-exclamation"></i> Warning Note
-          </button>
+    <footer>
+      <div class="footer-content">
+        <p>
+          <i class="fa-solid fa-code"></i>
+          Mehmet Kahya - 2025 - TempMail -
+          <a href="https://www.guerrillamail.com" target="_blank">
+            <i class="fa-solid fa-link"></i> guerrillamail.com
+          </a>
+        </p>
+        <div class="social">
+          <a href="mailto:mehmetkahyakas5@gmail.com" target="_blank" title="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <a href="https://github.com/mehmetkahya0" target="_blank" title="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://linkedin.com/in/mehmetkahya0" target="_blank" title="LinkedIn">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
         </div>
-      </footer>
-    </div>
+        <button class="warning-button" onclick="showWarning()">
+          <i class="fa-solid fa-triangle-exclamation"></i> Warning Note
+        </button>
+      </div>
+    </footer>
+  </div>
 
-    <script>
-      function showWarning() {
-        alert("⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project uses mail.gw's API for creating temporary emails. Use it legally and responsibly ⚠️");
-      }
-    </script>
-    <script src="config.js" type="module"></script>
-    <script src="api.js" type="module"></script>
-    <script src="theme.js" type="module"></script>
-  </body>
+  <script>
+    function showWarning() {
+      alert("⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project uses mail.gw's API for creating temporary emails. Use it legally and responsibly ⚠️");
+    }
+  </script>
+  <script src="config.js" type="module"></script>
+  <script src="api.js" type="module"></script>
+  <script src="theme.js" type="module"></script>
+</body>
+
 </html>
