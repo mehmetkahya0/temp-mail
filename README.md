@@ -60,11 +60,6 @@ Created by Mehmet Kahya. @mehmetkahya0
 This project is open source and available under the Apache License.
 
 ## Important note!
-This project uses 1secmail API for creating e-mails
-
-##  Todo
-[] add delete permanently mail
-[] add saved e-mails list
-[] clear inbox button
+This project uses guerrillamail API for creating e-mails
 
 
