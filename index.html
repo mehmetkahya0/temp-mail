@@ -5,30 +5,33 @@
 -------------------------------->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https://api.guerrillamail.com https://cdnjs.cloudflare.com ws://127.0.0.1:* wss://127.0.0.1:*; connect-src 'self' https://api.guerrillamail.com ws://127.0.0.1:* wss://127.0.0.1:*; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src https://cdnjs.cloudflare.com; img-src 'self' data: https:;">
-    <title>TempMail</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-    <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
-    <script id="_wau776">
-      var _wau = _wau || [];
-      _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
-    </script>
-    <script async src="//waust.at/d.js"></script>
-  </head>
-  <body>
-    <div class="app-container">
-      <div class="theme-switch">
-        <i class="fa-solid fa-moon"></i>
-        <label class="switch">
-          <input type="checkbox" id="theme-toggle">
-          <span class="slider round"></span>
-        </label>
-        <i class="fa-solid fa-sun"></i>
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self' https://api.guerrillamail.com https://cdnjs.cloudflare.com ws://127.0.0.1:* wss://127.0.0.1:*; connect-src 'self' https://api.guerrillamail.com ws://127.0.0.1:* wss://127.0.0.1:*; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src https://cdnjs.cloudflare.com; img-src 'self' data: https:;">
+  <title>TempMail</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
+  <script id="_wau776">
+    var _wau = _wau || [];
+    _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
+  </script>
+  <script async src="//waust.at/d.js"></script>
+</head>
+
+<body>
+  <div class="app-container">
+    <div class="theme-switch">
+      <i class="fa-solid fa-moon"></i>
+      <label class="switch">
+        <input type="checkbox" id="theme-toggle">
+        <span class="slider round"></span>
+      </label>
+      <i class="fa-solid fa-sun"></i>
+    </div>
 
     <header>
       <div class="header-content">
@@ -48,6 +51,13 @@
         </div>
       </div>
     </header>
+
+
+    <!-- Yeni Pop-up Bildirimi -->
+    <div id="update-notification" class="update-notification">
+      <span>Temp Mail V2 is out🔥 <br>  Check new features🚀</span>
+      <button id="close-notification" class="close-notification">&times;</button>
+    </div>
 
     <main class="main-content">
       <div class="card">
@@ -130,7 +140,8 @@
             <i class="fa-brands fa-linkedin"></i>
           </a>
         </div>
-        <button class="warning-button" onclick="showWarning()" style="font-weight: bolder; background-color: rgb(246, 49, 49);">
+        <button class="warning-button" onclick="showWarning()"
+          style="font-weight: bolder; background-color: rgb(246, 49, 49);">
           <i class="fa-solid fa-triangle-exclamation"></i> Warning Note
         </button>
       </div>

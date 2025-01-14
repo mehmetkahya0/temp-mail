@@ -7,6 +7,7 @@ const CONFIG = {
     MAX_RETRIES: 3,
     RETRY_DELAY: 2000, // 2 seconds
     REQUEST_TIMEOUT: 10000, // 10 seconds
+    
     DOMAINS: [
         'guerrillamail.com',
         'guerrillamail.net',
