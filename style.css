@@ -560,13 +560,20 @@ footer {
   }
   
   .ascii-art {
-    font-size: 0.5rem;
+    font-size: 0.3rem;
     padding: 0;
     text-align: left;
     position: relative;
     left: 0;
     right: 0;
     margin: 0 auto;
+  }
+
+
+  .status-led {
+    width: 10px;
+    height: 10px;
+    font-weight: bolder;
   }
 
 
@@ -701,6 +708,19 @@ button i {
 .header-content {
   position: relative;
   z-index: 1;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-weight: bolder;
+  font-size: 0.8rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .header-icons {
