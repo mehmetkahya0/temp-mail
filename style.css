@@ -982,6 +982,19 @@ th i {
   color: var(--primary-color);
 }
 
+.footer-content a {
+  color: #2563EB;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  color: #215ad5;
+  text-decoration: underline;
+}
+
+
+
+
 /* Auto Refresh Icons */
 .checkbox-label i {
   font-size: 1rem;
