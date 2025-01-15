@@ -8,6 +8,12 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Diğer Sayfalarınız İçin Benzer URL Etiketleri Ekleyin -->
-  
+  <url>
+    <loc>https://mehmetkahya0.github.io/temp-mail/privacy</loc>
+    <lastmod>2025-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!--- Add more urls here -->
 </urlset> 
