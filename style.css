@@ -289,6 +289,46 @@ input:checked+.slider:before {
   line-height: 1;
 }
 
+.poll {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.poll p {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.star-rating {
+  display: flex;
+  flex-direction: row;
+  font-size: 24px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.fa-star {
+  color: #ccc;
+  transition: color 0.2s;
+}
+
+.fa-star.checked {
+  color: #FFD700;
+}
+
+.poll button {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.poll button:hover {
+  background-color: #45a049;
+}
+
 /* **Responsive Düzenlemeler** */
 @media (max-width: 600px) {
   .update-notification {
@@ -520,7 +560,7 @@ footer {
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
-} 
+}
 
 .warning-button {
   font-weight: bolder;

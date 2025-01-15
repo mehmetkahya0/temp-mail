@@ -53,10 +53,60 @@
     </header>
 
 
-    <!-- Yeni Pop-up Bildirimi -->
     <div id="update-notification" class="update-notification">
       <span>Temp Mail V2 is out🔥 <br> Check new features🚀</span>
+
+      <!-- Poll for user feedback with 5-Star Rating -->
+      <div class="poll">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc3IsMzVudebwEwWFRHBQnVf6Frxliya4A5wATDKN_u4s3c0g/viewform?embedded=true" width="100%" height="auto" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+      </div>
+
       <button id="close-notification" class="close-notification">&times;</button>
+
+      <script>
+        let selectedRating = 0;
+
+        // Handle star click
+        document.querySelectorAll('.star-rating .fa-star').forEach(function (star) {
+          star.addEventListener('click', function () {
+            selectedRating = parseInt(this.getAttribute('data-value'));
+            highlightStars(selectedRating);
+          });
+
+          star.addEventListener('mouseover', function () {
+            const hoverValue = parseInt(this.getAttribute('data-value'));
+            highlightStars(hoverValue);
+          });
+
+          star.addEventListener('mouseout', function () {
+            highlightStars(selectedRating);
+          });
+        });
+
+        function highlightStars(rating) {
+          document.querySelectorAll('.star-rating .fa-star').forEach(function (star) {
+            if (parseInt(star.getAttribute('data-value')) <= rating) {
+              star.classList.add('checked');
+            } else {
+              star.classList.remove('checked');
+            }
+          });
+        }
+
+        function submitPoll() {
+          if (selectedRating > 0) {
+            // You can send this data to your server or handle it as needed
+            console.log(`User rated the new UI as: ${selectedRating} out of 5`);
+            alert("Thank you for your feedback!");
+
+            // Optionally, hide the poll after submission
+            document.querySelector('.poll').style.display = 'none';
+          } else {
+            alert("Please select a rating before submitting.");
+          }
+        }
+      </script>
+
     </div>
 
     <main class="main-content">
