@@ -266,6 +266,7 @@ input:checked+.slider:before {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
   min-width: 250px;
   z-index: 1000;
   opacity: 0;
@@ -282,11 +283,14 @@ input:checked+.slider:before {
 /* **Kapatma Butonu Stili** */
 .close-notification {
   background: none;
-  border: none;
+  border: 2px solid #434446;
   color: white;
   font-size: 20px;
   cursor: pointer;
   line-height: 1;
+  width: 50%;
+  margin: 0 auto;
+  font-weight: bolder;
 }
 
 .poll {
