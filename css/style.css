@@ -16,6 +16,10 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --gradient-start: #2563EB;
+  --gradient-end: #1E40AF;
+  --header-text: #FFFFFF;
+  --header-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
 }
 
 [data-theme="dark"] {
@@ -29,6 +33,10 @@
   --bg-color: #111827;
   --card-bg: #1F2937;
   --border-color: #374151;
+  --gradient-start: #3B82F6;
+  --gradient-end: #1E3A8A;
+  --header-text: #FFFFFF;
+  --header-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
 }
 
 * {
@@ -60,11 +68,32 @@ body {
 header {
   text-align: center;
   padding: 2rem;
-  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  background: linear-gradient(135deg, 
+    var(--gradient-start) 0%,
+    var(--gradient-end) 100%
+  );
   border-radius: 1rem;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--header-shadow);
   position: relative;
   overflow: hidden;
+  color: var(--header-text);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
 }
 
 /* **Header Content Styles** */
