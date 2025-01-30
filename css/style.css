@@ -1112,3 +1112,77 @@ button:hover .fa-wand-magic-sparkles {
     align-items: center;
   }
 }
+
+/* Welcome Message Styles */
+.welcome-message {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  max-width: 350px;
+  z-index: 1000;
+  border: 1px solid var(--border-color);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 0.5s ease forwards;
+}
+
+.welcome-message.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.welcome-message-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.welcome-message-header i {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.welcome-message-content {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.welcome-message-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+  gap: 10px;
+}
+
+.welcome-message-actions button {
+  padding: 8px 12px;
+  font-size: 0.8rem;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}

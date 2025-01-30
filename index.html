@@ -75,6 +75,8 @@
       _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
     </script>
     <script async src="//waust.at/d.js"></script>
+    <!-- Add confetti lib -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
   </head>
 
   <body>
@@ -309,6 +311,29 @@
       </footer>
     </div>
 
+    <div id="welcomeMessage" class="welcome-message">
+      <div class="welcome-message-header">
+        <i class="fas fa-info-circle"></i>
+        <h3>Welcome to Temp Mail</h3>
+      </div>
+      <div class="welcome-message-content">
+        <p><strong> If you see a "failed to load" message:</strong></p>
+        <ul>
+          <li>Try clicking the "New Address" button multiple times</li>
+          <li>
+            If the issue persists, please contact me on GitHub or LinkedIn
+          </li>
+        </ul>
+        <br />
+        <p>Thank you for using my project! ❤️</p>
+      </div>
+      <div class="welcome-message-actions">
+        <button onclick="hideWelcomeMessage()" class="icon-button">
+          Got it!
+        </button>
+      </div>
+    </div>
+
     <script>
       function showWarning() {
         alert(
@@ -318,9 +343,39 @@
     </script>
 
     <script>
-      alert(
-        "Hello, If you see the failed to load message, please clicked the 'New Address' button multiple times. If you see the failed to load message again, please contact me on GitHub or LinkedIn. Thank you for using my project. ❤️. I'm still developing this project. "
-      );
+      function hideWelcomeMessage() {
+        const welcomeMessage = document.getElementById("welcomeMessage");
+        welcomeMessage.style.animation = "slideOut 0.5s ease forwards";
+        
+        // Create confetti explosion
+        confetti({
+          particleCount: 150,
+          spread: 180,
+          origin: { y: 0.8 },
+          colors: ['#3B82F6', '#60A5FA', '#2563EB', '#10B981', '#34D399'],
+          startVelocity: 45,
+          gravity: 1.2,
+          scalar: 0.7,
+          ticks: 150
+        });
+
+        setTimeout(() => {
+          welcomeMessage.remove();
+          localStorage.setItem("welcomeMessageSeen", "true");
+        }, 500);
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Only show welcome message if not seen before
+        if (!localStorage.getItem("welcomeMessageSeen")) {
+          setTimeout(() => {
+            const welcomeMessage = document.getElementById("welcomeMessage");
+            welcomeMessage.classList.add("show");
+          }, 1000);
+        } else {
+          document.getElementById("welcomeMessage").remove();
+        }
+      });
     </script>
 
     <script src="js/config.js" type="module"></script>
