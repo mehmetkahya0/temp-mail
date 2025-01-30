@@ -256,21 +256,22 @@ input:checked+.slider:before {
   position: fixed;
   top: 20px;
   left: 20px;
-  background-color: #020d2f;
-  font-weight: bolder;
-  border: 1px solid #434446;
-  color: white;
+  transform: translateY(-20px);
+  width: 300px;
+  max-width: 90%;
+  background-color: var(--card-bg);
+  font-weight: 500;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
   padding: 15px 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  min-width: 250px;
   z-index: 1000;
   opacity: 0;
-  transform: translateY(-20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
@@ -284,13 +285,31 @@ input:checked+.slider:before {
 .close-notification {
   background: none;
   border: 2px solid #434446;
-  color: white;
+  color: rgb(8, 49, 161);
   font-size: 20px;
   cursor: pointer;
   line-height: 1;
   width: 50%;
   margin: 0 auto;
   font-weight: bolder;
+}
+
+@media (max-width: 600px) {
+  .update-notification {
+    left: 10px;
+    top: 10px;
+    width: calc(100% - 20px);
+    max-width: 300px;
+    padding: 12px 15px;
+    font-size: 0.875rem;
+  }
+  
+  .close-notification {
+    width: 100%;
+    padding: 8px;
+    margin-top: 10px;
+    font-size: 0.875rem;
+  }
 }
 
 .poll {
