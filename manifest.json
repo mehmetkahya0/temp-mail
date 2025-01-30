@@ -1,1 +1,1 @@
-{"short_name":"Temp-mail","name":"Temp-mail","icons":[{"src":"/mail.png"}],"start_url":"/","background_color":"rgb(0,0,0)","theme_color":"rgb(0,0,0)","display":"standalone","orientation":"portrait"}
+{"short_name":"Temp-mail","name":"Temp-mail","icons":[{"src":"images/temp-mail-icon.png"}],"start_url":"/","background_color":"rgb(0,0,0)","theme_color":"rgb(0,0,0)","display":"standalone","orientation":"portrait"}
