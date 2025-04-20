@@ -1,257 +1,271 @@
-# TempMail V2
+# TempMail V2 - Secure & Disposable Email Service 📧
 
+<div align="center">
+  
+  ![TempMail V2 Banner](images/banner.png)
 
-![temp](https://github.com/user-attachments/assets/ff3789d8-fd7b-4783-a892-a0a32c7a664d)
+  [![GitHub Stars](https://img.shields.io/github/stars/mehmetkahya0/temp-mail?style=for-the-badge&logo=github&color=yellow)](https://github.com/mehmetkahya0/temp-mail/stargazers)
+  [![GitHub Forks](https://img.shields.io/github/forks/mehmetkahya0/temp-mail?style=for-the-badge&logo=github&color=orange)](https://github.com/mehmetkahya0/temp-mail/network/members)
+  [![GitHub Issues](https://img.shields.io/github/issues/mehmetkahya0/temp-mail?style=for-the-badge&logo=github&color=red)](https://github.com/mehmetkahya0/temp-mail/issues)
+  [![GitHub License](https://img.shields.io/github/license/mehmetkahya0/temp-mail?style=for-the-badge&logo=github&color=blue)](https://github.com/mehmetkahya0/temp-mail/blob/main/LICENSE)
+  [![Website Status](https://img.shields.io/website?style=for-the-badge&url=https%3A%2F%2Fmehmetkahya0.github.io%2Ftemp-mail%2F&logo=googlechrome&color=green)](https://mehmetkahya0.github.io/temp-mail/)
 
-![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+  **Protect your privacy with instant disposable email addresses**
 
-TempMail V2 is a secure and user-friendly temporary email service that allows users to generate disposable email addresses. Protect your inbox from spam and unwanted emails with our fast and reliable temporary email solution.
+  [Live Demo](https://mehmetkahya0.github.io/temp-mail/) | [Report Bug](https://github.com/mehmetkahya0/temp-mail/issues) | [Request Feature](https://github.com/mehmetkahya0/temp-mail/issues)
+</div>
 
-![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmehmetkahya0%2Ftemp-mail&label=VISITORS&labelColor=%23d9e3f0&countColor=%23263759)
-- (28 august 2024 - now)
+## 🎯 Overview
 
+TempMail V2 is a cutting-edge temporary email solution designed for privacy-conscious users. Generate disposable email addresses instantly to protect your primary inbox from spam, tracking, and unwanted communications. Built with modern web technologies, TempMail V2 offers a sleek, responsive interface with powerful features like real-time inbox updates, dark mode, and seamless email management.
 
+<div align="center">
 
+  ![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fmehmetkahya0%2Ftemp-mail&label=VISITORS&labelColor=%23d9e3f0&countColor=%23263759)
 
-## Table of Contents
-- [Star History](#star-history)
-- [Features](#features)
-- [Demo](#demo)
-- [Technologies Used](#technologies-used)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Project Structure](#project-structure)
-- [Description](#description)
-- [Configuration](#configuration)
-- [Contributing](#contributing)
-- [License](#license)
-- [Author](#author)
-- [Acknowledgments](#acknowledgments)
+</div>
 
+## ✨ Features
 
+<div align="center">
+  
+  ![TempMail V2 Features](images/header.png)
+  
+</div>
 
+- ⚡ **Instant Email Generation**: Create disposable emails with a single click
+- 🔄 **Auto-Refresh Capability**: Keep your inbox updated automatically at customizable intervals
+- 🔍 **Advanced Search**: Filter emails quickly by sender, subject, or content
+- 🌓 **Light & Dark Themes**: Choose your preferred visual experience with theme persistence
+- 📱 **Responsive Design**: Seamless experience across desktop, tablet, and mobile devices
+- 🔒 **Privacy Focused**: No registration or personal information required
+- 🚫 **Spam Protection**: Keep your primary inbox clean from unwanted communications
+- 📎 **Attachment Support**: View and download email attachments securely
 
-## Star History
+## 🚀 Tech Stack
 
-<a href="https://star-history.com/#mehmetkahya0/temp-mail&Date">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date" />
- </picture>
-</a>
+<div align="center">
+  
+  ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+  ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+  ![Font Awesome](https://img.shields.io/badge/font%20awesome-%23339AF0.svg?style=for-the-badge&logo=font-awesome&logoColor=white)
+  ![Responsive Design](https://img.shields.io/badge/responsive-%23FF6C37.svg?style=for-the-badge&logo=amp&logoColor=white)
+  
+</div>
 
+- **Frontend**: HTML5, CSS3 with custom variables for theming, JavaScript (ES6 Modules)
+- **Icons & UI**: Font Awesome 6.0, custom animations
+- **APIs**: [Guerrilla Mail API](https://www.guerrillamail.com/) for email operations
+- **Storage**: LocalStorage for user preferences and session management
 
-## Features
+## 🖥️ Live Demo
 
-- **Generate Disposable Emails:** Create temporary email addresses instantly.
-- **Email Management:** View, search, and delete received emails.
-- **Auto-Refresh:** Automatically refresh the inbox at set intervals.
-- **Theme Switcher:** Toggle between light and dark modes for a personalized experience.
-- **Responsive Design:** Optimized for both desktop and mobile devices.
-- **User Feedback:** Rate the UI and provide feedback through embedded polls.
-- **Secure Operations:** Utilizes Guerrilla Mail API for backend operations.
+Experience TempMail V2 in action:
 
-## Demo
+<div align="center">
+  
+  [![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-Visit%20TempMail%20V2-%233B82F6?style=for-the-badge&logo=googlechrome&logoColor=white)](https://mehmetkahya0.github.io/temp-mail/)
+  
+</div>
 
-Experience TempMail V2 in action by visiting the [Live Demo](https://mehmetkahya0.github.io/temp-mail/).
+## 📊 Star History
 
-## Technologies Used
+<div align="center">
+  <a href="https://star-history.com/#mehmetkahya0/temp-mail&Date">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date&theme=dark" />
+      <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date" />
+      <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=mehmetkahya0/temp-mail&type=Date" />
+    </picture>
+  </a>
+</div>
 
-- **Frontend:**
-  - HTML5
-  - CSS3 (with custom theming)
-  - JavaScript (ES6 Modules)
-  - Font Awesome for icons
+## 🛠️ Installation & Setup
 
-- **APIs:**
-  - [Guerrilla Mail API](https://www.guerrillamail.com/)
+### Prerequisites
 
-## Installation
+- A modern web browser
+- Optional: Node.js and NPM if using Live Server
 
-To set up TempMail V2 locally, follow these steps:
+### Quick Start
 
-1. **Clone the Repository:**
-
+1. **Clone the repository**
    ```bash
    git clone https://github.com/mehmetkahya0/temp-mail.git
    ```
 
-2. **Navigate to the Project Directory:**
-
+2. **Navigate to the project directory**
    ```bash
    cd temp-mail
    ```
 
-3. **Install Dependencies:**
+3. **Launch with your preferred method:**
 
-   TempMail V2 is a frontend-only project and does not require any backend setup. Ensure you have a web server to serve the files. You can use [Live Server](https://github.com/tapio/live-server) or any similar tool.
-
-   If you have Node.js installed, you can install Live Server globally:
-
+   **Option 1:** Open index.html directly in your browser
+   
+   **Option 2:** Use a local development server
+   
+   If you have Node.js installed:
    ```bash
+   # Install Live Server globally
    npm install -g live-server
-   ```
-
-4. **Start the Server:**
-
-   ```bash
+   
+   # Start the server
    live-server
    ```
 
-5. **Access the Application:**
+4. **Access the application**
+   
+   Open your browser and navigate to:
+   - `http://127.0.0.1:8080` (if using Live Server)
+   - or directly via the file:// protocol if opening index.html
 
-   Open your browser and navigate to `http://127.0.0.1:8080` or the URL provided by Live Server.
+## 📱 Usage Guide
 
-## Usage
+### Creating a Temporary Email
 
-1. **Generate a New Email Address:**
+1. When you first load the application, a random email address is automatically generated
+2. Click the **"New Address"** button to generate a different disposable email
+3. Use the **copy button** to easily copy the email address to your clipboard
 
-   - Click on the "New Address" button to generate a new temporary email address.
-   - The generated email will appear in the input field. You can copy it using the copy button next to the field.
+### Managing Your Inbox
 
-2. **View Emails:**
+1. Click **"Load Mail"** to manually fetch new messages (or enable auto-refresh)
+2. Use the search field to filter messages by sender, subject, or content
+3. Click the **eye icon** on any email to view its complete contents
+4. Remove unwanted emails with the **trash icon**
 
-   - Click on the "Load Mail" button to fetch and display received emails.
-   - Use the search bar to filter emails based on keywords.
+### Customizing Your Experience
 
-3. **Manage Emails:**
+1. **Toggle between light and dark mode** using the switch in the top-right corner
+2. Enable **"Auto-refresh"** and select your preferred interval (10s, 30s, or 1m)
+3. Access privacy policy and important information via the footer links
 
-   - **View Email:** Click the eye icon to view the full content of an email.
-   - **Delete Email:** Click the trash icon to delete an email from your inbox.
+## 📂 Project Structure
 
-4. **Auto-Refresh:**
-
-   - Enable the "Auto refresh" option to automatically refresh the inbox at your preferred interval (10s, 30s, 1m).
-
-5. **Theme Switching:**
-
-   - Use the theme toggle switch in the top-right corner to switch between light and dark modes. Your preference will be saved for future visits.
-
-6. **Feedback:**
-
-   - Upon launching the application, you'll receive an update notification prompting you to rate the new UI. Provide your feedback through the embedded poll.
-
-## Project Structure
+```
 temp-mail/
 ├── css/
-│ └── style.css
+│   └── style.css              # Main stylesheet with theming and responsive design
 ├── js/
-│ ├── api.js
-│ ├── config.js
-│ └── theme.js
+│   ├── api.js                 # API interactions and email functionality
+│   ├── config.js              # Configuration and constants
+│   └── theme.js               # Theme switching functionality
 ├── images/
-│ ├── temp-mail-og-image.png
-│ ├── temp-mail-twitter-image.png
-│ └── temp-mail-icon.png
+│   ├── banner.png             # Project banner image
+│   ├── header.png             # Header image
+│   └── temp-mail-icon.png     # Application icon
 ├── privacy/
-│ └── privacy.html
-├── index.html
-└── README.md
+│   ├── privacy.css            # Privacy page styling
+│   └── privacy.html           # Privacy policy content
+├── index.html                 # Main application entry point
+├── manifest.json              # PWA manifest file
+├── robots.txt                 # Search engine directives
+├── sitemap.xml                # Site structure for search engines
+├── LICENSE                    # MIT license with commercial restrictions
+└── README.md                  # Project documentation
+```
 
+## ⚙️ Core Components
 
+### Email Generation System
 
-### Description
+TempMail V2 uses a secure pseudorandom generation system to create unique email addresses. The system leverages the Guerrilla Mail API, ensuring high deliverability and compatibility with most services.
 
-- **index.html:**  
-  The main HTML file that structures the application's user interface.
+```javascript
+// Email generation example (simplified)
+const randomStr = Math.random().toString(36).substring(2, 8);
+const domain = CONFIG.DOMAINS[Math.floor(Math.random() * CONFIG.DOMAINS.length)];
+// Result: randomStr@domain
+```
 
-- **css/style.css:**  
-  Contains all the styling for the application, including theming and responsive design.
+### Theme Engine
 
-- **js/api.js:**  
-  Handles all API interactions with Guerrilla Mail, manages application state, and updates the DOM accordingly.
+The application features a sophisticated theming system using CSS variables and JavaScript. User preferences are stored in localStorage for persistence across sessions:
 
-- **js/config.js:**  
-  Stores configuration settings and constants used across the application, ensuring easy maintenance and scalability.
+```javascript
+// Theme switching
+if (darkMode) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+} else {
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+}
+```
 
-- **js/theme.js:**  
-  Manages theme switching functionality, allowing users to toggle between light and dark modes while persisting their preferences.
+### Inbox Management
 
-- **images/:**  
-  Directory containing all image assets used in the application.
-  - **temp-mail-og-image.png:**  
-    Open Graph image for social media sharing.
-  - **temp-mail-twitter-image.png:**  
-    Twitter-specific image asset.
-  - **temp-mail-icon.png:**  
-    Icon used throughout the application.
+The inbox system provides real-time updates, efficient search capabilities, and intuitive email management:
 
-- **privacy/privacy.html:**  
-  Contains the Privacy Policy of the application, outlining how user data is handled and ensuring transparency.
+- Auto-refresh with configurable intervals
+- Full-text search across all email fields
+- Modal-based email viewing with attachment support
+- One-click email deletion
 
-- **README.md:**  
-  The project's README file, providing an overview, installation instructions, usage guidelines, and other essential information.
+## 🔧 Customization Options
 
+TempMail V2 is highly customizable to suit your needs:
 
+1. **API Provider**
+   - Modify `CONFIG.API_BASE` in `js/config.js` to use a different email API provider
 
+2. **Available Domains**
+   - Edit the `DOMAINS` array in `js/config.js` to add or remove email domains
 
-### Customization
+3. **UI Theming**
+   - Customize the look and feel by modifying CSS variables in `css/style.css`
 
-- **API_BASE:** Change this if you intend to use a different API provider.
-- **DOMAINS:** Add or remove domains as per your requirements.
-- **UI Colors and Themes:** Modify CSS variables in `css/style.css` to customize the look and feel.
+4. **Auto-Refresh Intervals**
+   - Add or modify refresh intervals in the HTML select options and handle them in JavaScript
 
-## Contributing
+## 🤝 Contributing
 
-Contributions are welcome! Please follow these steps to contribute:
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-1. **Fork the Repository:**
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-   Click on the "Fork" button at the top-right corner of the repository page.
+See the [open issues](https://github.com/mehmetkahya0/temp-mail/issues) for a list of proposed features and known issues.
 
-2. **Clone the Forked Repository:**
+## 📜 License
 
-   ```bash
-   git clone https://github.com/mehmetkahya0/temp-mail.git
-   ```
+This project is licensed under the MIT License with specific commercial restrictions - see the [LICENSE](LICENSE) file for details.
 
-3. **Create a New Branch:**
+**Important:** While you can use this project for personal and educational purposes, commercial use requires explicit permission from the project author.
 
-   ```bash
-   git checkout -b feature/YourFeatureName
-   ```
+## 👤 Author
 
-4. **Make Your Changes:**
+<div align="center">
+  <a href="https://github.com/mehmetkahya0">
+    <img src="https://github.com/mehmetkahya0.png" width="100px;" alt="Mehmet Kahya" style="border-radius:50%"/>
+    <br />
+    <b>Mehmet Kahya</b>
+  </a>
+</div>
+<br />
+<div align="center">
+  
+  [![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mehmetkahya0)
+  [![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/mehmet-kahya-0861a4286)
+  [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:mehmetkahyakas5@gmail.com)
+  
+</div>
 
-   Implement your feature or fix the bug.
+## 👏 Acknowledgments
 
-5. **Commit Your Changes:**
-
-   ```bash
-   git commit -m "Add feature: YourFeatureName"
-   ```
-
-6. **Push to Your Fork:**
-
-   ```bash
-   git push origin feature/YourFeatureName
-   ```
-
-7. **Create a Pull Request:**
-
-   Navigate to the original repository and click on "Compare & pull request."
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-**Important:** You can use this project for your own purposes but you can't use it for commercial purposes.
-
-## Author
-
-**Mehmet Kahya**  
-[GitHub](https://github.com/mehmetkahya0) | [LinkedIn](https://linkedin.com/in/mehmetkahya0) | [Email](mailto:mehmetkahyakas5@gmail.com)
-
-## Acknowledgments
-
-- [Guerrilla Mail](https://www.guerrillamail.com/) for providing the robust API used in this project.
-- Font Awesome for the beautiful icons.
-- All contributors who helped in improving the project.
+- [Guerrilla Mail](https://www.guerrillamail.com/) for their robust temporary email API
+- [Font Awesome](https://fontawesome.com/) for their comprehensive icon library
+- All contributors who have helped improve this project
 
 ---
 
-> **⚠️ Disclaimer:** This project is purely for educational purposes. We do not allow illegal activities to be performed using this project and are not responsible for any incidents that may occur. Use it legally and responsibly.
+<div align="center">
+  
+  ⚠️ **Disclaimer:** This project is purely for educational purposes. We do not allow illegal activities to be performed using this project and are not responsible for any incidents that may occur. Use it legally and responsibly.
+  
+</div>
