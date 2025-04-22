@@ -15,6 +15,14 @@
   [Live Demo](https://mehmetkahya0.github.io/temp-mail/) | [Report Bug](https://github.com/mehmetkahya0/temp-mail/issues) | [Request Feature](https://github.com/mehmetkahya0/temp-mail/issues)
 </div>
 
+
+
+
+
+> [!IMPORTANT]  
+> ALL CODE FOR THIS WEBSITE IS COPYRIGHTED. YOU CANNOT USE THESE CODES AND OPEN ANOTHER WEBSITE IN THE SAME WAY. IT IS BEING TRACKED WITH VARIOUS TOOLS AND IF IT IS OPENED, A DMCA VIOLATION WILL BE SENT WITH MY LAWYER. SCANS ARE CARRIED OUT REGULARLY WITH VARIOUS TOOLS.
+
+
 ## 🎯 Overview
 
 TempMail V2 is a cutting-edge temporary email solution designed for privacy-conscious users. Generate disposable email addresses instantly to protect your primary inbox from spam, tracking, and unwanted communications. Built with modern web technologies, TempMail V2 offers a sleek, responsive interface with powerful features like real-time inbox updates, dark mode, and seamless email management.
