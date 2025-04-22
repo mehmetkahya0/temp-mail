@@ -244,7 +244,7 @@ See the [open issues](https://github.com/mehmetkahya0/temp-mail/issues) for a li
 
 ## 📜 License
 
-This project is licensed under the MIT License with specific commercial restrictions - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the Special License with specific commercial restrictions - see the [LICENSE](LICENSE) file for details.
 
 **Important:** While you can use this project for personal and educational purposes, commercial use requires explicit permission from the project author.
 
