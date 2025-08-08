@@ -51,8 +51,19 @@ function showError(message, isSuccess = false) {
 function setLoading(isLoading) {
     if (isLoading) {
         elements.loadingSpinner.classList.remove('hidden');
+        // Add skeleton rows if table empty
+        if (!elements.emailTable.querySelector('tr')) {
+            for (let i=0;i<4;i++) {
+                const sk = document.createElement('tr');
+                sk.className = 'skeleton-row';
+                sk.innerHTML = '<td colspan="5"><div class="skeleton-cell"></div></td>';
+                elements.emailTable.appendChild(sk);
+            }
+        }
     } else {
         elements.loadingSpinner.classList.add('hidden');
+        // Remove skeletons
+        elements.emailTable.querySelectorAll('.skeleton-row').forEach(r=>r.remove());
     }
 }
 
@@ -176,32 +187,29 @@ async function copyEmail() {
     }
 }
 
-// Refresh emails
+// Refresh emails (improved)
 async function refreshMail() {
     if (!currentEmail || !sessionId) {
-        showError('No active email session');
-        return;
+        return; // initialization logic will handle
     }
-    
     try {
         setLoading(true);
+        setLoadingStatus();
         elements.errorMessage.classList.add('hidden');
-
         const response = await fetch(`${CONFIG.API_BASE}?f=get_email_list&offset=0&sid_token=${sessionId}`);
-        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-
         const data = await response.json();
         updateEmailTable(data.list);
+        setOnline();
     } catch (error) {
         console.error('Error refreshing mail:', error);
-        showError('Failed to fetch emails');
         if (error.message.includes('401')) {
             clearStoredData();
             sessionId = '';
         }
+        setOffline();
     } finally {
         setLoading(false);
     }
@@ -210,33 +218,59 @@ async function refreshMail() {
 // Update email table
 function updateEmailTable(emails) {
     elements.emailTable.innerHTML = '';
+    const responsiveContainer = document.getElementById('emails-responsive');
+    if (responsiveContainer) responsiveContainer.innerHTML = '';
     
     if (!emails || emails.length === 0) {
         const emptyRow = document.createElement('tr');
         emptyRow.innerHTML = '<td colspan="5" class="text-center">No emails found</td>';
         elements.emailTable.appendChild(emptyRow);
+        if (responsiveContainer) {
+            const emptyDiv = document.createElement('div');
+            emptyDiv.textContent = 'No emails found';
+            emptyDiv.className = 'email-card';
+            responsiveContainer.appendChild(emptyDiv);
+            responsiveContainer.removeAttribute('hidden');
+        }
         return;
     }
 
     emails.forEach(email => {
         const row = document.createElement('tr');
+        const dateStr = new Date(email.mail_timestamp * 1000).toLocaleString();
         row.innerHTML = `
             <td>${email.mail_id}</td>
             <td>${email.mail_from}</td>
             <td>${email.mail_subject}</td>
-            <td>${new Date(email.mail_timestamp * 1000).toLocaleString()}</td>
+            <td>${dateStr}</td>
             <td>
                 <div class="email-actions">
-                    <button onclick="viewEmail('${email.mail_id}')" class="icon-button" title="View">
-                        <i class="fa-solid fa-eye"></i>
+                    <button onclick="viewEmail('${email.mail_id}')" class="icon-button" aria-label="View email ${email.mail_subject}" title="View email">
+                        <i class="fa-solid fa-eye" aria-hidden="true"></i>
                     </button>
-                    <button onclick="deleteEmail('${email.mail_id}')" class="icon-button" title="Delete">
-                        <i class="fa-solid fa-trash"></i>
+                    <button onclick="deleteEmail('${email.mail_id}')" class="icon-button" aria-label="Delete email ${email.mail_subject}" title="Delete email">
+                        <i class="fa-solid fa-trash" aria-hidden="true"></i>
                     </button>
                 </div>
             </td>
         `;
         elements.emailTable.appendChild(row);
+        // Responsive card version
+        if (responsiveContainer) {
+            const card = document.createElement('div');
+            card.className = 'email-card';
+            card.innerHTML = `
+                <div class="email-card-header"><span>#${email.mail_id}</span><span>${dateStr}</span></div>
+                <div class="email-card-subject">${email.mail_subject || '(No subject)'}</div>
+                <div class="email-card-meta"><span>${email.mail_from}</span></div>
+                <div class="email-card-actions">
+                    <button onclick="viewEmail('${email.mail_id}')" class="primary-button" aria-label="View email ${email.mail_subject}"><i class="fa-solid fa-eye" aria-hidden="true"></i></button>
+                    <button onclick="deleteEmail('${email.mail_id}')" class="icon-button" aria-label="Delete email ${email.mail_subject}"><i class="fa-solid fa-trash" aria-hidden="true"></i></button>
+                </div>
+            `;
+            responsiveContainer.appendChild(card);
+            responsiveContainer.removeAttribute('hidden');
+        }
     });
 }
 
@@ -396,16 +430,53 @@ elements.emailSearch.addEventListener('input', function(e) {
     });
 });
 
-// Initialize
-window.addEventListener('DOMContentLoaded', async () => {
-    loadAutoRefreshSettings();
-    if (currentEmail && sessionId) {
-        elements.emailInput.value = currentEmail;
-        refreshMail();
-    } else {
-        await genEmail();
+// Improved initialization with retries
+let initAttempts = 0;
+const MAX_INIT_ATTEMPTS = 5;
+let initializing = false;
+
+async function initializeApp() {
+    if (initializing) return;
+    initializing = true;
+    setLoadingStatus();
+    try {
+        if (currentEmail && sessionId) {
+            elements.emailInput.value = currentEmail;
+            await refreshMail();
+            if (!elements.emailTable.children.length) {
+                await genEmail();
+            }
+        } else {
+            await genEmail();
+        }
+        setOnline();
+    } catch (e) {
+        initAttempts++;
+        console.warn('Init attempt failed', initAttempts, e.message);
+        if (initAttempts < MAX_INIT_ATTEMPTS) {
+            const delay = CONFIG.RETRY_DELAY + initAttempts * 1000;
+            setTimeout(() => { initializing = false; initializeApp(); }, delay);
+        } else {
+            setOffline();
+            showError('Auto init failed. Click "New Address".', false);
+        }
+    } finally {
+        initializing = false;
+        setLoading(false);
     }
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    loadAutoRefreshSettings();
+    initializeApp();
 });
+
+// Periodic retry if offline & no session
+setInterval(() => {
+    if (elements.statusLed.classList.contains('offline') && !initializing && !sessionId) {
+        initializeApp();
+    }
+}, 15000);
 
 // Export functions for global access
 window.genEmail = genEmail;

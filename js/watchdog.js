@@ -1,6 +1,6 @@
 // Runtime watchdog: periodically re-assert domain + license flag.
 (function() {
-    const ALLOWED_HOST = ['mehmetkahya0.github.io'];
+    const ALLOWED_HOST = ['mehmetkahya0.github.io', '127.0.0.1'];
     const LICENSE_SYM = Symbol.for('temp_mail_license');
     let failCount = 0;
     const MAX_FAILS = 2; // require consecutive fails to reduce false positives

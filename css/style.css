@@ -54,6 +54,40 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Accessibility utilities */
+.visually-hidden { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0 0 0 0) !important; white-space:nowrap !important; border:0 !important; }
+
+.skip-link { position:absolute; left:-999px; top:0; background:#111827; color:#fff; padding:.75rem 1rem; z-index:999; border-radius:.5rem; font-weight:600; }
+.skip-link:focus { left:1rem; top:1rem; box-shadow:0 0 0 4px rgba(255,255,255,.4); }
+
+/* Focus styles */
+*:focus-visible { outline:3px solid var(--accent-color); outline-offset:2px; border-radius:4px; }
+
+/* Skeleton loader */
+.skeleton-row { animation:pulse 1.2s ease-in-out infinite; background:linear-gradient(90deg, var(--card-bg) 0%, var(--border-color) 50%, var(--card-bg) 100%); background-size:200% 100%; height:48px; }
+@keyframes pulse { 0%{background-position:0 0;} 100%{background-position:-200% 0;} }
+.skeleton-cell { height:12px; width:70%; margin:8px auto; border-radius:4px; background:rgba(0,0,0,0.08); }
+[data-theme="dark"] .skeleton-cell { background:rgba(255,255,255,0.12); }
+
+/* Responsive email cards */
+.emails-responsive { display:grid; gap:1rem; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); margin-top:1rem; }
+.email-card { background:var(--card-bg); border:1px solid var(--border-color); border-radius:.75rem; padding:1rem .85rem; box-shadow:var(--shadow-sm); display:flex; flex-direction:column; gap:.5rem; position:relative; }
+.email-card:hover { box-shadow:var(--shadow); }
+.email-card-header { font-size:.8rem; color:var(--text-secondary); display:flex; justify-content:space-between; align-items:center; gap:.5rem; }
+.email-card-subject { font-weight:600; font-size:.95rem; word-break:break-word; }
+.email-card-meta { font-size:.7rem; color:var(--text-secondary); display:flex; gap:.75rem; flex-wrap:wrap; }
+.email-card-actions { margin-top:auto; display:flex; gap:.5rem; }
+.email-card-actions button { flex:1; font-size:.75rem; padding:.4rem .5rem; }
+
+@media (max-width: 820px) { 
+  .table-container table { display:none; }
+  #emails-responsive { display:block; }
+  #emails-responsive[hidden] { display:none; }
+}
+
+/* Improve spinner positioning */
+#loading-spinner { margin:1rem auto; }
+
 .app-container {
   max-width: 1200px;
   margin: 0 auto;

@@ -55,16 +55,9 @@
     <!-- Twitter Card Meta Etiketleri Sonu -->
 
     <!-- Diğer Meta ve Bağlantılar -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
-
-    <!-- Diğer Script ve Stil Dosyaları -->
-
-    <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#2563EB" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
   <!-- Domain restriction guard (must load before app logic) -->
   <script src="js/guard.js"></script>
   <script src="js/watchdog.js" defer></script>
@@ -83,6 +76,7 @@
   </head>
 
   <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="app-container">
       <div class="theme-switch">
         <i class="fa-solid fa-moon"></i>
@@ -93,7 +87,7 @@
         <i class="fa-solid fa-sun"></i>
       </div>
 
-      <header>
+  <header role="banner">
         <div class="header-content">
           <div class="ascii-art">
             <pre>
@@ -188,7 +182,7 @@
         </script>
       </div>
 
-      <main class="main-content">
+  <main id="main-content" class="main-content" role="main" tabindex="-1">
         <div class="card">
           <div class="email-controls">
             <div class="email-input-group">
@@ -245,31 +239,37 @@
           <div id="error-message" class="error-message hidden"></div>
 
           <div class="table-container">
-            <table id="emails">
+    <table id="emails" aria-describedby="email-table-caption">
+      <caption id="email-table-caption" class="visually-hidden">Temporary email inbox</caption>
               <thead>
                 <tr>
-                  <th><i class="fa-solid fa-hashtag"></i> ID</th>
-                  <th><i class="fa-solid fa-user"></i> From</th>
-                  <th><i class="fa-solid fa-envelope"></i> Subject</th>
-                  <th><i class="fa-solid fa-calendar"></i> Date</th>
-                  <th><i class="fa-solid fa-gear"></i> Actions</th>
+      <th scope="col"><i class="fa-solid fa-hashtag" aria-hidden="true"></i> <span class="visually-hidden">ID</span></th>
+      <th scope="col"><i class="fa-solid fa-user" aria-hidden="true"></i> <span class="visually-hidden">From</span></th>
+      <th scope="col"><i class="fa-solid fa-envelope" aria-hidden="true"></i> <span class="visually-hidden">Subject</span></th>
+      <th scope="col"><i class="fa-solid fa-calendar" aria-hidden="true"></i> <span class="visually-hidden">Date</span></th>
+      <th scope="col"><i class="fa-solid fa-gear" aria-hidden="true"></i> <span class="visually-hidden">Actions</span></th>
                 </tr>
               </thead>
               <tbody></tbody>
             </table>
+            <div id="emails-responsive" class="emails-responsive" aria-live="polite"></div>
           </div>
         </div>
       </main>
 
-      <footer>
+  <footer role="contentinfo">
         <div class="footer-content">
           <p>
             <i class="fa-solid fa-code"></i>
-            Mehmet Kahya - 2025 - TempMail V2 -
+            Mehmet Kahya - 2025 - TempMail V3 -
             <a href="https://www.guerrillamail.com" target="_blank">
               <i class="fa-solid fa-link"></i> guerrillamail.com
             </a>
           </p>
+
+          <div class="version" style="font-size: smaller; font-weight: lighter; margin-top: 5px; font-display: block;">
+            <p>Aug 2025 version</p>
+          </div>
 
           <div class="social">
             <a
