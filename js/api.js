@@ -1,5 +1,13 @@
 import CONFIG from './config.js';
 
+// Multi-layer license/domain verification (layer 3)
+if (typeof window !== 'undefined') {
+    const LICENSE_SYM = Symbol.for('temp_mail_license');
+    if (!window.__APP_LICENSE_OK__ || window[LICENSE_SYM] !== 'OK') {
+        throw new Error('Domain not authorized');
+    }
+}
+
 // State management with localStorage
 const getStoredEmail = () => localStorage.getItem(CONFIG.EMAIL_KEY);
 const getStoredSession = () => localStorage.getItem(CONFIG.SESSION_KEY);
