@@ -1,9 +1,10 @@
 <!--------------------------------
     Author: Mehmet Kahya
     Created: 17 March 2024
-    Last Updated: 31 January 2025
+    Last Updated: 10 February 2026
+    TempMail v3.5 — Enhanced UI/UX
 -------------------------------->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,22 +12,22 @@
     <meta
       content="default-src 'self' https://api.guerrillamail.com https://cdnjs.cloudflare.com ws://127.0.0.1:* wss://127.0.0.1:*; connect-src 'self' https://api.guerrillamail.com ws://127.0.0.1:* wss://127.0.0.1:*; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'; font-src https://cdnjs.cloudflare.com; img-src 'self' data: https:;"
     />
-    <title>TempMail</title>
+    <title>TempMail — Disposable Email</title>
     <meta
       name="description"
       content="TempMail ile geçici e-posta adresi oluşturun. Gelen kutunuzu spam ve gereksiz maillerden koruyun. Hızlı ve güvenli geçici e-posta hizmeti."
     />
     <meta
       name="keywords"
-      content="temp mail, geçici e-posta, email spam engelleme, hızlı geçici mail, güvenli e-posta"
+      content="temp mail, geçici e-posta, disposable email, temporary email, email spam, hızlı geçici mail, güvenli e-posta"
     />
     <meta name="author" content="Mehmet Kahya" />
 
-    <!-- Open Graph Meta Etiketleri Başlangıcı -->
-    <meta property="og:title" content="TempMail - Geçici Mail Adresiniz" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="TempMail — Disposable Email" />
     <meta
       property="og:description"
-      content="TempMail ile geçici e-posta adresi oluşturun. Gelen kutunuzu spam ve gereksiz maillerden koruyun. Hızlı ve güvenli geçici e-posta hizmeti."
+      content="Create instant disposable email addresses. Protect your inbox from spam."
     />
     <meta
       property="og:image"
@@ -37,200 +38,240 @@
       content="https://mehmetkahya0.github.io/temp-mail/"
     />
     <meta property="og:type" content="website" />
-    <!-- Open Graph Meta Etiketleri Sonu -->
     <link rel="canonical" href="https://mehmetkahya0.github.io/temp-mail/" />
     <meta name="robots" content="index, follow" />
 
-    <!-- Twitter Card Meta Etiketleri Başlangıcı -->
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="TempMail - Geçici Mail Adresiniz" />
+    <meta name="twitter:title" content="TempMail — Disposable Email" />
     <meta
       name="twitter:description"
-      content="TempMail ile geçici e-posta adresi oluşturun. Gelen kutunuzu spam ve gereksiz maillerden koruyun. Hızlı ve güvenli geçici e-posta hizmeti."
+      content="Create instant disposable email addresses. Protect your inbox from spam."
     />
     <meta
       name="twitter:image"
       content="https://mehmetkahya0.github.io/temp-mail/images/temp-mail-twitter-image.png"
     />
-    <!-- Twitter Card Meta Etiketleri Sonu -->
-
-    <!-- Diğer Meta ve Bağlantılar -->
-  <meta name="theme-color" content="#2563EB" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
-  <!-- Domain restriction guard (must load before app logic) -->
-  <script src="js/guard.js"></script>
-  <script src="js/watchdog.js" defer></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
     <script id="_wau776">
       var _wau = _wau || [];
       _wau.push(["dynamic", "0pakxqe3b2", "776", "c4302bffffff", "small"]);
     </script>
     <script async src="//waust.at/d.js"></script>
-    <!-- Add confetti lib -->
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <meta name="theme-color" content="#2563EB" />
+    <link rel="icon" href="images/temp-mail-icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <!-- Domain restriction guard (must load before app logic) -->
+    <script src="js/guard.js"></script>
+    <script src="js/watchdog.js" defer></script>
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Confetti -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"
+      defer
+    ></script>
   </head>
 
   <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Toast container -->
+    <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
     <div class="app-container">
+      <!-- Theme toggle -->
       <div class="theme-switch">
         <i class="fa-solid fa-moon"></i>
         <label class="switch">
-          <input type="checkbox" id="theme-toggle" />
+          <input
+            type="checkbox"
+            id="theme-toggle"
+            aria-label="Toggle dark mode"
+          />
           <span class="slider round"></span>
         </label>
         <i class="fa-solid fa-sun"></i>
       </div>
 
-  <header role="banner">
+      <!-- Header -->
+      <header role="banner">
         <div class="header-content">
-          <div class="ascii-art">
-            <pre>
-              ████████╗███████╗███╗   ███╗██████╗     ███╗   ███╗ █████╗ ██╗██╗     
-              ╚══██╔══╝██╔════╝████╗ ████║██╔══██╗    ████╗ ████║██╔══██╗██║██║     
-                 ██║   █████╗  ██╔████╔██║██████╔╝    ██╔████╔██║███████║██║██║     
-                 ██║   ██╔══╝  ██║╚██╔╝██║██╔═══╝     ██║╚██╔╝██║██╔══██║██║██║     
-                 ██║   ███████╗██║ ╚═╝ ██║██║         ██║ ╚═╝ ██║██║  ██║██║███████╗
-                 ╚═╝   ╚══════╝╚═╝     ╚═╝╚═╝         ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚══════╝
-            </pre>
+          <div class="logo-title">
+            <i class="fa-solid fa-envelope-open-text"></i>
+            <h1>TempMail</h1>
           </div>
-          <div class="system-status">
-            <div id="status-led" class="status-led offline"></div>
-            <span id="status-text">Offline</span>
+          <p class="header-subtitle">
+            Instant disposable email addresses. No signup, no hassle.
+          </p>
+          <div class="header-badges">
+            <div class="badge">
+              <div id="status-led" class="status-led offline"></div>
+              <span id="status-text">Offline</span>
+            </div>
+            <div class="badge">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Instant</span>
+            </div>
+            <div class="badge">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Private</span>
+            </div>
+            <div
+              class="badge session-timer"
+              id="session-timer"
+              style="display: none"
+            >
+              <i class="fa-solid fa-clock"></i>
+              <span id="session-timer-text">00:00</span>
+            </div>
           </div>
         </div>
       </header>
 
-      <div id="update-notification" class="update-notification">
-        <span
-          >Temp Mail V2 is out🔥 <br />
-          Check new features🚀 <br />
-          <br />
-          ⬇️ Please rate the new UI ⬇️</span
-        >
-
-        <!-- Poll for user feedback with 5-Star Rating -->
-        <div class="poll">
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSc3IsMzVudebwEwWFRHBQnVf6Frxliya4A5wATDKN_u4s3c0g/viewform?embedded=true"
-            width="100%"
-            height="500"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            >Yükleniyor…</iframe
-          >
-        </div>
-
-        <button id="close-notification" class="close-notification">
-          &times;
-        </button>
-
-        <script>
-          let selectedRating = 0;
-
-          // Handle star click
-          document
-            .querySelectorAll(".star-rating .fa-star")
-            .forEach(function (star) {
-              star.addEventListener("click", function () {
-                selectedRating = parseInt(this.getAttribute("data-value"));
-                highlightStars(selectedRating);
-              });
-
-              star.addEventListener("mouseover", function () {
-                const hoverValue = parseInt(this.getAttribute("data-value"));
-                highlightStars(hoverValue);
-              });
-
-              star.addEventListener("mouseout", function () {
-                highlightStars(selectedRating);
-              });
-            });
-
-          function highlightStars(rating) {
-            document
-              .querySelectorAll(".star-rating .fa-star")
-              .forEach(function (star) {
-                if (parseInt(star.getAttribute("data-value")) <= rating) {
-                  star.classList.add("checked");
-                } else {
-                  star.classList.remove("checked");
-                }
-              });
-          }
-
-          function submitPoll() {
-            if (selectedRating > 0) {
-              // You can send this data to your server or handle it as needed
-              console.log(
-                `User rated the new UI as: ${selectedRating} out of 5`
-              );
-              alert("Thank you for your feedback!");
-
-              // Optionally, hide the poll after submission
-              document.querySelector(".poll").style.display = "none";
-            } else {
-              alert("Please select a rating before submitting.");
-            }
-          }
-        </script>
-      </div>
-
-  <main id="main-content" class="main-content" role="main" tabindex="-1">
-        <div class="card">
+      <!-- Main Content -->
+      <main id="main-content" class="main-content" role="main" tabindex="-1">
+        <!-- Email Controls Card -->
+        <div class="card" style="position: relative">
           <div class="email-controls">
+            <!-- Email address input -->
             <div class="email-input-group">
               <i class="fa-solid fa-at input-icon"></i>
-              <input id="addr" placeholder="Email address" readonly />
+              <input
+                id="addr"
+                placeholder="Generating email address..."
+                readonly
+                aria-label="Your temporary email address"
+              />
               <button
                 onclick="copyEmail()"
-                title="Copy email"
+                id="copy-btn"
+                title="Copy email address"
                 class="icon-button"
+                aria-label="Copy email address"
+                data-tooltip="Copy"
               >
-                <i class="fa-solid fa-copy"></i>
+                <i class="fa-solid fa-copy" id="copy-icon"></i>
               </button>
             </div>
-            <div class="button-group">
-              <button onclick="refreshMail()" class="primary-button">
-                <i class="fa-solid fa-rotate"></i> Load Mail
-              </button>
-              <button onclick="genEmail()" class="primary-button">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> New Address
-              </button>
-            </div>
-            <div class="auto-refresh">
-              <label class="checkbox-label">
-                <i class="fa-solid fa-arrows-rotate"></i>
-                <input type="checkbox" id="auto-refresh" />
-                <span>Auto refresh</span>
+
+            <!-- Domain selector -->
+            <div class="domain-selector">
+              <label>
+                <i class="fa-solid fa-globe"></i>
+                Domain:
               </label>
-              <select id="refresh-interval" class="select-input">
-                <option value="10">10s</option>
-                <option value="30">30s</option>
-                <option value="60">1m</option>
+              <select
+                id="domain-select"
+                class="domain-select"
+                aria-label="Select email domain"
+              >
+                <option value="random">Random</option>
+                <option value="guerrillamail.com">guerrillamail.com</option>
+                <option value="guerrillamail.net">guerrillamail.net</option>
+                <option value="guerrillamail.org">guerrillamail.org</option>
+                <option value="guerrillamailblock.com">
+                  guerrillamailblock.com
+                </option>
+                <option value="grr.la">grr.la</option>
+                <option value="pokemail.net">pokemail.net</option>
+                <option value="spam4.me">spam4.me</option>
               </select>
             </div>
+
+            <!-- Controls row -->
+            <div class="controls-row">
+              <div class="button-group">
+                <button
+                  onclick="refreshMail()"
+                  class="primary-button"
+                  title="Refresh inbox"
+                  data-tooltip="Refresh (R)"
+                >
+                  <i class="fa-solid fa-rotate"></i> Refresh
+                </button>
+                <button
+                  onclick="genEmail()"
+                  class="primary-button"
+                  title="Generate new address"
+                  data-tooltip="New (N)"
+                >
+                  <i class="fa-solid fa-wand-magic-sparkles"></i> New Address
+                </button>
+              </div>
+
+              <!-- Auto refresh -->
+              <div class="auto-refresh">
+                <label class="checkbox-label">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                  <input type="checkbox" id="auto-refresh" />
+                  <span>Auto</span>
+                </label>
+                <select
+                  id="refresh-interval"
+                  class="select-input"
+                  aria-label="Auto-refresh interval"
+                >
+                  <option value="10">10s</option>
+                  <option value="30" selected>30s</option>
+                  <option value="60">1m</option>
+                  <option value="120">2m</option>
+                </select>
+                <span id="countdown" class="countdown-text"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Countdown progress bar (shown during auto-refresh) -->
+          <div id="countdown-bar-container" class="countdown-bar-container">
+            <div id="countdown-bar" class="countdown-bar"></div>
           </div>
         </div>
 
+        <!-- Inbox Card -->
         <div class="card">
+          <!-- Search -->
           <div class="search-container">
             <div class="search-input-group">
               <i class="fa-solid fa-magnifying-glass"></i>
               <input
                 type="text"
                 id="email-search"
-                placeholder="Search emails..."
+                placeholder="Search emails by subject, sender..."
+                aria-label="Search emails"
               />
             </div>
           </div>
 
+          <!-- Inbox toolbar -->
+          <div class="inbox-toolbar">
+            <div class="email-count">
+              <i class="fa-solid fa-inbox"></i>
+              Inbox
+              <span id="email-count-badge" class="count-badge">0</span>
+            </div>
+            <div class="inbox-actions">
+              <button
+                onclick="deleteAllEmails()"
+                class="ghost-button"
+                title="Delete all emails"
+                id="delete-all-btn"
+                style="display: none"
+              >
+                <i class="fa-solid fa-trash-can"></i> Clear All
+              </button>
+            </div>
+          </div>
+
+          <!-- Loading & errors -->
           <div
             id="loading-spinner"
             class="spinner hidden"
@@ -238,37 +279,64 @@
           ></div>
           <div id="error-message" class="error-message hidden"></div>
 
+          <!-- Table -->
           <div class="table-container">
-    <table id="emails" aria-describedby="email-table-caption">
-      <caption id="email-table-caption" class="visually-hidden">Temporary email inbox</caption>
+            <table id="emails" aria-describedby="email-table-caption">
+              <caption id="email-table-caption" class="visually-hidden">
+                Temporary email inbox
+              </caption>
               <thead>
                 <tr>
-      <th scope="col"><i class="fa-solid fa-hashtag" aria-hidden="true"></i> <span class="visually-hidden">ID</span></th>
-      <th scope="col"><i class="fa-solid fa-user" aria-hidden="true"></i> <span class="visually-hidden">From</span></th>
-      <th scope="col"><i class="fa-solid fa-envelope" aria-hidden="true"></i> <span class="visually-hidden">Subject</span></th>
-      <th scope="col"><i class="fa-solid fa-calendar" aria-hidden="true"></i> <span class="visually-hidden">Date</span></th>
-      <th scope="col"><i class="fa-solid fa-gear" aria-hidden="true"></i> <span class="visually-hidden">Actions</span></th>
+                  <th scope="col">
+                    <i class="fa-solid fa-hashtag" aria-hidden="true"></i>
+                    <span class="visually-hidden">ID</span>
+                  </th>
+                  <th scope="col">
+                    <i class="fa-solid fa-user" aria-hidden="true"></i>
+                    <span class="visually-hidden">From</span>
+                  </th>
+                  <th scope="col">
+                    <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+                    <span class="visually-hidden">Subject</span>
+                  </th>
+                  <th scope="col">
+                    <i class="fa-solid fa-calendar" aria-hidden="true"></i>
+                    <span class="visually-hidden">Date</span>
+                  </th>
+                  <th scope="col">
+                    <i class="fa-solid fa-gear" aria-hidden="true"></i>
+                    <span class="visually-hidden">Actions</span>
+                  </th>
                 </tr>
               </thead>
               <tbody></tbody>
             </table>
-            <div id="emails-responsive" class="emails-responsive" aria-live="polite"></div>
+            <div
+              id="emails-responsive"
+              class="emails-responsive"
+              aria-live="polite"
+            ></div>
           </div>
         </div>
       </main>
 
-  <footer role="contentinfo">
+      <!-- Footer -->
+      <footer role="contentinfo">
         <div class="footer-content">
           <p>
             <i class="fa-solid fa-code"></i>
-            Mehmet Kahya - 2025 - TempMail V3 -
-            <a href="https://www.guerrillamail.com" target="_blank">
+            Mehmet Kahya — 2025-2026 — TempMail v3 —
+            <a
+              href="https://www.guerrillamail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <i class="fa-solid fa-link"></i> guerrillamail.com
             </a>
           </p>
 
-          <div class="version" style="font-size: smaller; font-weight: lighter; margin-top: 5px; font-display: block;">
-            <p>Aug 2025 version</p>
+          <div class="version">
+            <p>Feb 2026 release</p>
           </div>
 
           <div class="social">
@@ -276,6 +344,7 @@
               href="mailto:mehmetkahyakas5@gmail.com"
               target="_blank"
               title="Email"
+              aria-label="Send email"
             >
               <i class="fa-solid fa-envelope"></i>
             </a>
@@ -283,6 +352,8 @@
               href="https://github.com/mehmetkahya0"
               target="_blank"
               title="GitHub"
+              aria-label="GitHub profile"
+              rel="noopener noreferrer"
             >
               <i class="fa-brands fa-github"></i>
             </a>
@@ -290,6 +361,8 @@
               href="https://linkedin.com/in/mehmet-kahya-0861a4286"
               target="_blank"
               title="LinkedIn"
+              aria-label="LinkedIn profile"
+              rel="noopener noreferrer"
             >
               <i class="fa-brands fa-linkedin"></i>
             </a>
@@ -297,14 +370,13 @@
 
           <div class="footer-buttons">
             <button class="warning-button" onclick="showWarning()">
-              <i class="fa-solid fa-triangle-exclamation"></i> Warning Note
+              <i class="fa-solid fa-triangle-exclamation"></i> Disclaimer
             </button>
-
             <button class="privacy-button">
               <a
                 href="privacy/privacy.html"
                 target="_blank"
-                style="text-decoration: none; color: inherit"
+                rel="noopener noreferrer"
               >
                 <i class="fa-solid fa-shield"></i> Privacy Policy
               </a>
@@ -314,53 +386,191 @@
       </footer>
     </div>
 
+    <!-- Welcome Message -->
     <div id="welcomeMessage" class="welcome-message">
       <div class="welcome-message-header">
-        <i class="fas fa-info-circle"></i>
-        <h3>Welcome to Temp Mail</h3>
+        <i class="fas fa-rocket"></i>
+        <h3>Welcome to TempMail</h3>
       </div>
       <div class="welcome-message-content">
-        <p><strong> If you see a "failed to load" message:</strong></p>
+        <p>
+          Your temporary email address is being generated. Use it to sign up for
+          services without revealing your real email.
+        </p>
+        <br />
+        <p><strong>Tips:</strong></p>
         <ul>
-          <li>Try clicking the "New Address" button multiple times</li>
-          <li>
-            If the issue persists, please contact me on GitHub or LinkedIn
-          </li>
+          <li>Press <kbd>?</kbd> to see keyboard shortcuts</li>
+          <li>Enable auto-refresh to get emails instantly</li>
+          <li>Click "New Address" if loading fails</li>
         </ul>
         <br />
-        <p>Thank you for using my project! ❤️</p>
+        <p>Thank you for using this project! ❤️</p>
       </div>
       <div class="welcome-message-actions">
-        <button onclick="hideWelcomeMessage()" class="icon-button">
-          Got it!
+        <button onclick="hideWelcomeMessage()" class="primary-button">
+          <i class="fa-solid fa-check"></i> Got it!
         </button>
       </div>
     </div>
 
+    <!-- Keyboard shortcut hint -->
+    <div
+      class="shortcut-hint"
+      onclick="showShortcuts()"
+      title="Keyboard shortcuts"
+    >
+      <kbd>?</kbd> Shortcuts
+    </div>
+
+    <!-- Scroll to top button -->
+    <button
+      id="scroll-top-btn"
+      class="scroll-top-btn"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+      aria-label="Scroll to top"
+    >
+      <i class="fa-solid fa-chevron-up"></i>
+    </button>
+
+    <!-- Mobile FAB -->
+    <div class="mobile-fab" id="mobile-fab">
+      <div class="fab-actions" id="fab-actions">
+        <button
+          class="fab-action"
+          onclick="
+            refreshMail();
+            toggleFab();
+          "
+          aria-label="Refresh"
+          data-tooltip="Refresh"
+        >
+          <i class="fa-solid fa-rotate"></i>
+        </button>
+        <button
+          class="fab-action"
+          onclick="
+            genEmail();
+            toggleFab();
+          "
+          aria-label="New Address"
+          data-tooltip="New Address"
+        >
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+        </button>
+        <button
+          class="fab-action"
+          onclick="
+            copyEmail();
+            toggleFab();
+          "
+          aria-label="Copy"
+          data-tooltip="Copy"
+        >
+          <i class="fa-solid fa-copy"></i>
+        </button>
+      </div>
+      <button
+        class="fab-main"
+        id="fab-main"
+        onclick="toggleFab()"
+        aria-label="Quick actions"
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+
+    <!-- Warning Modal -->
     <script>
       function showWarning() {
-        alert(
-          "⚠️ This project is purely for educational purposes. We do not allow illegal things to be done with this project and we are not responsible for any incidents that may occur. This project uses mail.gw's API for creating temporary emails. Use it legally and responsibly ⚠️"
-        );
+        const modal = document.createElement("div");
+        modal.className = "email-modal";
+        modal.onclick = (e) => {
+          if (e.target === modal) modal.remove();
+        };
+        modal.innerHTML = `
+          <div class="email-modal-content" style="max-width:500px">
+            <div class="modal-header">
+              <h2><i class="fa-solid fa-triangle-exclamation" style="color:var(--warning)"></i> Disclaimer</h2>
+              <button class="close-btn" onclick="this.closest('.email-modal').remove()">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+            <div class="email-body">
+              <p>⚠️ This project is purely for <strong>educational purposes</strong>.</p>
+              <br>
+              <p>We do not allow illegal activities with this project and are not responsible for any incidents that may occur.</p>
+              <br>
+              <p>This project uses GuerrillaMail's API for creating temporary emails. Use it legally and responsibly.</p>
+              <br>
+              <p style="color:var(--text-tertiary);font-size:0.8rem">© 2025 Mehmet Kahya. All rights reserved.</p>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modal);
       }
+
+      // Mobile FAB toggle
+      function toggleFab() {
+        const btn = document.getElementById("fab-main");
+        const actions = document.getElementById("fab-actions");
+        btn.classList.toggle("open");
+        actions.classList.toggle("show");
+      }
+
+      // Close FAB on outside click
+      document.addEventListener("click", (e) => {
+        const fab = document.getElementById("mobile-fab");
+        if (fab && !fab.contains(e.target)) {
+          document.getElementById("fab-main")?.classList.remove("open");
+          document.getElementById("fab-actions")?.classList.remove("show");
+        }
+      });
+
+      // Scroll-to-top visibility
+      window.addEventListener(
+        "scroll",
+        () => {
+          const btn = document.getElementById("scroll-top-btn");
+          if (btn) btn.classList.toggle("visible", window.scrollY > 300);
+        },
+        { passive: true },
+      );
+
+      // Button ripple effect
+      document.addEventListener("click", (e) => {
+        const button = e.target.closest("button");
+        if (!button || button.classList.contains("toast-close")) return;
+        const ripple = document.createElement("span");
+        ripple.className = "ripple";
+        const rect = button.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + "px";
+        ripple.style.left = e.clientX - rect.left - size / 2 + "px";
+        ripple.style.top = e.clientY - rect.top - size / 2 + "px";
+        button.appendChild(ripple);
+        ripple.addEventListener("animationend", () => ripple.remove());
+      });
     </script>
 
+    <!-- Welcome Message Logic -->
     <script>
       function hideWelcomeMessage() {
         const welcomeMessage = document.getElementById("welcomeMessage");
         welcomeMessage.style.animation = "slideOut 0.5s ease forwards";
-        
-        // Create confetti explosion
-        confetti({
-          particleCount: 150,
-          spread: 180,
-          origin: { y: 0.8 },
-          colors: ['#3B82F6', '#60A5FA', '#2563EB', '#10B981', '#34D399'],
-          startVelocity: 45,
-          gravity: 1.2,
-          scalar: 0.7,
-          ticks: 150
-        });
+
+        if (typeof confetti === "function") {
+          confetti({
+            particleCount: 120,
+            spread: 160,
+            origin: { y: 0.8 },
+            colors: ["#3B82F6", "#8B5CF6", "#10B981", "#F59E0B", "#EF4444"],
+            startVelocity: 40,
+            gravity: 1.2,
+            scalar: 0.7,
+            ticks: 120,
+          });
+        }
 
         setTimeout(() => {
           welcomeMessage.remove();
@@ -369,18 +579,19 @@
       }
 
       document.addEventListener("DOMContentLoaded", () => {
-        // Only show welcome message if not seen before
         if (!localStorage.getItem("welcomeMessageSeen")) {
           setTimeout(() => {
             const welcomeMessage = document.getElementById("welcomeMessage");
-            welcomeMessage.classList.add("show");
-          }, 1000);
+            if (welcomeMessage) welcomeMessage.classList.add("show");
+          }, 800);
         } else {
-          document.getElementById("welcomeMessage").remove();
+          const wm = document.getElementById("welcomeMessage");
+          if (wm) wm.remove();
         }
       });
     </script>
 
+    <!-- App scripts -->
     <script src="js/config.js" type="module"></script>
     <script src="js/api.js" type="module"></script>
     <script src="js/theme.js" type="module"></script>

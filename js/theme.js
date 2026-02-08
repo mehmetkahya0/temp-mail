@@ -1,69 +1,52 @@
-// Theme handling
+// ─────────────────────────────────────────────
+// TempMail v3.5 — Theme Controller
+// Author: Mehmet Kahya
+// Last Updated: 10 February 2026
+// ─────────────────────────────────────────────
+
 const themeToggle = document.getElementById('theme-toggle');
 const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
 
-// Function to toggle theme
-function toggleTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
+// Apply theme with smooth transition
+function applyTheme(theme, animate = false) {
+    if (animate) {
+        document.documentElement.style.transition = 'background 0.35s ease, color 0.35s ease';
+        setTimeout(() => {
+            document.documentElement.style.transition = '';
+        }, 400);
+    }
+
+    document.documentElement.setAttribute('data-theme', theme);
+    themeToggle.checked = theme === 'dark';
+
+    // Update theme-color meta tag
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    if (metaTheme) {
+        metaTheme.content = theme === 'dark' ? '#0F172A' : '#2563EB';
     }
 }
 
-// Event listener for theme toggle
+// Toggle theme
+function toggleTheme(e) {
+    const theme = e.target.checked ? 'dark' : 'light';
+    applyTheme(theme, true);
+    localStorage.setItem('theme', theme);
+}
+
+// Event listener
 themeToggle.addEventListener('change', toggleTheme);
 
-// Check for saved theme preference or system preference
-const currentTheme = localStorage.getItem('theme') || 
-    (prefersDarkScheme.matches ? 'dark' : 'light');
-
-if (currentTheme === 'dark') {
-    themeToggle.checked = true;
-    document.documentElement.setAttribute('data-theme', 'dark');
+// Initialize from saved preference or system preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    applyTheme(savedTheme);
 } else {
-    themeToggle.checked = false;
-    document.documentElement.setAttribute('data-theme', 'light');
+    applyTheme(prefersDarkScheme.matches ? 'dark' : 'light');
 }
 
-// Listen for system theme changes
-prefersDarkScheme.addListener((e) => {
+// Listen for system theme changes (only if no saved preference)
+prefersDarkScheme.addEventListener('change', (e) => {
     if (!localStorage.getItem('theme')) {
-        themeToggle.checked = e.matches;
-        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
+        applyTheme(e.matches ? 'dark' : 'light', true);
     }
-}); 
-
-
-// Pop-up Bildirimini Gösterme Fonksiyonu
-function showUpdateNotification() {
-    const notification = document.getElementById('update-notification');
-    const closeBtn = document.getElementById('close-notification');
-
-    // Kullanıcı daha önce pop-up'ı gördüyse gösterme
-    if (localStorage.getItem('updateNotificationShown')) {
-        return;
-    }
-
-    // Pop-up'ı görünür hale getir
-    notification.classList.add('show');
-
-    // Kapatma butonuna tıklanma olayını dinle
-    closeBtn.addEventListener('click', () => {
-        notification.classList.remove('show');
-        localStorage.setItem('updateNotificationShown', 'true'); // Gösterildi olarak işaretle
-    });
-
-    // Alternatif: Belirli bir süre sonra otomatik olarak gizlemek
-    // setTimeout(() => {
-    //     notification.classList.remove('show');
-    //     localStorage.setItem('updateNotificationShown', 'true');
-    // }, 10000); // 10 saniye
-}
-
-// DOM içeriği yüklendiğinde pop-up'ı göster
-document.addEventListener('DOMContentLoaded', () => {
-    showUpdateNotification();
 });
