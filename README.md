@@ -39,6 +39,8 @@
 
 **Overview**
 - [At a glance](#-at-a-glance)
+- [Use cases](#-use-cases)
+- [Feature matrix](#-feature-matrix)
 - [Screenshots](#-screenshots)
 - [What's new in V5](#-whats-new-in-v5)
 - [Quick start](#-quick-start)
@@ -59,12 +61,17 @@
 - [Themes](#-themes)
 - [Mobile](#-mobile)
 - [Installable PWA](#-installable-pwa)
+- [Languages](#%EF%B8%8F-languages)
 
 </td>
 <td valign="top" width="33%">
 
 **Reference**
+- [Project structure](#-project-structure)
 - [Architecture](#-architecture)
+- [How it works](#%EF%B8%8F-how-it-works)
+- [Security model](#-security-model)
+- [Network & third parties](#-network--third-parties)
 - [API endpoints](#-api-endpoints)
 - [Configuration](#%EF%B8%8F-configuration)
 - [Local storage](#-local-storage)
@@ -72,6 +79,9 @@
 - [Accessibility](#-accessibility)
 - [Browser requirements](#-browser-requirements)
 - [Project stats](#-project-stats)
+- [Development](#%EF%B8%8F-development)
+- [Deployment & releases](#-deployment--releases)
+- [Known limitations](#%EF%B8%8F-known-limitations)
 - [FAQ & troubleshooting](#-faq--troubleshooting)
 - [Changelog](#-changelog)
 
@@ -92,6 +102,42 @@
 </div>
 
 TempMail is a privacy-first **disposable email web app**. It creates a throwaway address instantly, shows incoming mail live, pulls out verification codes for you, and blocks the trackers that usually come with sign-up mail. It has **no backend and no accounts**: the browser talks directly to the [Guerrilla Mail API](https://www.guerrillamail.com/), and everything TempMail remembers stays in your browser.
+
+<br />
+
+## 🎯 Use cases
+
+| You want to… | TempMail gives you |
+|---|---|
+| Sign up for a trial, forum or Wi-Fi portal without handing out your real address | An address in one click, gone after you leave |
+| Get past a "verify your email" step fast | The code as a chip in the inbox — one click to copy |
+| Test your own app's sign-up, password-reset or newsletter mail | Up to 5 inboxes in tabs, `.eml` export, attachment download |
+| Open a mail you don't trust | Trackers stripped, remote images held back, risky links flagged |
+| Use it on your phone | Card layout, bottom-sheet reader, installable as an app |
+
+<br />
+
+## 🧮 Feature matrix
+
+| Feature | 🖥️ Desktop | 📱 Mobile | ⌨️ Keyboard | 🎛️ Palette | 💾 Remembered |
+|---|:---:|:---:|:---:|:---:|:---:|
+| New address | ✅ | ✅ FAB | <kbd>N</kbd> | — | ✅ |
+| Custom username / domain | ✅ | ✅ | — | — | ✅ |
+| Copy address | ✅ | ✅ FAB | <kbd>C</kbd> | ✅ | — |
+| QR code | ✅ | ✅ | — | — | — |
+| Multiple mailboxes (5) | ✅ | ✅ | — | ✅ | ✅ |
+| Auto-refresh | ✅ | ✅ | — | — | ✅ |
+| Verification-code chip | ✅ | ✅ | — | ✅ *latest* | — |
+| Split reader | ✅ ≥ 1100 px | sheet | <kbd>Enter</kbd> | — | — |
+| Star / unread | ✅ | ✅ | <kbd>S</kbd> | — | ✅ |
+| Search | ✅ | ✅ | <kbd>/</kbd> | ✅ | — |
+| Privacy shield | ✅ | ✅ | — | ✅ toggle | ✅ |
+| Link safety | ✅ | ✅ | — | — | — |
+| Address history (20) | ✅ | ✅ | — | ✅ | ✅ |
+| Desktop notifications | ✅ | browser-dependent | — | ✅ | ✅ |
+| Theme | ✅ | ✅ | — | ✅ | ✅ |
+| Language EN / TR | ✅ | ✅ | — | ✅ | ✅ |
+| Install as app | ✅ | ✅ | — | ✅ | — |
 
 <br />
 
@@ -212,6 +258,36 @@ The address card is the heart of the app. One click on **New Address** gives you
 | `guerrillamail.net` | `pokemail.net` |
 | `guerrillamail.org` | `spam4.me` |
 | `guerrillamailblock.com` | |
+
+</details>
+
+<details>
+<summary><b>How mailbox tabs are stored</b></summary>
+
+<br />
+
+Each tab is one Guerrilla Mail session. Tabs live in `temp_mail_sessions_v4` as an array; switching tabs swaps the active session into the single-session keys the rest of the app reads.
+
+```jsonc
+// temp_mail_sessions_v4
+[
+  {
+    "email": "k3x9q2ab@grr.la",        // address shown in the card
+    "sessionId": "…",                  // Guerrilla Mail sid_token
+    "knownIds": ["123", "124"],        // mail IDs already seen (new-mail detection)
+    "sessionStart": "1761590400000",   // ms timestamp, drives the session timer
+    "cache": "[…]"                     // last inbox list, shown when offline
+  }
+]
+// temp_mail_current_session_index → "0"
+```
+
+| Event | Effect |
+|---|---|
+| **＋ tab** | New session + random address; refused at **5** tabs |
+| **Switch tab** | Current tab saved, chosen tab's session, cache and timer restored, inbox refreshed |
+| **✕ tab** | Session removed; if it was active, the last tab takes over. Closing the only tab starts a fresh address |
+| **First visit after V3** | A legacy single session is migrated into the tab array automatically |
 
 </details>
 
@@ -484,11 +560,81 @@ TempMail installs like a native app and opens instantly, even offline.
 
 The installed app has a **New address** shortcut (long-press / right-click the icon) that opens TempMail and generates a fresh address.
 
+<details>
+<summary><b>Manifest summary</b></summary>
+
+<br />
+
+| Field | Value |
+|---|---|
+| `name` / `short_name` | TempMail — Disposable Email / TempMail |
+| `display` | `standalone` |
+| `start_url` · `scope` · `id` | `./` |
+| `theme_color` · `background_color` | `#07080A` |
+| Icons | 192 px, 512 px, 512 px **maskable**, SVG (`any`) |
+| Shortcuts | **New address** → `./?action=new` |
+
+</details>
+
+<br />
+
+## 🗣️ Languages
+
+The whole interface ships in **English** and **Turkish** — **173 strings each**, fully paired. English is the default; the language button in the nav or the command palette switches it and the choice is remembered.
+
+| What changes | How |
+|---|---|
+| Every label, toast, tooltip, `aria-label` and placeholder | `t('key')` lookup in `TRANSLATIONS.EN` / `TRANSLATIONS.TR` |
+| `<html lang>` | Set to `en` / `tr` so screen readers switch voice |
+| Dates & relative times | Formatted for the active language |
+| Code detection, tags, verify links | Always bilingual — a Turkish mail is understood in the English UI and vice versa |
+
+> [!TIP]
+> Adding a string? Put the key in **both** `TRANSLATIONS.EN` and `TRANSLATIONS.TR` in [`js/api.js`](js/api.js) and read it with `t('key')`. A key missing in Turkish falls back to English, and one missing in both falls back to the raw key, so gaps show up immediately.
+
 <br />
 
 ---
 
 # 🧱 Reference
+
+## 📁 Project structure
+
+```text
+temp-mail/
+├── index.html              690  app shell, CSP, SEO / Open Graph meta, welcome tour, FAB
+├── manifest.json            42  PWA manifest (icons, shortcut)
+├── sw.js                    77  service worker — network-first app-shell cache
+├── css/
+│   └── style.css          1870  "Obsidian Signal" tokens, layout, responsive, motion, print
+├── js/
+│   ├── api.js             3615  the app: 101 functions, EN/TR strings, all features
+│   ├── config.js            67  frozen CONFIG (API base, keys, domains, timeouts)
+│   ├── theme.js             45  dark / light, system preference, theme-color meta
+│   ├── guard.js             28  domain guard (runs before anything else)
+│   └── watchdog.js          31  runtime re-check of the guard
+├── privacy/
+│   ├── privacy.html         85  privacy policy page
+│   └── privacy.css         268
+├── images/
+│   ├── icon-192.png · icon-512.png · app-icon.svg · temp-mail-icon.png
+│   └── readme/             14  screenshots + banner used in this README
+├── robots.txt · sitemap.xml    search-engine files
+├── LICENSE · SECURITY.md
+└── README.md
+```
+
+<sub>Numbers are line counts. No `package.json`, no `node_modules`, no bundler.</sub>
+
+```mermaid
+xychart-beta horizontal
+    title "Lines of code per file"
+    x-axis ["api.js", "style.css", "index.html", "privacy.css", "privacy.html", "sw.js", "config.js", "theme.js", "manifest.json", "watchdog.js", "guard.js"]
+    y-axis "Lines" 0 --> 3800
+    bar [3615, 1870, 690, 268, 85, 77, 67, 45, 42, 31, 28]
+```
+
+<br />
 
 ## 🏗️ Architecture
 
@@ -534,6 +680,164 @@ flowchart TB
 | PWA | `installApp`, `handleManifestShortcut`, `requestNotificationPermission` |
 
 </details>
+
+**Script load order** — the order matters, because the guard must run before any app code:
+
+| # | Script | Type | Why here |
+|:---:|---|---|---|
+| 1 | inline theme snippet | classic, `<head>` | Sets `data-theme` before first paint (no flash) |
+| 2 | `guard.js` | classic, blocking | Stops the page on an unknown host |
+| 3 | `watchdog.js` | `defer` | Keeps re-checking the guard while the app runs |
+| 4 | `config.js` → `api.js` → `theme.js` | `type="module"` | App logic, after the DOM is parsed |
+| 5 | `sw.js` | registered on `load` | Never delays first render |
+
+<br />
+
+## ⚙️ How it works
+
+### Startup
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant B as Browser
+    participant A as api.js
+    participant LS as localStorage
+    participant GM as Guerrilla Mail
+    B->>A: DOMContentLoaded
+    A->>LS: auto-refresh settings, language
+    A->>LS: temp_mail_sessions_v4
+    alt saved mailbox exists
+        A->>A: restore address, timer, known IDs
+        A->>GM: get_email_list
+    else first visit
+        A->>GM: get_email_address (sid_token)
+        A->>GM: set_email_user (random name, domain)
+        A->>GM: get_email_list
+    end
+    GM-->>A: inbox
+    A->>B: render tabs, inbox, status = Online
+    A->>A: ?action=new → generate fresh address
+    Note over A,GM: on failure: retry up to 5× with growing delay
+```
+
+### Retry & backoff
+
+If startup fails, TempMail retries with a delay of `RETRY_DELAY + attempt × 1500 ms`. After the 5th failure it stops and asks you to press **New Address**; while offline it also tries to reconnect every **20 s**.
+
+| Attempt | Waits | Total elapsed |
+|:---:|:---:|:---:|
+| 1 → 2 | 3.5 s | 3.5 s |
+| 2 → 3 | 5.0 s | 8.5 s |
+| 3 → 4 | 6.5 s | 15.0 s |
+| 4 → 5 | 8.0 s | 23.0 s |
+| 5 | — | gives up, shows error |
+
+```mermaid
+xychart-beta
+    title "Startup retry delay (seconds)"
+    x-axis "Failed attempt" [1, 2, 3, 4]
+    y-axis "Delay before next try" 0 --> 10
+    bar [3.5, 5, 6.5, 8]
+    line [3.5, 5, 6.5, 8]
+```
+
+### Refresh cycle
+
+```mermaid
+flowchart TD
+    T([R · Auto timer · tab visible again · tab switch]) --> Q{address + session?}
+    Q -- no --> E([skip])
+    Q -- yes --> F[GET get_email_list<br/><sub>12 s timeout</sub>]
+    F -- ok --> C[cache list in localStorage]
+    C --> D{new mail IDs?}
+    D -- yes --> TO[toast + confetti]
+    TO --> N{tab hidden?}
+    N -- yes --> NT[🔔 notification + title counter]
+    N -- no --> R
+    NT --> R[render rows · codes · tags · expiry]
+    D -- no --> R
+    F -- fails --> CA[show cached inbox<br/><sub>'offline' toast</sub>]
+    CA --> S{401 / 403?}
+    S -- yes --> X[clear session<br/><sub>'Session expired'</sub>]
+    S -- no --> O[status = Offline<br/><sub>reconnect every 20 s</sub>]
+```
+
+### Timers
+
+| Timer | Interval | Source |
+|---|---|---|
+| Auto-refresh | 10 s · 30 s · 1 min · 2 min (off by default) | `refresh-interval` select |
+| Expiry meters | every 60 s, in place | `refreshExpiryMeters` |
+| Offline reconnect | every 20 s while offline | `initializeApp` |
+| API timeout | 12 s per request | `fetchWithTimeout` |
+| Address retry | 4 s after a failed *New Address* | `genEmail` |
+| Search debounce | 250 ms | `SEARCH_DEBOUNCE` |
+| Toasts | 3.5 s · 6 s for important ones | `TOAST_DURATION(_LONG)` |
+| Session timer | every 1 s | `startSessionTimer` |
+
+<br />
+
+## 🔐 Security model
+
+Mail content is untrusted by default. Each layer assumes the one before it can fail.
+
+```mermaid
+flowchart LR
+    subgraph L1["1 · Page"]
+        CSP["Content-Security-Policy<br/><sub>allowed hosts only</sub>"]
+        G["Domain guard + watchdog"]
+    end
+    subgraph L2["2 · Mail HTML"]
+        SAN["sanitizeHTML<br/><sub>drop script · iframe · object ·<br/>embed · form · input · on* · javascript:</sub>"]
+        PS["Privacy shield<br/><sub>pixels removed · remote content held</sub>"]
+    end
+    subgraph L3["3 · Interaction"]
+        LK["Link safety<br/><sub>noopener · real host · warnings</sub>"]
+        ESC["escapeHTML<br/><sub>every subject, sender, name</sub>"]
+    end
+    L1 --> L2 --> L3
+```
+
+**Content-Security-Policy** (meta tag in `index.html`)
+
+| Directive | Allows |
+|---|---|
+| `default-src` | `'self'`, Guerrilla Mail API, cdnjs, Google Fonts, local `ws://127.0.0.1` (live reload) |
+| `connect-src` | `'self'`, `https://api.guerrillamail.com`, local websockets |
+| `script-src` | `'self'`, inline |
+| `style-src` | `'self'`, inline, cdnjs (Font Awesome), Google Fonts |
+| `font-src` | cdnjs, `fonts.gstatic.com` |
+| `img-src` | `'self'`, `data:`, any `https:` (mail images — gated by the privacy shield) |
+
+| Threat | Mitigation |
+|---|---|
+| Script in a mail | Removed by `sanitizeHTML`; `on*` attributes and `javascript:` URLs stripped |
+| Tracking pixel / read receipt | Tiny or hidden images removed; remote images blocked until you allow them |
+| Phishing link | Text-vs-target mismatch, shorteners, raw IPs and punycode flagged, confirm before opening |
+| Reverse-tabnabbing | Every external link gets `rel="noopener noreferrer nofollow"` |
+| HTML in subject / sender | Always passed through `escapeHTML` |
+| Calls to unknown servers | `connect-src` only allows the Guerrilla Mail API |
+
+Found a vulnerability? See [SECURITY.md](SECURITY.md).
+
+<br />
+
+## 🌍 Network & third parties
+
+There is no TempMail server. These are **all** the hosts the page talks to:
+
+| Host | What is sent | When |
+|---|---|---|
+| `api.guerrillamail.com` | Session token, chosen username/domain, mail IDs | Every inbox action |
+| `api.qrserver.com` | **Your temporary address** (to draw the QR image) | Only when you open the QR dialog |
+| `fonts.googleapis.com` · `fonts.gstatic.com` | Standard font request | Page load |
+| `cdnjs.cloudflare.com` | Standard stylesheet request (Font Awesome) | Page load |
+| `cdn.jsdelivr.net` | Standard script request (canvas-confetti) | Page load |
+| Remote image hosts in a mail | Standard image request | Only after **Show images** / **Always show** |
+
+> [!NOTE]
+> Everything else — stars, read state, history, cache, settings — stays in `localStorage` and never leaves your device.
 
 <br />
 
@@ -704,6 +1008,87 @@ timeline
 
 <br />
 
+## 🛠️ Development
+
+No toolchain — edit a file, reload the page.
+
+```mermaid
+flowchart LR
+    E[✏️ Edit file] --> S[Static server<br/><sub>127.0.0.1:8080</sub>] --> H[🔄 Hard reload<br/><sub>Ctrl+Shift+R</sub>] --> C[✅ Check EN + TR,<br/>dark + light, mobile]
+    C --> E
+```
+
+**House rules** for changes (the same ones every V5 feature followed):
+
+| # | Rule |
+|:---:|---|
+| 1 | **Vanilla JS only** — no new libraries, CDNs or build step |
+| 2 | Match `api.js` style: 4-space indent, `function` declarations, `// ══════` section banners, template-literal HTML |
+| 3 | Every untrusted string inserted into HTML goes through `escapeHTML()` |
+| 4 | Every visible string exists in **both** `TRANSLATIONS.EN` and `TRANSLATIONS.TR`, read with `t('key')` |
+| 5 | Use the CSS custom properties in `style.css` — no new hard-coded colours |
+| 6 | Transitions use `var(--ease-out)` or `var(--ease-spring)`; animate only `transform` and `opacity` |
+| 7 | New CSS goes in a bannered section at the end of `style.css` |
+| 8 | New `localStorage` keys are prefixed `temp_mail_` and parsed inside `try/catch` |
+| 9 | Don't break existing features: tabs, filters, stars, palette, shortcuts, auto-refresh, QR, alias |
+| 10 | Leave `config.js`, `guard.js`, `watchdog.js` and the CSP alone unless the change is about them |
+
+**Manual test checklist**
+
+- [ ] New address, custom username, each domain
+- [ ] Mail arrives with auto-refresh on; code chip copies
+- [ ] Reader: split pane (≥ 1100 px), modal, mobile sheet
+- [ ] Privacy banner: *Show images* and *Always show*
+- [ ] Suspicious link shows the warning
+- [ ] Keyboard: J / K / Enter / S / Del / ? / Ctrl+K
+- [ ] Both themes, both languages, 390 px width
+- [ ] Offline: stop the network → cached inbox and *Offline* status
+
+<br />
+
+## 🚢 Deployment & releases
+
+TempMail is hosted on **GitHub Pages** straight from the repository — there is nothing to build.
+
+| Step | What to do |
+|:---:|---|
+| 1 | Update the version in `index.html`, `js/api.js` and `js/theme.js` headers |
+| 2 | **Bump `CACHE` in `sw.js`** (e.g. `tempmail-v5-2` → `tempmail-v5-3`) so returning visitors get the new files |
+| 3 | Update `sitemap.xml` `lastmod` if the page changed |
+| 4 | Add a [changelog](#-changelog) entry and refresh screenshots in `images/readme/` |
+| 5 | Merge to `main` — Pages publishes in about a minute |
+
+```mermaid
+gitGraph
+    commit id: "release N"
+    branch feature/my-change
+    checkout feature/my-change
+    commit id: "code"
+    commit id: "EN + TR strings"
+    commit id: "bump sw.js CACHE"
+    commit id: "changelog + screenshots"
+    checkout main
+    merge feature/my-change tag: "release N+1"
+```
+
+**SEO & sharing** — `index.html` carries a description, keywords, canonical URL, Open Graph and Twitter Card tags; `robots.txt` allows all crawlers and points to `sitemap.xml`.
+
+<br />
+
+## ⚠️ Known limitations
+
+| Limitation | Why |
+|---|---|
+| **Receive only** — you can't send mail | Guerrilla Mail's API is used for receiving |
+| Mail is deleted **60 min** after it arrives | Guerrilla Mail's retention, not configurable |
+| Some sites reject the address | They block known disposable domains — try another domain |
+| Not for anything important | Anyone who knows the address can read the inbox; never use it for banking or account recovery |
+| Depends on one provider | If the Guerrilla Mail API is down, TempMail shows the cached inbox only |
+| Code chip reads subject + preview | Codes buried deep in the body appear once you open the mail |
+| Only EN and TR | The language toggle switches between these two |
+
+<br />
+
 ## ❓ FAQ & troubleshooting
 
 <details>
@@ -767,7 +1152,7 @@ Yes — **Address history** (clock button). The inbox comes back, but mail older
 
 <br />
 
-No. There is no TempMail server. Mail is fetched directly from Guerrilla Mail; preferences live in `localStorage`.
+No. There is no TempMail server. Mail is fetched directly from Guerrilla Mail; preferences live in `localStorage`. The only other service that ever sees your temporary address is the QR image generator, and only when you open the QR dialog — see [Network & third parties](#-network--third-parties).
 </details>
 
 <br />
