@@ -216,6 +216,9 @@
                 />
               </div>
 
+              <!-- Note for the current address ("Reddit signup") -->
+              <div class="address-label-row" id="address-label-row"></div>
+
               <div class="address-actions">
                 <div class="button-group">
                   <button
@@ -292,6 +295,19 @@
                     data-i18n-tooltip="tooltip_history"
                   >
                     <i class="fa-solid fa-clock-rotate-left"></i>
+                  </button>
+                  <button
+                    onclick="showPrivacyReport()"
+                    id="privacy-report-btn"
+                    title="Privacy report"
+                    data-i18n-title="tooltip_privacy_report"
+                    class="icon-button"
+                    aria-label="Privacy report"
+                    data-i18n-aria-label="tooltip_privacy_report"
+                    data-tooltip="Privacy report"
+                    data-i18n-tooltip="tooltip_privacy_report"
+                  >
+                    <i class="fa-solid fa-user-shield"></i>
                   </button>
                 </div>
               </div>

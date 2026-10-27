@@ -185,6 +185,45 @@ const TRANSLATIONS = {
         btn_open_anyway: "Open anyway",
         btn_cancel: "Cancel",
 
+        // V5 Keys — address labels
+        label_add_note: "Add note",
+        label_edit_note: "Edit note",
+        label_note_placeholder: "e.g. Reddit signup",
+        label_suggest: "Label this address as {s}",
+        toast_label_saved: "Note saved",
+        toast_label_removed: "Note removed",
+        cmd_label_address: "Add a note to this address",
+
+        // V5 Keys — privacy report
+        privacy_report_title: "Privacy report",
+        tooltip_privacy_report: "Privacy report",
+        cmd_privacy_report: "Privacy report",
+        privacy_report_hint: "Emails analyzed: {n}. Counted on this device when you open an email; nothing is sent anywhere.",
+        privacy_report_empty: "Open an email and the trackers inside it will show up here.",
+        privacy_stat_pixels: "Tracking pixels",
+        privacy_stat_trackedLinks: "Tracked links",
+        privacy_stat_remote: "Remote images",
+        privacy_stat_suspicious: "Suspicious links",
+        privacy_top_senders: "Senders that track the most",
+        privacy_sender_mails_one: "1 email",
+        privacy_sender_mails: "{n} emails",
+        privacy_clean: "No trackers found",
+        label_privacy: "Privacy:",
+        btn_reset: "Reset",
+        toast_privacy_reset: "Privacy report reset",
+
+        // V5 Keys — on-device AI summary
+        btn_summarize: "Summarize",
+        summarize_title: "Summarize with on-device AI",
+        ai_summary_label: "AI summary · on-device",
+        ai_summary_loading: "Summarizing…",
+        ai_summary_downloading: "Downloading the on-device model… {p}%",
+        ai_summary_dismiss: "Hide summary",
+        ai_summary_untranslated: "Your browser can't translate on-device, so the summary is in English.",
+        toast_summary_unavailable: "On-device AI isn't available in this browser",
+        toast_summary_failed: "Couldn't summarize this email",
+        toast_summary_short: "This email is too short to summarize",
+
         // Toasts
         'No email address to copy': 'No email address to copy',
         'Email copied to clipboard!': 'Email copied to clipboard!',
@@ -371,6 +410,45 @@ const TRANSLATIONS = {
         link_warning_desc: "Bu link şüpheli görünüyor. Aslında şuraya gidiyor:",
         btn_open_anyway: "Yine de aç",
         btn_cancel: "Vazgeç",
+
+        // V5 Keys — address labels
+        label_add_note: "Not ekle",
+        label_edit_note: "Notu düzenle",
+        label_note_placeholder: "örn. Reddit kaydı",
+        label_suggest: "Bu adresi {s} olarak etiketle",
+        toast_label_saved: "Not kaydedildi",
+        toast_label_removed: "Not kaldırıldı",
+        cmd_label_address: "Bu adrese not ekle",
+
+        // V5 Keys — privacy report
+        privacy_report_title: "Gizlilik raporu",
+        tooltip_privacy_report: "Gizlilik raporu",
+        cmd_privacy_report: "Gizlilik raporu",
+        privacy_report_hint: "İncelenen e-posta: {n}. Bir e-postayı açtığında bu cihazda sayılır; hiçbir yere gönderilmez.",
+        privacy_report_empty: "Bir e-posta aç, içindeki takipçiler burada görünsün.",
+        privacy_stat_pixels: "Takip pikseli",
+        privacy_stat_trackedLinks: "Takipli link",
+        privacy_stat_remote: "Uzak görsel",
+        privacy_stat_suspicious: "Şüpheli link",
+        privacy_top_senders: "En çok takip eden gönderenler",
+        privacy_sender_mails_one: "1 e-posta",
+        privacy_sender_mails: "{n} e-posta",
+        privacy_clean: "Takipçi bulunmadı",
+        label_privacy: "Gizlilik:",
+        btn_reset: "Sıfırla",
+        toast_privacy_reset: "Gizlilik raporu sıfırlandı",
+
+        // V5 Keys — on-device AI summary
+        btn_summarize: "Özetle",
+        summarize_title: "Cihaz üzerindeki yapay zekâ ile özetle",
+        ai_summary_label: "AI özeti · cihaz üzerinde",
+        ai_summary_loading: "Özetleniyor…",
+        ai_summary_downloading: "Cihaz üzerindeki model indiriliyor… %{p}",
+        ai_summary_dismiss: "Özeti gizle",
+        ai_summary_untranslated: "Tarayıcın cihaz üzerinde çeviri yapamıyor, bu yüzden özet İngilizce.",
+        toast_summary_unavailable: "Bu tarayıcıda cihaz üzerinde yapay zekâ yok",
+        toast_summary_failed: "Bu e-posta özetlenemedi",
+        toast_summary_short: "Bu e-posta özetlemek için çok kısa",
 
         // Toasts
         'No email address to copy': 'Kopyalanacak e-posta adresi yok',
@@ -652,13 +730,14 @@ function renderMailboxTabs() {
     let html = '';
     activeSessions.forEach((sess, idx) => {
         const isActive = idx === activeSessionIndex;
-        const displayEmail = sess.email || t('generating_email');
+        const label = getAddressLabel(sess.email);
+        const displayEmail = label || sess.email || t('generating_email');
         const shortEmail = displayEmail.length > 20 ? displayEmail.substring(0, 18) + '...' : displayEmail;
-        
+
         html += `
             <button class="mailbox-tab ${isActive ? 'active' : ''}" onclick="switchMailbox(${idx})">
-                <i class="fa-solid fa-inbox"></i>
-                <span title="${displayEmail}">${shortEmail}</span>
+                <i class="fa-solid ${label ? 'fa-tag' : 'fa-inbox'}"></i>
+                <span title="${escapeHTML(sess.email || displayEmail)}">${escapeHTML(shortEmail)}</span>
                 <span class="mailbox-tab-close-btn" onclick="closeMailbox(${idx}, event)">
                     <i class="fa-solid fa-xmark"></i>
                 </span>
@@ -683,6 +762,7 @@ function renderMailboxTabs() {
     }
     
     elements.mailboxTabs.innerHTML = html;
+    renderAddressLabel();
 }
 
 function switchMailbox(index) {
@@ -943,6 +1023,153 @@ function restoreAddress(email) {
     genEmail(user, domain);
 }
 
+// ══════════════════════════════════════════════
+// Address Labels
+// ══════════════════════════════════════════════
+const ADDRESS_LABELS_KEY = 'temp_mail_address_labels';
+const ADDRESS_LABELS_LIMIT = 100;
+const ADDRESS_LABEL_MAX_LENGTH = 40;
+let editingAddressLabel = false;
+
+function loadAddressLabels() {
+    try {
+        const parsed = JSON.parse(getStored(ADDRESS_LABELS_KEY) || '{}');
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) return {};
+        return parsed;
+    } catch {
+        return {};
+    }
+}
+
+function getAddressLabel(email) {
+    if (!email) return '';
+    const entry = loadAddressLabels()[email];
+    return entry && typeof entry.text === 'string' ? entry.text : '';
+}
+
+function setAddressLabel(email, text) {
+    if (!email) return;
+    const labels = loadAddressLabels();
+    const value = String(text || '').trim().slice(0, ADDRESS_LABEL_MAX_LENGTH);
+    if (value) {
+        labels[email] = { text: value, updatedAt: Date.now() };
+    } else {
+        delete labels[email];
+    }
+
+    // Keep only the most recently edited labels
+    const kept = Object.entries(labels)
+        .filter(([, entry]) => entry && typeof entry.text === 'string')
+        .sort((a, b) => (b[1].updatedAt || 0) - (a[1].updatedAt || 0))
+        .slice(0, ADDRESS_LABELS_LIMIT);
+    try {
+        setStored(ADDRESS_LABELS_KEY, JSON.stringify(Object.fromEntries(kept)));
+    } catch { /* ignore storage failures */ }
+}
+
+// Registrable part of a sender address: mail.github.com → github.com, news.bbc.co.uk → bbc.co.uk
+function getSenderDomain(from) {
+    const match = String(from || '').match(/@([a-z0-9.-]+\.[a-z]{2,})/i);
+    if (!match) return '';
+    const labels = match[1].toLowerCase().split('.');
+    const secondLevel = labels[labels.length - 2] || '';
+    const tld = labels[labels.length - 1] || '';
+    const keep = labels.length > 2 && secondLevel.length <= 3 && tld.length === 2 ? 3 : 2;
+    return labels.slice(-keep).join('.');
+}
+
+function suggestAddressLabel(emails = lastFetchedEmails) {
+    const ownDomains = new Set([...CONFIG.DOMAINS, 'sharklasers.com', 'guerrillamail.de', 'guerrillamail.info', 'guerrillamail.biz']);
+    // The oldest mail is usually the signup mail, so walk from the end
+    for (let i = emails.length - 1; i >= 0; i--) {
+        const domain = getSenderDomain(emails[i]?.mail_from);
+        if (domain && !ownDomains.has(domain)) return domain;
+    }
+    return '';
+}
+
+function renderAddressLabel() {
+    const row = $('address-label-row');
+    if (!row || editingAddressLabel) return;
+    if (!currentEmail) {
+        row.innerHTML = '';
+        return;
+    }
+
+    const label = getAddressLabel(currentEmail);
+    if (label) {
+        row.innerHTML = `
+            <button class="address-label-chip" title="${escapeHTML(t('label_edit_note'))}">
+                <i class="fa-solid fa-tag"></i>
+                <span class="address-label-text">${escapeHTML(label)}</span>
+                <i class="fa-solid fa-pen address-label-edit-icon"></i>
+            </button>
+        `;
+    } else {
+        const suggestion = suggestAddressLabel();
+        row.innerHTML = `
+            <button class="address-label-add">
+                <i class="fa-solid fa-plus"></i> ${t('label_add_note')}
+            </button>
+            ${suggestion ? `
+                <button class="address-label-suggest" data-suggestion="${escapeHTML(suggestion)}" title="${escapeHTML(t('label_suggest').replace('{s}', suggestion))}">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> ${escapeHTML(suggestion)}
+                </button>
+            ` : ''}
+        `;
+    }
+
+    row.querySelector('.address-label-chip, .address-label-add')?.addEventListener('click', () => editAddressLabel());
+    row.querySelector('.address-label-suggest')?.addEventListener('click', (event) => {
+        setAddressLabel(currentEmail, event.currentTarget.getAttribute('data-suggestion'));
+        toast(t('toast_label_saved'), 'success');
+        renderMailboxTabs();
+    });
+}
+
+function editAddressLabel() {
+    const row = $('address-label-row');
+    if (!row || !currentEmail) return;
+
+    const email = currentEmail;
+    editingAddressLabel = true;
+    row.innerHTML = `
+        <input class="address-label-input" type="text" maxlength="${ADDRESS_LABEL_MAX_LENGTH}" spellcheck="false"
+            placeholder="${escapeHTML(t('label_note_placeholder'))}" aria-label="${escapeHTML(t('label_edit_note'))}" />
+    `;
+
+    const input = row.querySelector('input');
+    input.value = getAddressLabel(email);
+
+    let finished = false;
+    const finish = (save) => {
+        if (finished) return;
+        finished = true;
+        editingAddressLabel = false;
+        if (save) {
+            const next = input.value.trim();
+            if (next !== getAddressLabel(email)) {
+                setAddressLabel(email, next);
+                toast(t(next ? 'toast_label_saved' : 'toast_label_removed'), 'success');
+            }
+        }
+        renderMailboxTabs();
+    };
+
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            finish(true);
+        } else if (event.key === 'Escape') {
+            event.preventDefault();
+            finish(false);
+        }
+    });
+    input.addEventListener('blur', () => finish(true));
+    input.focus();
+    input.select();
+}
+
 function renderFilterChips(emails = lastFetchedEmails) {
     if (!elements.filterChips) return;
     
@@ -1160,6 +1387,12 @@ function getCommandItems() {
                     shortcut: '',
                     action: () => { copyLatestCode(); }
                 },
+                {
+                    name: t('cmd_label_address'),
+                    icon: 'fa-tag',
+                    shortcut: '',
+                    action: () => { setTimeout(() => editAddressLabel(), 50); }
+                },
                 ...(deferredInstallPrompt ? [{
                     name: t('cmd_install_app'),
                     icon: 'fa-download',
@@ -1215,6 +1448,12 @@ function getCommandItems() {
                     icon: 'fa-clock-rotate-left',
                     shortcut: '',
                     action: () => { showAddressHistory(); }
+                },
+                {
+                    name: t('cmd_privacy_report'),
+                    icon: 'fa-user-shield',
+                    shortcut: '',
+                    action: () => { showPrivacyReport(); }
                 },
                 {
                     name: currentLanguage === 'TR' ? 'Gelen Kutusu Aramasına Odaklan' : 'Focus Inbox Search',
@@ -1337,7 +1576,41 @@ function isRemoteURL(value) {
     return /^(https?:)?\/\//i.test((value || '').trim());
 }
 
+// Open-tracking endpoints used by common mail senders
+const TRACKING_PIXEL_PATTERNS = [
+    /\/(track|wf)\/open/i,
+    /\/open\.(gif|png|php|aspx)(\?|$)/i,
+    /\/pixel(\.(gif|png))?(\?|$)/i,
+    /\/beacon(\.(gif|png))?(\?|\/|$)/i
+];
+
+// Query parameters that only exist to attribute a click to a campaign or person
+const TRACKING_PARAM_PATTERN = /^(utm_\w+|fbclid|gclid|dclid|msclkid|yclid|igshid|mc_cid|mc_eid|_hsenc|_hsmi|mkt_tok|oly_anon_id|oly_enc_id|vero_id|ck_subscriber_id)$/i;
+
+// Click-tracking redirectors of common mail senders
+const CLICK_TRACKER_HOSTS = [
+    'ct.sendgrid.net', 'list-manage.com', 'mandrillapp.com', 'hubspotlinks.com', 'mjt.lu',
+    'awstrack.me', 'rs6.net', 'createsend1.com', 'exct.net', 'mlsend.com', 'sparkpostmail.com',
+    'convertkit-mail.com', 'convertkit-mail2.com', 'customeriomail.com', 'klclick.com',
+    'klclick1.com', 'mailgun.org', 'sendibt3.com', 'sendibm1.com'
+];
+const CLICK_TRACKER_PATH = /\/(ls\/click|track\/click|wf\/click|CL0\/|L0\/)/;
+
+function isTrackedLink(url) {
+    for (const key of url.searchParams.keys()) {
+        if (TRACKING_PARAM_PATTERN.test(key)) return true;
+    }
+    const host = url.hostname.toLowerCase();
+    if (CLICK_TRACKER_HOSTS.some(tracker => host === tracker || host.endsWith(`.${tracker}`))) return true;
+    return CLICK_TRACKER_PATH.test(url.pathname);
+}
+
 function isTrackingPixel(img) {
+    const src = (img.getAttribute('src') || '').trim();
+    if (isRemoteURL(src) && TRACKING_PIXEL_PATTERNS.some(pattern => pattern.test(src))) {
+        return true;
+    }
+
     const width = (img.getAttribute('width') || '').trim();
     const height = (img.getAttribute('height') || '').trim();
     if (['0', '1', '2'].includes(width) || ['0', '1', '2'].includes(height)) {
@@ -1385,13 +1658,21 @@ function applyPrivacyShield(html) {
     const loadImages = getLoadImagesSetting();
     const doc = new DOMParser().parseFromString(html, 'text/html');
     let blocked = 0;
+    // Feeds the privacy report — counted whether or not images are loaded
+    const stats = { pixels: 0, remote: 0, trackedLinks: 0, suspicious: 0 };
 
-    if (!loadImages) {
-        // Tracking pixels are removed outright — they are not "blocked" content
-        doc.querySelectorAll('img').forEach(img => {
-            if (isTrackingPixel(img)) img.remove();
+    // Tracking pixels are removed outright — they are not "blocked" content
+    doc.querySelectorAll('img').forEach(img => {
+        if (!isTrackingPixel(img)) return;
+        stats.pixels++;
+        if (!loadImages) img.remove();
+    });
+
+    if (loadImages) {
+        doc.querySelectorAll('img[src]').forEach(img => {
+            if (isRemoteURL(img.getAttribute('src')) && !isTrackingPixel(img)) stats.remote++;
         });
-
+    } else {
         doc.querySelectorAll('img, picture source').forEach(el => {
             let touched = false;
 
@@ -1446,6 +1727,8 @@ function applyPrivacyShield(html) {
             el.removeAttribute('background');
             countElement(el);
         });
+
+        stats.remote = blocked;
     }
 
     // Link safety runs regardless of the remote-image setting
@@ -1469,6 +1752,7 @@ function applyPrivacyShield(html) {
         }
 
         const host = url.hostname;
+        if (isTrackedLink(url)) stats.trackedLinks++;
         a.setAttribute('target', '_blank');
         a.setAttribute('rel', 'noopener noreferrer nofollow');
 
@@ -1485,12 +1769,83 @@ function applyPrivacyShield(html) {
         }
 
         if (suspicious) {
+            stats.suspicious++;
             a.classList.add('link-suspicious');
             a.setAttribute('data-real-host', host);
         }
     });
 
-    return { html: doc.body.innerHTML, blocked };
+    return { html: doc.body.innerHTML, blocked, stats };
+}
+
+// ══════════════════════════════════════════════
+// Privacy Report
+// ══════════════════════════════════════════════
+const PRIVACY_STATS_KEY = 'temp_mail_privacy_stats';
+const PRIVACY_SEEN_LIMIT = 500;
+const PRIVACY_SENDERS_LIMIT = 100;
+const PRIVACY_TOP_SENDERS = 8;
+const PRIVACY_METRICS = ['pixels', 'trackedLinks', 'remote', 'suspicious'];
+
+function emptyPrivacyStats() {
+    return { since: Date.now(), mails: 0, pixels: 0, trackedLinks: 0, remote: 0, suspicious: 0, senders: {}, seen: [] };
+}
+
+function loadPrivacyStats() {
+    try {
+        const parsed = JSON.parse(getStored(PRIVACY_STATS_KEY) || 'null');
+        if (!parsed || typeof parsed !== 'object' || !Array.isArray(parsed.seen) ||
+            !parsed.senders || typeof parsed.senders !== 'object') {
+            return emptyPrivacyStats();
+        }
+        return parsed;
+    } catch {
+        return emptyPrivacyStats();
+    }
+}
+
+function getPrivacyScore(entry) {
+    return (entry.pixels || 0) * 3 + (entry.suspicious || 0) * 2 + (entry.trackedLinks || 0);
+}
+
+// Each mail is counted once, however often it is opened
+function recordPrivacyStats(email, stats) {
+    if (!email || !stats) return;
+    const data = loadPrivacyStats();
+    const seenKey = `${currentEmail}:${email.mail_id}`;
+    if (data.seen.includes(seenKey)) return;
+    data.seen = [...data.seen, seenKey].slice(-PRIVACY_SEEN_LIMIT);
+
+    const domain = getSenderDomain(email.mail_from) || '?';
+    const sender = data.senders[domain] || { mails: 0, pixels: 0, trackedLinks: 0, remote: 0, suspicious: 0 };
+    data.mails = (Number(data.mails) || 0) + 1;
+    sender.mails = (Number(sender.mails) || 0) + 1;
+    PRIVACY_METRICS.forEach(metric => {
+        const count = Number(stats[metric]) || 0;
+        data[metric] = (Number(data[metric]) || 0) + count;
+        sender[metric] = (Number(sender[metric]) || 0) + count;
+    });
+    sender.lastSeen = Date.now();
+    data.senders[domain] = sender;
+
+    const senders = Object.entries(data.senders);
+    if (senders.length > PRIVACY_SENDERS_LIMIT) {
+        data.senders = Object.fromEntries(
+            senders.sort((a, b) => (b[1].lastSeen || 0) - (a[1].lastSeen || 0)).slice(0, PRIVACY_SENDERS_LIMIT)
+        );
+    }
+
+    try {
+        setStored(PRIVACY_STATS_KEY, JSON.stringify(data));
+    } catch { /* ignore storage failures */ }
+}
+
+// "Tracking pixels 1 · Tracked links 4" — remote images already have their own banner
+function formatPrivacyStats(stats, metrics = ['pixels', 'trackedLinks', 'suspicious']) {
+    return metrics
+        .filter(metric => (Number(stats[metric]) || 0) > 0)
+        .map(metric => `${t(`privacy_stat_${metric}`)} ${stats[metric]}`)
+        .join(' · ');
 }
 
 // ══════════════════════════════════════════════
@@ -2111,6 +2466,7 @@ async function refreshMail() {
 // ══════════════════════════════════════════════
 function updateEmailTable(emails) {
     lastFetchedEmails = emails || [];
+    renderAddressLabel();
     
     // Save current session so that activeSessions stores the latest cached emails and known ids
     saveCurrentSession();
@@ -2355,6 +2711,8 @@ function buildEmailViewHTML(email, mode) {
     const sanitizedBody = sanitizeHTML(email.mail_body || `<p>${escapeHTML(t('msg_no_content'))}</p>`);
     const shielded = applyPrivacyShield(sanitizedBody);
     const safeBody = shielded.html;
+    recordPrivacyStats(email, shielded.stats);
+    const privacySummary = formatPrivacyStats(shielded.stats);
     const mailTs = getMailTimestamp(email);
     const dateStr = formatFullDate(mailTs);
     const plainBody = htmlToPlainText(safeBody);
@@ -2378,6 +2736,11 @@ function buildEmailViewHTML(email, mode) {
                     <i class="${starIcon}"></i> ${t('btn_star')}
                 </button>
             ` : ''}
+            ${isSummarizerSupported() ? `
+                <button class="ai-summary-btn" title="${escapeHTML(t('summarize_title'))}">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> ${t('btn_summarize')}
+                </button>
+            ` : ''}
             <button class="copy-text-btn" title="${escapeHTML(t('copy_text_title'))}">
                 <i class="fa-solid fa-copy"></i> ${t('btn_copy_text')}
             </button>
@@ -2395,7 +2758,14 @@ function buildEmailViewHTML(email, mode) {
             <p><strong>${t('label_from')}</strong> ${safeFrom}</p>
             <p><strong>${t('label_date')}</strong> ${dateStr}</p>
             <p><strong>${t('label_to')}</strong> ${escapeHTML(currentEmail)}</p>
+            ${privacySummary ? `
+                <p class="meta-privacy">
+                    <strong>${t('label_privacy')}</strong>
+                    <button class="meta-privacy-link" title="${escapeHTML(t('privacy_report_title'))}">${escapeHTML(privacySummary)}</button>
+                </p>
+            ` : ''}
         </div>
+        <div class="ai-summary" aria-live="polite" hidden></div>
         ${(verificationCode || verificationLink) ? `
             <div class="otp-strip">
                 ${verificationCode ? `
@@ -2491,6 +2861,19 @@ function wireEmailViewActions(container, email) {
         });
     }
 
+    const summaryBtn = container.querySelector('.ai-summary-btn');
+    if (summaryBtn) {
+        summaryBtn.addEventListener('click', () => summarizeEmail(container, email));
+    }
+
+    const privacyLink = container.querySelector('.meta-privacy-link');
+    if (privacyLink) {
+        privacyLink.addEventListener('click', () => {
+            container.closest('.email-modal')?.remove();
+            showPrivacyReport();
+        });
+    }
+
     const restoreShieldedImages = () => {
         container.querySelectorAll('[data-shield-src]').forEach(el => {
             el.setAttribute('src', el.getAttribute('data-shield-src'));
@@ -2528,6 +2911,131 @@ function wireEmailViewActions(container, email) {
             if (!href) return;
             showLinkWarningModal(href, link.getAttribute('data-real-host') || '');
         });
+    }
+}
+
+// ══════════════════════════════════════════════
+// On-device AI Summary (Chrome built-in Summarizer API)
+// ══════════════════════════════════════════════
+const SUMMARY_MIN_LENGTH = 280;
+const SUMMARY_MAX_INPUT = 6000;
+const SUMMARIZER_OPTIONS = { type: 'tldr', format: 'plain-text', length: 'short', outputLanguage: 'en' };
+const summaryCache = new Map();
+let summarizerPromise = null;
+
+function isSummarizerSupported() {
+    return 'Summarizer' in self;
+}
+
+// One summarizer per page; the model download happens only on first use
+function getSummarizer(onProgress) {
+    if (!summarizerPromise) {
+        summarizerPromise = (async () => {
+            const availability = await self.Summarizer.availability(SUMMARIZER_OPTIONS);
+            if (availability === 'unavailable') throw new Error('unavailable');
+            return self.Summarizer.create({
+                ...SUMMARIZER_OPTIONS,
+                monitor(monitor) {
+                    monitor.addEventListener('downloadprogress', (event) => onProgress?.(event.loaded));
+                }
+            });
+        })().catch((error) => {
+            summarizerPromise = null;
+            throw error;
+        });
+    }
+    return summarizerPromise;
+}
+
+// The Summarizer cannot write Turkish, so translate on-device when the browser allows it
+async function translateSummary(text) {
+    if (currentLanguage !== 'TR' || !('Translator' in self)) return null;
+    try {
+        const options = { sourceLanguage: 'en', targetLanguage: 'tr' };
+        if (await self.Translator.availability(options) === 'unavailable') return null;
+        const translator = await self.Translator.create(options);
+        const translated = await translator.translate(text);
+        translator.destroy?.();
+        return translated;
+    } catch {
+        return null;
+    }
+}
+
+function showSummaryStatus(box, text) {
+    box.innerHTML = `
+        <div class="ai-summary-status">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+            <span>${escapeHTML(text)}</span>
+        </div>
+    `;
+    box.hidden = false;
+}
+
+function renderSummary(box, result) {
+    box.innerHTML = `
+        <div class="ai-summary-head">
+            <span class="ai-summary-label">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> ${t('ai_summary_label')}
+            </span>
+            <button class="icon-button ai-summary-close" aria-label="${escapeHTML(t('ai_summary_dismiss'))}" title="${escapeHTML(t('ai_summary_dismiss'))}">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <p class="ai-summary-text">${escapeHTML(result.text)}</p>
+        ${result.untranslated ? `<p class="ai-summary-note">${t('ai_summary_untranslated')}</p>` : ''}
+    `;
+    box.hidden = false;
+    box.querySelector('.ai-summary-close').addEventListener('click', () => {
+        box.hidden = true;
+        box.innerHTML = '';
+    });
+}
+
+async function summarizeEmail(container, email) {
+    const box = container.querySelector('.ai-summary');
+    const button = container.querySelector('.ai-summary-btn');
+    if (!box || !button || button.disabled) return;
+
+    const cacheKey = `${currentEmail}:${email.mail_id}:${currentLanguage}`;
+    if (summaryCache.has(cacheKey)) {
+        renderSummary(box, summaryCache.get(cacheKey));
+        return;
+    }
+
+    const bodyText = (container.querySelector('.email-body')?.innerText || '').replace(/\s+/g, ' ').trim();
+    if (bodyText.length < SUMMARY_MIN_LENGTH) {
+        toast(t('toast_summary_short'), 'info');
+        return;
+    }
+
+    button.disabled = true;
+    showSummaryStatus(box, t('ai_summary_loading'));
+    try {
+        const summarizer = await getSummarizer((loaded) => {
+            if (box.isConnected) {
+                showSummaryStatus(box, t('ai_summary_downloading').replace('{p}', String(Math.round(loaded * 100))));
+            }
+        });
+        showSummaryStatus(box, t('ai_summary_loading'));
+
+        const summary = (await summarizer.summarize(bodyText.slice(0, SUMMARY_MAX_INPUT), {
+            context: `An email received in a disposable inbox. Subject: ${email.mail_subject || ''}`
+        })).trim();
+        const translated = await translateSummary(summary);
+        const result = {
+            text: translated || summary,
+            untranslated: currentLanguage === 'TR' && !translated
+        };
+        summaryCache.set(cacheKey, result);
+        if (box.isConnected) renderSummary(box, result);
+    } catch (error) {
+        console.error('Error summarizing email:', error);
+        box.hidden = true;
+        box.innerHTML = '';
+        toast(t(error?.message === 'unavailable' ? 'toast_summary_unavailable' : 'toast_summary_failed'), 'error');
+    } finally {
+        button.disabled = false;
     }
 }
 
@@ -3118,9 +3626,11 @@ function showAddressHistory() {
         listEl.innerHTML = entries.map(item => {
             const isCurrent = item.email === currentEmail;
             const safeEmail = escapeHTML(item.email);
+            const label = getAddressLabel(item.email);
             return `
                 <div class="history-item">
                     <div class="history-item-main">
+                        ${label ? `<span class="history-label"><i class="fa-solid fa-tag"></i> ${escapeHTML(label)}</span>` : ''}
                         <span class="history-address">${safeEmail}</span>
                         <span class="history-time">${relativeTime(item.createdAt / 1000)}</span>
                     </div>
@@ -3151,6 +3661,105 @@ function showAddressHistory() {
     };
 
     renderList();
+    modal.querySelector('.close-btn').addEventListener('click', closeModal);
+
+    escHandler = (e) => {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            closeModal();
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+}
+
+function showPrivacyReport() {
+    document.querySelector('.privacy-modal')?.remove();
+
+    const modal = document.createElement('div');
+    modal.className = 'email-modal privacy-modal';
+
+    let escHandler = null;
+    const closeModal = () => {
+        modal.remove();
+        if (escHandler) document.removeEventListener('keydown', escHandler);
+    };
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    modal.innerHTML = `
+        <div class="email-modal-content" style="max-width: 520px;">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-user-shield"></i> ${t('privacy_report_title')}</h2>
+                <button class="close-btn" aria-label="${escapeHTML(t('btn_close'))}">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="privacy-modal-body" id="privacy-report-body"></div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    const bodyEl = modal.querySelector('#privacy-report-body');
+
+    const renderReport = () => {
+        const data = loadPrivacyStats();
+        if (!data.mails) {
+            bodyEl.innerHTML = `<p class="history-empty">${t('privacy_report_empty')}</p>`;
+            return;
+        }
+
+        const senders = Object.entries(data.senders)
+            .sort((a, b) => getPrivacyScore(b[1]) - getPrivacyScore(a[1]) || (b[1].mails || 0) - (a[1].mails || 0))
+            .slice(0, PRIVACY_TOP_SENDERS);
+        const maxScore = Math.max(1, ...senders.map(([, entry]) => getPrivacyScore(entry)));
+
+        bodyEl.innerHTML = `
+            <p class="history-hint">${escapeHTML(t('privacy_report_hint').replace('{n}', String(data.mails)))}</p>
+            <div class="privacy-tiles">
+                ${PRIVACY_METRICS.map(metric => `
+                    <div class="privacy-tile">
+                        <span class="privacy-tile-value">${Number(data[metric]) || 0}</span>
+                        <span class="privacy-tile-label">${t(`privacy_stat_${metric}`)}</span>
+                    </div>
+                `).join('')}
+            </div>
+            <h3 class="privacy-section-title">${t('privacy_top_senders')}</h3>
+            <div class="privacy-senders">
+                ${senders.map(([domain, entry]) => {
+                    const mails = Number(entry.mails) || 0;
+                    const mailsText = mails === 1 ? t('privacy_sender_mails_one') : t('privacy_sender_mails').replace('{n}', String(mails));
+                    const details = formatPrivacyStats(entry) || t('privacy_clean');
+                    const ratio = getPrivacyScore(entry) / maxScore;
+                    return `
+                        <div class="privacy-sender">
+                            <div class="privacy-sender-main">
+                                <span class="privacy-sender-domain">${escapeHTML(domain === '?' ? t('msg_unknown_sender') : domain)}</span>
+                                <span class="privacy-sender-meta">${escapeHTML(mailsText)} · ${escapeHTML(details)}</span>
+                            </div>
+                            <span class="privacy-bar" aria-hidden="true">
+                                <span class="privacy-bar-fill" style="transform: scaleX(${ratio.toFixed(3)})"></span>
+                            </span>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+            <div class="privacy-actions">
+                <button class="secondary-button privacy-reset-btn">
+                    <i class="fa-solid fa-rotate-left"></i> ${t('btn_reset')}
+                </button>
+            </div>
+        `;
+
+        bodyEl.querySelector('.privacy-reset-btn').addEventListener('click', () => {
+            removeStored(PRIVACY_STATS_KEY);
+            toast(t('toast_privacy_reset'), 'success');
+            renderReport();
+        });
+    };
+
+    renderReport();
     modal.querySelector('.close-btn').addEventListener('click', closeModal);
 
     escHandler = (e) => {
@@ -3599,6 +4208,8 @@ window.toast = toast;
 window.showCustomAliasModal = showCustomAliasModal;
 window.showQRCodeModal = showQRCodeModal;
 window.showAddressHistory = showAddressHistory;
+window.showPrivacyReport = showPrivacyReport;
+window.editAddressLabel = editAddressLabel;
 window.restoreAddress = restoreAddress;
 window.downloadEmailAsEML = downloadEmailAsEML;
 window.showWarning = showWarning;

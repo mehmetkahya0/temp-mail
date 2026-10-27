@@ -1868,3 +1868,191 @@ kbd {
 }
 .link-warning-actions { display: flex; gap: 0.5rem; }
 .link-warning-actions button { flex: 1; height: 2.35rem; font-size: 0.8rem; }
+
+/* ══════════════════════════════════════════════
+   V5 — Address labels, privacy report, AI summary
+   ══════════════════════════════════════════════ */
+
+/* Address label row (under the address) */
+.address-label-row {
+  display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;
+  min-height: 1.9rem;
+  margin-top: 0.15rem;
+}
+.address-label-row:empty { display: none; }
+.address-label-chip,
+.address-label-add,
+.address-label-suggest {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  max-width: 100%;
+  height: 1.9rem; padding: 0 0.8rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem; font-weight: 500;
+  transition: background-color var(--transition), color var(--transition), box-shadow var(--transition);
+}
+.address-label-chip {
+  background: var(--signal-soft); color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.address-label-chip > i { font-size: 0.65rem; color: var(--text-secondary); }
+.address-label-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.address-label-edit-icon { opacity: 0; transition: opacity var(--transition); }
+.address-label-chip:hover .address-label-edit-icon,
+.address-label-chip:focus-visible .address-label-edit-icon { opacity: 1; }
+.address-label-add,
+.address-label-suggest {
+  background: transparent; color: var(--text-secondary);
+  box-shadow: inset 0 0 0 1px var(--hairline-strong);
+}
+.address-label-add { box-shadow: inset 0 0 0 1px var(--hairline); }
+.address-label-add i,
+.address-label-suggest i { font-size: 0.65rem; }
+.address-label-add:hover,
+.address-label-suggest:hover {
+  background: var(--signal); color: var(--signal-ink);
+  box-shadow: inset 0 0 0 1px transparent;
+}
+.address-label-input {
+  width: min(100%, 18rem);
+  height: 1.9rem; padding: 0 0.85rem;
+  border: 0; outline: none;
+  border-radius: var(--radius-full);
+  background: var(--field);
+  box-shadow: inset 0 0 0 1px var(--signal);
+  font-family: inherit; font-size: 0.8rem;
+  color: var(--text);
+}
+.address-label-input::placeholder { color: var(--text-tertiary); }
+
+.history-label {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  font-size: 0.75rem; font-weight: 600;
+  color: var(--text);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.history-label i { font-size: 0.6rem; color: var(--text-tertiary); }
+
+/* Privacy line in the email meta */
+.meta-privacy { align-items: center; }
+.meta-privacy-link {
+  min-width: 0;
+  padding: 0; border: 0; background: none;
+  font: inherit; color: var(--text-secondary);
+  text-align: left; white-space: normal; word-break: normal;
+  text-decoration: underline dotted var(--hairline-strong);
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+.meta-privacy-link:hover { color: var(--text); }
+
+/* Privacy report modal */
+.privacy-modal-body {
+  display: flex; flex-direction: column; gap: 0.9rem;
+  padding: 0 1.6rem 1.6rem;
+  max-height: min(70dvh, 36rem);
+  overflow-y: auto;
+}
+.privacy-tiles {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.privacy-tile {
+  display: flex; flex-direction: column; gap: 0.2rem;
+  padding: 0.8rem 0.9rem;
+  border-radius: var(--radius);
+  background: var(--field);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+}
+.privacy-tile-value {
+  font-family: var(--font-mono); font-size: 1.5rem; font-weight: 600;
+  line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--text);
+}
+.privacy-tile-label {
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-tertiary);
+}
+.privacy-section-title {
+  margin-top: 0.3rem;
+  font-family: var(--font-mono); font-size: 0.65rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-tertiary);
+}
+.privacy-senders { display: flex; flex-direction: column; gap: 0.4rem; }
+.privacy-sender {
+  display: flex; flex-direction: column; gap: 0.45rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius);
+  background: var(--field);
+  box-shadow: 0 0 0 1px var(--hairline);
+}
+.privacy-sender-main { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.privacy-sender-domain {
+  font-family: var(--font-mono); font-size: 0.8125rem; font-weight: 500;
+  color: var(--text);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.privacy-sender-meta { font-size: 0.6875rem; line-height: 1.5; color: var(--text-tertiary); }
+.privacy-bar {
+  display: block;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: var(--hairline);
+  overflow: hidden;
+}
+.privacy-bar-fill {
+  display: block;
+  width: 100%; height: 100%;
+  border-radius: inherit;
+  background: var(--warning);
+  transform-origin: left center;
+  animation: privacy-bar-in var(--dur-3) var(--ease-out) both;
+}
+@keyframes privacy-bar-in { from { transform: scaleX(0); } }
+.privacy-actions { display: flex; justify-content: flex-end; }
+.privacy-actions button { height: 2.1rem; font-size: 0.75rem; }
+
+/* On-device AI summary */
+.ai-summary {
+  display: flex; flex-direction: column; gap: 0.5rem;
+  margin: 0.75rem 1.6rem 0;
+  padding: 0.85rem 1.05rem;
+  border-radius: var(--radius);
+  background: var(--violet-soft);
+  box-shadow: inset 0 0 0 1px var(--hairline);
+  animation: fade-in 0.4s var(--ease-out) both;
+}
+.ai-summary[hidden] { display: none; }
+.ai-summary-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.ai-summary-label {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-mono); font-size: 0.6rem; font-weight: 500;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-tertiary);
+}
+.ai-summary-label i { color: var(--violet); }
+.ai-summary-close { width: 1.7rem; height: 1.7rem; padding: 0; font-size: 0.7rem; }
+.ai-summary-text {
+  font-size: 0.875rem; line-height: 1.6;
+  color: var(--text);
+  white-space: pre-line;
+}
+.ai-summary-note { font-size: 0.7rem; color: var(--text-tertiary); }
+.ai-summary-status {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-size: 0.8rem; color: var(--text-secondary);
+}
+.ai-summary-status i { color: var(--violet); }
+.modal-actions .ai-summary-btn i { color: var(--violet); }
+.modal-actions .ai-summary-btn:disabled { opacity: 0.55; cursor: progress; }
+
+.reader-pane .ai-summary { margin: 0.75rem 1.1rem 0; }
+
+@media (max-width: 640px) {
+  .ai-summary { margin: 0.75rem 1.25rem 0; }
+  .privacy-modal-body { padding: 0 1.25rem 1.25rem; }
+  .icon-row { flex-wrap: wrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .privacy-bar-fill { animation: none; }
+}
