@@ -66,8 +66,11 @@ const TRANSLATIONS = {
         table_subject: "Subject",
         table_date: "Date",
         table_actions: "Actions",
-        footer_credits: "Mehmet Kahya — 2025-2026 — TempMail v4.0 — ",
-        footer_release: "May 2026 release",
+        footer_credits: "Mehmet Kahya — 2025-2026 — TempMail v5.0 — ",
+        footer_release: "October 2026 release",
+        hero_title: "Your inbox, <em>off the record.</em>",
+        hero_sub: "Sign up anywhere without exposing your real email.",
+        hero_address_label: "Your address",
         aria_send_email: "Send email",
         aria_github_profile: "GitHub profile",
         aria_linkedin_profile: "LinkedIn profile",
@@ -79,6 +82,8 @@ const TRANSLATIONS = {
         welcome_tip1: "Press <kbd>?</kbd> to see keyboard shortcuts",
         welcome_tip2: "Enable auto-refresh to get emails instantly",
         welcome_tip3: "Click \"New Address\" if loading fails",
+        welcome_tip4: "Press <kbd>⌘K</kbd> to open the command palette",
+        cmd_hint: "Search",
         welcome_p3: "Thank you for using this project! ❤️",
         btn_got_it: "Got it!",
         tooltip_shortcuts: "Keyboard shortcuts",
@@ -113,10 +118,78 @@ const TRANSLATIONS = {
         toast_mailbox_deleted: "Mailbox deleted!",
         toast_command_palette: "Command Palette opened!",
 
+        // Phase 1 Keys
+        toast_code_copied: "Code copied",
+        toast_no_code: "No verification code found",
+        toast_notif_denied: "Notifications are blocked in your browser",
+        toast_notif_enabled: "Desktop notifications enabled",
+        toast_copy_failed: "Couldn't copy to clipboard",
+        btn_copy_code: "Copy code",
+        btn_open_verify_link: "Open verification link",
+        cmd_copy_latest_code: "Copy latest code",
+        cmd_enable_notifications: "Enable desktop notifications",
+        expires_in: "Deletes in {m} min",
+        label_verification_code: "Verification code",
+
+        // Phase 2 Keys
+        filter_unread: "Unread",
+        tooltip_history: "Address history",
+        history_title: "Recent addresses",
+        history_hint: "Reopen an address you used before. Mails older than 60 minutes are already gone.",
+        history_empty: "No addresses yet",
+        btn_use: "Use",
+        label_current: "Current",
+        toast_address_restored: "Address restored",
+        cmd_address_history: "Address history",
+        shortcut_next: "Next email",
+        shortcut_prev: "Previous email",
+        shortcut_open: "Open email",
+        shortcut_star: "Star email",
+        shortcut_delete: "Delete email",
+        btn_close: "Close",
+        btn_remove: "Remove",
+        btn_star: "Star",
+        close_email_title: "Close email",
+        btn_copy_text: "Copy Text",
+        copy_text_title: "Copy email text",
+        btn_save_eml: "Save EML",
+        save_eml_title: "Save as EML file",
+        btn_delete: "Delete",
+        delete_email_title: "Delete this email",
+        btn_print: "Print",
+        print_email_title: "Print email",
+        label_from: "From:",
+        label_date: "Date:",
+        label_to: "To:",
+        label_attachments: "Attachments",
+        msg_no_subject: "(No subject)",
+        msg_unknown_sender: "Unknown",
+        msg_no_content: "No content",
+        empty_unread_title: "No unread emails",
+        empty_unread_desc: "You're all caught up",
+
+        // Phase 3 Keys
+        cmd_install_app: "Install app",
+
+        // Phase 4 Keys
+        shield_blocked: "{n} remote images blocked to protect your privacy",
+        shield_blocked_one: "1 remote image blocked to protect your privacy",
+        btn_show_images: "Show images",
+        btn_always_show_images: "Always show",
+        cmd_toggle_images_on: "Block remote images",
+        cmd_toggle_images_off: "Always load remote images",
+        toast_images_setting_on: "Remote images will always load",
+        toast_images_setting_off: "Remote images are blocked",
+        link_warning_title: "Check this link",
+        link_warning_desc: "This link looks suspicious. It actually goes to:",
+        btn_open_anyway: "Open anyway",
+        btn_cancel: "Cancel",
+
         // Toasts
         'No email address to copy': 'No email address to copy',
         'Email copied to clipboard!': 'Email copied to clipboard!',
         'Email text copied!': 'Email text copied!',
+        toast_text_copied: "Email text copied",
         'No active session': 'No active session',
         'Failed to load email content': 'Failed to load email content',
         'Downloading attachment...': 'Downloading attachment...',
@@ -180,8 +253,11 @@ const TRANSLATIONS = {
         table_subject: "Konu",
         table_date: "Tarih",
         table_actions: "İşlemler",
-        footer_credits: "Mehmet Kahya — 2025-2026 — TempMail v4.0 — ",
-        footer_release: "Mayıs 2026 sürümü",
+        footer_credits: "Mehmet Kahya — 2025-2026 — TempMail v5.0 — ",
+        footer_release: "Ekim 2026 sürümü",
+        hero_title: "Gelen kutun, <em>kayıt dışı.</em>",
+        hero_sub: "Gerçek e-postanı paylaşmadan istediğin yere kaydol.",
+        hero_address_label: "Adresin",
         aria_send_email: "E-posta gönder",
         aria_github_profile: "GitHub profili",
         aria_linkedin_profile: "LinkedIn profili",
@@ -193,6 +269,8 @@ const TRANSLATIONS = {
         welcome_tip1: "Klavye kısayollarını görmek için <kbd>?</kbd> tuşuna basın",
         welcome_tip2: "E-postaları anında almak için otomatik yenilemeyi etkinleştirin",
         welcome_tip3: "Yükleme başarısız olursa \"Yeni Adres\"e tıklayın",
+        welcome_tip4: "Komut paletini açmak için <kbd>⌘K</kbd> tuşuna basın",
+        cmd_hint: "Ara",
         welcome_p3: "Bu projeyi kullandığınız için teşekkürler! ❤️",
         btn_got_it: "Anladım!",
         tooltip_shortcuts: "Klavye kısayolları",
@@ -227,10 +305,78 @@ const TRANSLATIONS = {
         toast_mailbox_deleted: "Posta kutusu silindi!",
         toast_command_palette: "Komut Paleti açıldı!",
 
+        // Phase 1 Keys
+        toast_code_copied: "Kod kopyalandı",
+        toast_no_code: "Doğrulama kodu bulunamadı",
+        toast_notif_denied: "Bildirimler tarayıcında engelli",
+        toast_notif_enabled: "Masaüstü bildirimleri açık",
+        toast_copy_failed: "Panoya kopyalanamadı",
+        btn_copy_code: "Kodu kopyala",
+        btn_open_verify_link: "Doğrulama linkini aç",
+        cmd_copy_latest_code: "Son kodu kopyala",
+        cmd_enable_notifications: "Masaüstü bildirimlerini aç",
+        expires_in: "{m} dk sonra silinecek",
+        label_verification_code: "Doğrulama kodu",
+
+        // Phase 2 Keys
+        filter_unread: "Okunmamış",
+        tooltip_history: "Adres geçmişi",
+        history_title: "Son adresler",
+        history_hint: "Daha önce kullandığın bir adrese dön. 60 dakikadan eski mailler silinmiş olur.",
+        history_empty: "Henüz adres yok",
+        btn_use: "Kullan",
+        label_current: "Şu an",
+        toast_address_restored: "Adres geri yüklendi",
+        cmd_address_history: "Adres geçmişi",
+        shortcut_next: "Sonraki e-posta",
+        shortcut_prev: "Önceki e-posta",
+        shortcut_open: "E-postayı aç",
+        shortcut_star: "E-postayı yıldızla",
+        shortcut_delete: "E-postayı sil",
+        btn_close: "Kapat",
+        btn_remove: "Kaldır",
+        btn_star: "Yıldızla",
+        close_email_title: "E-postayı kapat",
+        btn_copy_text: "Metni Kopyala",
+        copy_text_title: "E-posta metnini kopyala",
+        btn_save_eml: "EML Kaydet",
+        save_eml_title: "EML dosyası olarak kaydet",
+        btn_delete: "Sil",
+        delete_email_title: "Bu e-postayı sil",
+        btn_print: "Yazdır",
+        print_email_title: "E-postayı yazdır",
+        label_from: "Kimden:",
+        label_date: "Tarih:",
+        label_to: "Kime:",
+        label_attachments: "Ekler",
+        msg_no_subject: "(Konu yok)",
+        msg_unknown_sender: "Bilinmeyen",
+        msg_no_content: "İçerik yok",
+        empty_unread_title: "Okunmamış e-posta yok",
+        empty_unread_desc: "Her şeyi okumuşsun",
+
+        // Phase 3 Keys
+        cmd_install_app: "Uygulamayı yükle",
+
+        // Phase 4 Keys
+        shield_blocked: "Gizliliğin için {n} uzak görsel engellendi",
+        shield_blocked_one: "Gizliliğin için 1 uzak görsel engellendi",
+        btn_show_images: "Görselleri göster",
+        btn_always_show_images: "Her zaman göster",
+        cmd_toggle_images_on: "Uzak görselleri engelle",
+        cmd_toggle_images_off: "Uzak görselleri hep yükle",
+        toast_images_setting_on: "Uzak görseller artık hep yüklenecek",
+        toast_images_setting_off: "Uzak görseller engelleniyor",
+        link_warning_title: "Bu linki kontrol et",
+        link_warning_desc: "Bu link şüpheli görünüyor. Aslında şuraya gidiyor:",
+        btn_open_anyway: "Yine de aç",
+        btn_cancel: "Vazgeç",
+
         // Toasts
         'No email address to copy': 'Kopyalanacak e-posta adresi yok',
         'Email copied to clipboard!': 'E-posta panoya kopyalandı!',
         'Email text copied!': 'E-posta içeriği kopyalandı!',
+        toast_text_copied: "E-posta metni kopyalandı",
         'No active session': 'Aktif oturum bulunamadı',
         'Failed to load email content': 'E-posta içeriği yüklenemedi',
         'Downloading attachment...': 'Ek indiriliyor...',
@@ -259,7 +405,7 @@ const TRANSLATIONS = {
     }
 };
 
-let currentLanguage = localStorage.getItem('temp_mail_lang') || (navigator.language && navigator.language.startsWith('tr') ? 'TR' : 'EN');
+let currentLanguage = localStorage.getItem('temp_mail_lang') || 'EN';
 
 function t(key) {
     const lang = currentLanguage;
@@ -408,8 +554,26 @@ let lastEmailCount = 0;
 let activeSessions = JSON.parse(getStored('temp_mail_sessions_v4') || '[]');
 let activeSessionIndex = parseInt(getStored('temp_mail_current_session_index') || '0', 10);
 let starredMailIds = new Set(JSON.parse(getStored('temp_mail_starred_ids') || '[]'));
-let currentFilter = 'all'; // 'all', 'starred', 'verification'
+let currentFilter = 'all'; // 'all', 'unread', 'starred', 'verification'
 let lastFetchedEmails = []; // Cache of the last fetched email objects for instant client-side filtering
+
+// ── Phase 1 State ──
+const MAIL_TTL_SECONDS = 3600; // Guerrilla deletes a mail 60 minutes after arrival
+let unseenCount = 0;
+let notificationPermissionAsked = false;
+
+// ── Phase 2 State ──
+const READ_IDS_KEY = 'temp_mail_read_ids';
+const ADDRESS_HISTORY_KEY = 'temp_mail_address_history';
+const READ_IDS_LIMIT = 200;
+const ADDRESS_HISTORY_LIMIT = 20;
+const splitReaderMedia = window.matchMedia('(min-width: 1100px)');
+let activeReaderMailId = null;
+let selectedMailId = null;
+let restoringAddress = false;
+
+// ── Phase 3 State ──
+let deferredInstallPrompt = null;
 
 // ══════════════════════════════════════════════
 // DOM Elements
@@ -437,6 +601,7 @@ const elements = {
     copyIcon: $('copy-icon'),
     mailboxTabs: $('mailbox-tabs'),
     filterChips: $('filter-chips'),
+    readerPane: $('reader-pane'),
 };
 
 // ══════════════════════════════════════════════
@@ -523,6 +688,7 @@ function renderMailboxTabs() {
 function switchMailbox(index) {
     if (index === activeSessionIndex) return;
     
+    closeReaderPane();
     saveCurrentSession();
     
     activeSessionIndex = index;
@@ -559,6 +725,7 @@ async function addNewMailbox() {
         return;
     }
     
+    closeReaderPane();
     saveCurrentSession();
     
     activeSessionIndex = activeSessions.length;
@@ -603,6 +770,8 @@ function closeMailbox(index, event) {
         event.stopPropagation();
         event.preventDefault();
     }
+    
+    closeReaderPane();
     
     if (activeSessions.length <= 1) {
         activeSessions = [];
@@ -698,10 +867,88 @@ function toggleStarMail(id, event) {
     updateEmailTable(lastFetchedEmails);
 }
 
+// ══════════════════════════════════════════════
+// Read State
+// ══════════════════════════════════════════════
+function loadReadIdsStore() {
+    try {
+        const parsed = JSON.parse(getStored(READ_IDS_KEY) || '{}');
+        return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {};
+    } catch {
+        return {};
+    }
+}
+
+function getReadIds() {
+    if (!currentEmail) return new Set();
+    const store = loadReadIdsStore();
+    const ids = store[currentEmail];
+    return new Set(Array.isArray(ids) ? ids.map(String) : []);
+}
+
+function markAsRead(id) {
+    if (!currentEmail || id === null || id === undefined) return;
+    const store = loadReadIdsStore();
+    const idStr = String(id);
+    const existing = Array.isArray(store[currentEmail]) ? store[currentEmail].map(String) : [];
+    store[currentEmail] = [idStr, ...existing.filter(existingId => existingId !== idStr)].slice(0, READ_IDS_LIMIT);
+    try {
+        setStored(READ_IDS_KEY, JSON.stringify(store));
+    } catch { /* ignore storage failures */ }
+}
+
+function updateMailReadState(id) {
+    const idStr = String(id);
+    document.querySelectorAll('#emails tbody tr, #emails-responsive .email-card').forEach(el => {
+        if (el.dataset.mailId === idStr) el.classList.remove('is-unread');
+    });
+}
+
+// ══════════════════════════════════════════════
+// Address History
+// ══════════════════════════════════════════════
+function loadAddressHistory() {
+    try {
+        const parsed = JSON.parse(getStored(ADDRESS_HISTORY_KEY) || '[]');
+        if (!Array.isArray(parsed)) return [];
+        return parsed.filter(item => item && typeof item.email === 'string' && item.email);
+    } catch {
+        return [];
+    }
+}
+
+function pushAddressHistory(email) {
+    if (!email) return;
+    const entries = loadAddressHistory().filter(item => item.email !== email);
+    entries.unshift({ email, createdAt: Date.now() });
+    try {
+        setStored(ADDRESS_HISTORY_KEY, JSON.stringify(entries.slice(0, ADDRESS_HISTORY_LIMIT)));
+    } catch { /* ignore storage failures */ }
+}
+
+function removeAddressHistory(email) {
+    const entries = loadAddressHistory().filter(item => item.email !== email);
+    try {
+        setStored(ADDRESS_HISTORY_KEY, JSON.stringify(entries));
+    } catch { /* ignore storage failures */ }
+}
+
+function restoreAddress(email) {
+    const value = String(email || '').trim();
+    const atIndex = value.indexOf('@');
+    if (atIndex <= 0 || atIndex === value.length - 1) return;
+    const user = value.slice(0, atIndex);
+    const domain = value.slice(atIndex + 1);
+    restoringAddress = true;
+    genEmail(user, domain);
+}
+
 function renderFilterChips(emails = lastFetchedEmails) {
     if (!elements.filterChips) return;
     
     const totalCount = emails.length;
+    const readIds = getReadIds();
+    const unreadCount = emails.filter(e => !readIds.has(String(e.mail_id))).length;
     const starredCount = emails.filter(e => starredMailIds.has(String(e.mail_id))).length;
     const verificationCount = emails.filter(e => {
         const tag = detectEmailTags(e.mail_subject, e.mail_from);
@@ -713,6 +960,11 @@ function renderFilterChips(emails = lastFetchedEmails) {
             <i class="fa-solid fa-inbox"></i>
             <span>${t('filter_all')}</span>
             <span class="filter-chip-count">${totalCount}</span>
+        </button>
+        <button class="filter-chip ${currentFilter === 'unread' ? 'active' : ''}" onclick="setFilter('unread')">
+            <i class="fa-solid fa-circle-dot"></i>
+            <span>${t('filter_unread')}</span>
+            <span class="filter-chip-count">${unreadCount}</span>
         </button>
         <button class="filter-chip ${currentFilter === 'starred' ? 'active' : ''}" onclick="setFilter('starred')">
             <i class="fa-solid fa-star"></i>
@@ -901,7 +1153,19 @@ function getCommandItems() {
                     icon: 'fa-plus',
                     shortcut: 'N',
                     action: () => { addNewMailbox(); }
-                }
+                },
+                {
+                    name: t('cmd_copy_latest_code'),
+                    icon: 'fa-key',
+                    shortcut: '',
+                    action: () => { copyLatestCode(); }
+                },
+                ...(deferredInstallPrompt ? [{
+                    name: t('cmd_install_app'),
+                    icon: 'fa-download',
+                    shortcut: '',
+                    action: () => { installApp(); }
+                }] : [])
             ]
         },
         {
@@ -924,12 +1188,34 @@ function getCommandItems() {
                     icon: 'fa-language',
                     shortcut: 'L',
                     action: () => { toggleLanguage(); }
+                },
+                {
+                    name: t('cmd_enable_notifications'),
+                    icon: 'fa-bell',
+                    shortcut: '',
+                    action: () => { requestNotificationPermission(true); }
+                },
+                {
+                    name: getLoadImagesSetting() ? t('cmd_toggle_images_on') : t('cmd_toggle_images_off'),
+                    icon: 'fa-shield-halved',
+                    shortcut: '',
+                    action: () => {
+                        const enabled = !getLoadImagesSetting();
+                        setLoadImagesSetting(enabled);
+                        toast(t(enabled ? 'toast_images_setting_on' : 'toast_images_setting_off'), 'success');
+                    }
                 }
             ]
         },
         {
             group: t('cmd_palette_navigation'),
             items: [
+                {
+                    name: t('cmd_address_history'),
+                    icon: 'fa-clock-rotate-left',
+                    shortcut: '',
+                    action: () => { showAddressHistory(); }
+                },
                 {
                     name: currentLanguage === 'TR' ? 'Gelen Kutusu Aramasına Odaklan' : 'Focus Inbox Search',
                     icon: 'fa-magnifying-glass',
@@ -1027,6 +1313,187 @@ function sanitizeHTML(html) {
 }
 
 // ══════════════════════════════════════════════
+// Privacy Shield & Link Safety (Phase 4)
+// ══════════════════════════════════════════════
+const LOAD_IMAGES_KEY = 'temp_mail_load_images';
+const SHORTENER_HOSTS = [
+    'bit.ly', 't.co', 'tinyurl.com', 'goo.gl', 'ow.ly', 'is.gd', 'buff.ly',
+    'cutt.ly', 'rebrand.ly', 'shorturl.at', 'rb.gy', 't.ly'
+];
+
+function getLoadImagesSetting() {
+    return getStored(LOAD_IMAGES_KEY) === '1';
+}
+
+function setLoadImagesSetting(enabled) {
+    if (enabled) {
+        setStored(LOAD_IMAGES_KEY, '1');
+    } else {
+        removeStored(LOAD_IMAGES_KEY);
+    }
+}
+
+function isRemoteURL(value) {
+    return /^(https?:)?\/\//i.test((value || '').trim());
+}
+
+function isTrackingPixel(img) {
+    const width = (img.getAttribute('width') || '').trim();
+    const height = (img.getAttribute('height') || '').trim();
+    if (['0', '1', '2'].includes(width) || ['0', '1', '2'].includes(height)) {
+        return true;
+    }
+    const style = (img.getAttribute('style') || '').replace(/\s+/g, '').toLowerCase();
+    return style.includes('display:none') ||
+        style.includes('visibility:hidden') ||
+        style.includes('width:1px') ||
+        style.includes('height:1px');
+}
+
+function isSuspiciousHost(hostname) {
+    const host = (hostname || '').toLowerCase();
+    if (!host) return false;
+
+    // IPv4 or bracketed IPv6 address
+    if (/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) return true;
+    if (/^\[[0-9a-f:]+\]$/i.test(host) || host.includes(':')) return true;
+
+    // Punycode label
+    if (host.split('.').some(label => label.startsWith('xn--'))) return true;
+
+    // Link shorteners (hostname or parent domain)
+    const labels = host.replace(/^www\./, '').split('.');
+    for (let i = 0; i < labels.length - 1; i++) {
+        if (SHORTENER_HOSTS.includes(labels.slice(i).join('.'))) return true;
+    }
+
+    return false;
+}
+
+function getLinkTextHost(text) {
+    const trimmed = (text || '').trim();
+    if (!/^(https?:\/\/)?([a-z0-9-]+\.)+[a-z]{2,}(\/\S*)?$/i.test(trimmed)) return null;
+    try {
+        const url = new URL(/^https?:\/\//i.test(trimmed) ? trimmed : `http://${trimmed}`);
+        return url.hostname.toLowerCase().replace(/^www\./, '');
+    } catch {
+        return null;
+    }
+}
+
+function applyPrivacyShield(html) {
+    const loadImages = getLoadImagesSetting();
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    let blocked = 0;
+
+    if (!loadImages) {
+        // Tracking pixels are removed outright — they are not "blocked" content
+        doc.querySelectorAll('img').forEach(img => {
+            if (isTrackingPixel(img)) img.remove();
+        });
+
+        doc.querySelectorAll('img, picture source').forEach(el => {
+            let touched = false;
+
+            const src = el.getAttribute('src');
+            if (src && isRemoteURL(src)) {
+                el.setAttribute('data-shield-src', src);
+                el.removeAttribute('src');
+                touched = true;
+            }
+
+            const srcset = el.getAttribute('srcset');
+            if (srcset && isRemoteURL(srcset)) {
+                el.setAttribute('data-shield-srcset', srcset);
+                el.removeAttribute('srcset');
+                touched = true;
+            }
+
+            if (touched) {
+                el.classList.add('shield-img');
+                el.setAttribute('alt', el.getAttribute('alt') || '');
+                blocked++;
+            }
+        });
+
+        // Remote url(...) inside inline styles and <style> blocks
+        const remoteUrlTest = /url\(\s*(['"]?)(?:https?:)?\/\/[^)'"]*\1\s*\)/i;
+        const remoteUrlReplace = /url\(\s*(['"]?)(?:https?:)?\/\/[^)'"]*\1\s*\)/gi;
+        const counted = new Set();
+        const countElement = (el) => {
+            if (counted.has(el)) return;
+            counted.add(el);
+            blocked++;
+        };
+
+        doc.querySelectorAll('[style]').forEach(el => {
+            const style = el.getAttribute('style') || '';
+            if (!remoteUrlTest.test(style)) return;
+            el.setAttribute('style', style.replace(remoteUrlReplace, 'none'));
+            countElement(el);
+        });
+
+        doc.querySelectorAll('style').forEach(el => {
+            const css = el.textContent || '';
+            if (!remoteUrlTest.test(css)) return;
+            el.textContent = css.replace(remoteUrlReplace, 'none');
+            countElement(el);
+        });
+
+        doc.querySelectorAll('[background]').forEach(el => {
+            const background = el.getAttribute('background') || '';
+            if (!/(https?:)?\/\//i.test(background)) return;
+            el.removeAttribute('background');
+            countElement(el);
+        });
+    }
+
+    // Link safety runs regardless of the remote-image setting
+    doc.querySelectorAll('a[href]').forEach(a => {
+        const href = (a.getAttribute('href') || '').trim();
+        if (!href) return;
+
+        // Defence in depth — sanitizeHTML already strips javascript: handlers
+        if (/^(javascript|data):/i.test(href)) {
+            a.removeAttribute('href');
+            return;
+        }
+
+        if (!/^https?:\/\//i.test(href)) return;
+
+        let url;
+        try {
+            url = new URL(href);
+        } catch {
+            return;
+        }
+
+        const host = url.hostname;
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer nofollow');
+
+        const existingTitle = a.getAttribute('title');
+        a.setAttribute('title', existingTitle ? `${existingTitle} — ${host}` : host);
+
+        let suspicious = isSuspiciousHost(host);
+        if (!suspicious) {
+            const textHost = getLinkTextHost(a.textContent);
+            if (textHost) {
+                const hrefHost = host.toLowerCase().replace(/^www\./, '');
+                if (textHost !== hrefHost) suspicious = true;
+            }
+        }
+
+        if (suspicious) {
+            a.classList.add('link-suspicious');
+            a.setAttribute('data-real-host', host);
+        }
+    });
+
+    return { html: doc.body.innerHTML, blocked };
+}
+
+// ══════════════════════════════════════════════
 // Utility: Escape text for safe insertion
 // ══════════════════════════════════════════════
 function escapeHTML(str) {
@@ -1081,7 +1548,22 @@ function getAvatarInitial(sender) {
     return clean[0].toUpperCase();
 }
 
+function getMailTimestamp(email) {
+    if (!email) return null;
+
+    const raw = Number(email.mail_timestamp);
+    if (!isNaN(raw) && raw >= 1e9) return raw;
+
+    if (email.mail_date) {
+        const parsed = Date.parse(email.mail_date);
+        if (!isNaN(parsed) && parsed / 1000 >= 1e9) return parsed / 1000;
+    }
+
+    return null;
+}
+
 function relativeTime(timestamp) {
+    if (timestamp === null || timestamp === undefined || isNaN(timestamp)) return '—';
     const now = Date.now() / 1000;
     const diff = now - timestamp;
     const isTr = currentLanguage === 'TR';
@@ -1092,8 +1574,208 @@ function relativeTime(timestamp) {
 }
 
 function formatFullDate(timestamp) {
+    if (timestamp === null || timestamp === undefined || isNaN(timestamp)) return '—';
     const isTr = currentLanguage === 'TR';
     return new Date(timestamp * 1000).toLocaleString(isTr ? 'tr-TR' : 'en-US');
+}
+
+// ══════════════════════════════════════════════
+// Per-email expiry (Guerrilla keeps a mail for 60 minutes)
+// ══════════════════════════════════════════════
+function getExpiryMinutes(ts) {
+    if (ts === null || ts === undefined || isNaN(ts)) return null;
+    const remaining = MAIL_TTL_SECONDS - (Date.now() / 1000 - ts);
+    return Math.max(0, Math.ceil(remaining / 60));
+}
+
+function getMailExpiry(email) {
+    const ts = getMailTimestamp(email);
+    if (ts === null) return null;
+    return getExpiryMinutes(ts);
+}
+
+function getExpiryFraction(minutes) {
+    if (minutes === null || isNaN(minutes)) return 0;
+    return Math.max(0, Math.min(1, (minutes * 60) / MAIL_TTL_SECONDS));
+}
+
+function expiryMeterHTML(minutes, ts) {
+    if (minutes === null) return '';
+    const title = escapeHTML(t('expires_in').replace('{m}', String(minutes)));
+    const isLow = minutes < 10 ? ' is-low' : '';
+    const fraction = getExpiryFraction(minutes);
+    return `
+        <div class="expiry-meter${isLow}" data-ts="${ts}" title="${title}">
+            <span class="expiry-fill" style="transform: scaleX(${fraction})"></span>
+        </div>
+    `;
+}
+
+function refreshExpiryMeters() {
+    document.querySelectorAll('.expiry-meter[data-ts]').forEach((meter) => {
+        const ts = Number(meter.getAttribute('data-ts'));
+        if (!isFinite(ts) || ts < 1e9) return;
+        const minutes = getExpiryMinutes(ts);
+        const fill = meter.querySelector('.expiry-fill');
+        if (fill) fill.style.transform = `scaleX(${getExpiryFraction(minutes)})`;
+        meter.classList.toggle('is-low', minutes < 10);
+        meter.setAttribute('title', t('expires_in').replace('{m}', String(minutes)));
+    });
+}
+
+// ══════════════════════════════════════════════
+// Verification code & link extraction
+// ══════════════════════════════════════════════
+function isYearLikeCode(value) {
+    if (!/^\d{4}$/.test(value)) return false;
+    const n = parseInt(value, 10);
+    return n >= 1900 && n <= 2099;
+}
+
+function firstVerificationCode(text) {
+    const patterns = [
+        /\b[0-9]{4,8}\b/g,
+        /\b(?=[A-Z0-9]*\d)(?=[A-Z0-9]*[A-Z])[A-Z0-9]{5,8}\b/g
+    ];
+    let best = null;
+    let bestIndex = Infinity;
+
+    patterns.forEach((re) => {
+        let match;
+        while ((match = re.exec(text)) !== null) {
+            if (isYearLikeCode(match[0])) continue;
+            if (match.index < bestIndex) {
+                bestIndex = match.index;
+                best = match[0];
+            }
+            break;
+        }
+    });
+
+    return best;
+}
+
+function extractVerificationCode(text) {
+    const source = String(text || '');
+    if (!source) return null;
+
+    const keywordRe = /(?<!\p{L})(?:code|otp|pin|verification|passcode|token|kod\p{L}*|doğrulama\p{L}*|onay\p{L}*|şifre\p{L}*)(?!\p{L})/giu;
+    let match;
+    while ((match = keywordRe.exec(source)) !== null) {
+        const after = source.slice(match.index + match[0].length, match.index + match[0].length + 80);
+        const found = firstVerificationCode(after);
+        if (found) return found;
+    }
+
+    // No keyword hit: accept a standalone 6-digit number only
+    const standalone = source.match(/\b\d{6}\b/g) || [];
+    for (const candidate of standalone) {
+        if (!isYearLikeCode(candidate)) return candidate;
+    }
+
+    return null;
+}
+
+function extractVerificationLink(html) {
+    const source = String(html || '');
+    if (!source || !/<a\b/i.test(source)) return null;
+
+    try {
+        const doc = new DOMParser().parseFromString(source, 'text/html');
+        const linkRe = /verify|confirm|activate|validate|doğrula|onayla|magic|login/i;
+        const anchors = [...doc.querySelectorAll('a[href]')];
+        for (const anchor of anchors) {
+            const href = (anchor.getAttribute('href') || '').trim();
+            const text = (anchor.textContent || '').trim();
+            if (!/^https?:\/\/[^\s"'<>]+$/i.test(href)) continue;
+            if (linkRe.test(href) || linkRe.test(text)) return href;
+        }
+    } catch { /* ignore unparsable HTML */ }
+
+    return null;
+}
+
+function htmlToPlainText(html) {
+    const source = String(html || '');
+    if (!source) return '';
+    try {
+        const doc = new DOMParser().parseFromString(source, 'text/html');
+        return doc.body.textContent || '';
+    } catch {
+        return source;
+    }
+}
+
+function getLatestVerificationCode(emails = lastFetchedEmails) {
+    const list = Array.isArray(emails) ? [...emails] : [];
+    list.sort((a, b) => (getMailTimestamp(b) || 0) - (getMailTimestamp(a) || 0));
+
+    for (const email of list) {
+        const text = `${email.mail_subject || ''} ${email.mail_excerpt || ''}`;
+        const code = extractVerificationCode(text);
+        if (code) return code;
+    }
+
+    return null;
+}
+
+async function copyToClipboard(text) {
+    try {
+        await navigator.clipboard.writeText(text);
+        return true;
+    } catch {
+        // Fallback for older browsers
+        try {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            const copied = document.execCommand('copy');
+            ta.remove();
+            return copied;
+        } catch {
+            return false;
+        }
+    }
+}
+
+async function copyVerificationCode(code, event) {
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    if (!code) return;
+
+    const copied = await copyToClipboard(String(code));
+    if (copied) {
+        toast(t('toast_code_copied'), 'success');
+    } else {
+        toast(t('toast_copy_failed'), 'error');
+    }
+}
+
+async function copyLatestCode() {
+    const code = getLatestVerificationCode();
+    if (!code) {
+        toast(t('toast_no_code'), 'warning');
+        return;
+    }
+
+    const copied = await copyToClipboard(code);
+    if (copied) {
+        toast(t('toast_code_copied'), 'success');
+    } else {
+        toast(t('toast_copy_failed'), 'error');
+    }
+}
+
+function otpChipHTML(code) {
+    if (!code) return '';
+    const safeCode = escapeHTML(String(code));
+    const label = escapeHTML(t('btn_copy_code'));
+    return `<button class="otp-chip" onclick="copyVerificationCode('${safeCode}', event)" ondblclick="event.stopPropagation()" title="${label}" aria-label="${label}"><span class="otp-chip-code">${safeCode}</span><i class="fa-regular fa-copy" aria-hidden="true"></i></button>`;
 }
 
 // ══════════════════════════════════════════════
@@ -1177,7 +1859,6 @@ function startSessionTimer() {
 function updateEmailCount(count) {
     elements.countBadge.textContent = count;
     elements.deleteAllBtn.style.display = count > 0 ? '' : 'none';
-    document.title = count > 0 ? `(${count}) TempMail` : 'TempMail — Disposable Email';
 
     // Animate badge when there are emails
     if (count > 0) {
@@ -1210,12 +1891,26 @@ function detectNewMails(emails) {
             });
         }
 
-        // Browser notification (if permitted)
-        if (Notification.permission === 'granted') {
-            new Notification('TempMail', {
-                body: currentLanguage === 'TR' ? `${count} yeni e-posta alındı` : `${count} new email${count > 1 ? 's' : ''} received`,
-                icon: 'images/temp-mail-icon.png'
-            });
+        // Unseen badge in the tab title + desktop notification only while hidden
+        if (document.hidden) {
+            unseenCount += count;
+            document.title = '(' + unseenCount + ') ' + t('doc_title');
+
+            try {
+                if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
+                    const latest = newMails[0];
+                    const notification = new Notification('TempMail', {
+                        body: `${latest.mail_from || ''} — ${latest.mail_subject || ''}`.trim(),
+                        icon: 'images/temp-mail-icon.png',
+                        tag: 'tempmail-new'
+                    });
+                    notification.onclick = () => {
+                        window.focus();
+                        viewEmail(latest.mail_id);
+                        notification.close();
+                    };
+                }
+            } catch { /* Notification may be unavailable */ }
         }
     }
 
@@ -1243,7 +1938,7 @@ async function getSession() {
 // ══════════════════════════════════════════════
 // API: Generate Email
 // ══════════════════════════════════════════════
-async function genEmail(customPrefix = null) {
+async function genEmail(customPrefix = null, forcedDomain = null) {
     try {
         setLoading(true);
         setLoadingStatus();
@@ -1253,9 +1948,11 @@ async function genEmail(customPrefix = null) {
         }
 
         const selectedDomain = elements.domainSelect?.value;
-        const domain = selectedDomain && selectedDomain !== 'random'
-            ? selectedDomain
-            : CONFIG.DOMAINS[Math.floor(Math.random() * CONFIG.DOMAINS.length)];
+        const domain = forcedDomain
+            ? forcedDomain
+            : (selectedDomain && selectedDomain !== 'random'
+                ? selectedDomain
+                : CONFIG.DOMAINS[Math.floor(Math.random() * CONFIG.DOMAINS.length)]);
 
         let finalPrefix = customPrefix ? customPrefix.trim().toLowerCase() : '';
         if (!finalPrefix) {
@@ -1275,6 +1972,10 @@ async function genEmail(customPrefix = null) {
         setStored(CONFIG.EMAIL_KEY, currentEmail);
         elements.emailInput.value = currentEmail;
 
+        // A new address means any open reader belongs to the old mailbox
+        closeReaderPane();
+        pushAddressHistory(currentEmail);
+
         // Reset known IDs and session timer for new address
         knownMailIds.clear();
         setStored(CONFIG.KNOWN_IDS_KEY, '[]');
@@ -1282,11 +1983,17 @@ async function genEmail(customPrefix = null) {
         startSessionTimer();
 
         await refreshMail();
-        toast(customPrefix ? 'Custom email address generated!' : 'New email address generated!', 'success');
+        if (restoringAddress) {
+            toast(t('toast_address_restored'), 'success');
+        } else {
+            toast(customPrefix ? 'Custom email address generated!' : 'New email address generated!', 'success');
+        }
+        restoringAddress = false;
         setOnline();
         saveCurrentSession();
         renderMailboxTabs();
     } catch (error) {
+        restoringAddress = false;
         console.error('Error generating email:', error);
         toast(`Failed to generate email: ${error.message}`, 'error');
         clearStoredData();
@@ -1312,19 +2019,7 @@ async function copyEmail() {
         return;
     }
 
-    try {
-        await navigator.clipboard.writeText(email);
-    } catch {
-        // Fallback for older browsers
-        const ta = document.createElement('textarea');
-        ta.value = email;
-        ta.style.position = 'fixed';
-        ta.style.left = '-9999px';
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand('copy');
-        ta.remove();
-    }
+    await copyToClipboard(email);
 
     // Visual feedback: swap icon to checkmark & confetti burst centered on button
     if (elements.copyBtn && elements.copyIcon) {
@@ -1429,6 +2124,7 @@ function updateEmailTable(emails) {
     
     // Filter emails
     let filteredEmails = [...lastFetchedEmails];
+    const readIds = getReadIds();
     if (currentFilter === 'starred') {
         filteredEmails = filteredEmails.filter(e => starredMailIds.has(String(e.mail_id)));
     } else if (currentFilter === 'verification') {
@@ -1436,6 +2132,8 @@ function updateEmailTable(emails) {
             const tag = detectEmailTags(e.mail_subject, e.mail_from);
             return tag && tag.class === 'verification';
         });
+    } else if (currentFilter === 'unread') {
+        filteredEmails = filteredEmails.filter(e => !readIds.has(String(e.mail_id)));
     }
 
     if (!filteredEmails || filteredEmails.length === 0) {
@@ -1449,6 +2147,9 @@ function updateEmailTable(emails) {
         } else if (currentFilter === 'verification') {
             emptyTitle = currentLanguage === 'TR' ? 'Doğrulama e-postası yok' : 'No verification emails';
             emptyDesc = currentLanguage === 'TR' ? 'Herhangi bir doğrulama veya onay e-postası bulunamadı' : 'No verification or confirmation emails found';
+        } else if (currentFilter === 'unread') {
+            emptyTitle = t('empty_unread_title');
+            emptyDesc = t('empty_unread_desc');
         }
 
         const emptyRow = document.createElement('tr');
@@ -1485,10 +2186,14 @@ function updateEmailTable(emails) {
 
     filteredEmails.forEach(email => {
         const isNew = !knownMailIds.has(email.mail_id) || knownMailIds.size <= filteredEmails.length;
-        const dateStr = formatFullDate(email.mail_timestamp);
-        const relTime = relativeTime(email.mail_timestamp);
-        const safeSubject = escapeHTML(email.mail_subject || '(No subject)');
-        const safeFrom = escapeHTML(email.mail_from || 'Unknown');
+        const mailTs = getMailTimestamp(email);
+        const dateStr = formatFullDate(mailTs);
+        const relTime = relativeTime(mailTs);
+        const expiryHTML = expiryMeterHTML(getMailExpiry(email), mailTs);
+        const verificationCode = extractVerificationCode((email.mail_subject || '') + ' ' + (email.mail_excerpt || ''));
+        const safeSubject = escapeHTML(email.mail_subject || t('msg_no_subject'));
+        const safeFrom = escapeHTML(email.mail_from || t('msg_unknown_sender'));
+        const isUnread = !readIds.has(String(email.mail_id));
 
         const initial = getAvatarInitial(safeFrom);
         const avatarColor = getAvatarColor(safeFrom);
@@ -1502,14 +2207,18 @@ function updateEmailTable(emails) {
         if (tag) {
             subjectContent += `<span class="email-tag-badge ${tag.class}"><i class="fa-solid ${tag.icon}"></i> ${tag.label}</span> `;
         }
-        subjectContent += safeSubject;
+        if (verificationCode) {
+            subjectContent += `${otpChipHTML(verificationCode)} `;
+        }
+        subjectContent += `<span class="subject-text">${safeSubject}</span>`;
 
         // Table row
         const row = document.createElement('tr');
-        row.className = 'row-new';
+        row.className = isUnread ? 'row-new is-unread' : 'row-new';
+        row.dataset.mailId = String(email.mail_id);
         row.innerHTML = `
             <td>
-                <button class="${starClass}" onclick="toggleStarMail('${escapeHTML(String(email.mail_id))}', event)" title="${currentLanguage === 'TR' ? 'Yıldızla' : 'Star'}">
+                <button class="${starClass}" onclick="toggleStarMail('${escapeHTML(String(email.mail_id))}', event)" title="${t('btn_star')}">
                     <i class="${starIcon}"></i>
                 </button>
                 ${escapeHTML(String(email.mail_id))}
@@ -1519,7 +2228,12 @@ function updateEmailTable(emails) {
                 <span class="sender-name">${safeFrom}</span>
             </td>
             <td title="${safeSubject}">${subjectContent}</td>
-            <td title="${dateStr}">${relTime}</td>
+            <td title="${dateStr}">
+                <div class="date-cell">
+                    <span>${relTime}</span>
+                    ${expiryHTML}
+                </div>
+            </td>
             <td>
                 <div class="email-actions">
                     <button onclick="viewEmail('${escapeHTML(String(email.mail_id))}')" class="icon-button" aria-label="View email" title="${currentLanguage === 'TR' ? 'Göster' : 'View'}">
@@ -1532,13 +2246,17 @@ function updateEmailTable(emails) {
             </td>
         `;
         row.style.cursor = 'pointer';
-        row.addEventListener('dblclick', () => viewEmail(email.mail_id));
+        row.addEventListener('click', (event) => {
+            if (event.target.closest('button, a, .otp-chip')) return;
+            viewEmail(email.mail_id);
+        });
         elements.emailTable.appendChild(row);
 
         // Responsive card
         if (responsiveContainer) {
             const card = document.createElement('div');
-            card.className = 'email-card';
+            card.className = isUnread ? 'email-card is-unread' : 'email-card';
+            card.dataset.mailId = String(email.mail_id);
             card.innerHTML = `
                 <div class="email-card-header">
                     <span>
@@ -1547,7 +2265,10 @@ function updateEmailTable(emails) {
                         </button>
                         #${escapeHTML(String(email.mail_id))}
                     </span>
-                    <span title="${dateStr}">${relTime}</span>
+                    <span class="email-card-date" title="${dateStr}">
+                        <span>${relTime}</span>
+                        ${expiryHTML}
+                    </span>
                 </div>
                 <div class="email-card-subject">${subjectContent}</div>
                 <div class="email-card-meta">
@@ -1563,7 +2284,10 @@ function updateEmailTable(emails) {
                     </button>
                 </div>
             `;
-            card.addEventListener('dblclick', () => viewEmail(email.mail_id));
+            card.addEventListener('click', (event) => {
+                if (event.target.closest('button, a, .otp-chip')) return;
+                viewEmail(email.mail_id);
+            });
             responsiveContainer.appendChild(card);
             responsiveContainer.removeAttribute('hidden');
         }
@@ -1583,6 +2307,8 @@ function updateEmailTable(emails) {
             card.style.display = text.includes(term) ? '' : 'none';
         });
     }
+
+    restoreRowHighlights();
 }
 
 // ══════════════════════════════════════════════
@@ -1603,7 +2329,15 @@ async function viewEmail(id) {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const email = await response.json();
-        showEmailModal(email);
+        markAsRead(id);
+        updateMailReadState(id);
+        renderFilterChips(lastFetchedEmails);
+
+        if (splitReaderMedia.matches) {
+            openReaderPane(email, id);
+        } else {
+            showEmailModal(email);
+        }
     } catch (error) {
         console.error('Error viewing email:', error);
         toast('Failed to load email content', 'error');
@@ -1613,15 +2347,240 @@ async function viewEmail(id) {
 }
 
 // ══════════════════════════════════════════════
+// Shared Email View (modal + split reader)
+// ══════════════════════════════════════════════
+function buildEmailViewHTML(email, mode) {
+    const safeSubject = escapeHTML(email.mail_subject || t('msg_no_subject'));
+    const safeFrom = escapeHTML(email.mail_from || t('msg_unknown_sender'));
+    const sanitizedBody = sanitizeHTML(email.mail_body || `<p>${escapeHTML(t('msg_no_content'))}</p>`);
+    const shielded = applyPrivacyShield(sanitizedBody);
+    const safeBody = shielded.html;
+    const mailTs = getMailTimestamp(email);
+    const dateStr = formatFullDate(mailTs);
+    const plainBody = htmlToPlainText(safeBody);
+    const verificationCode = extractVerificationCode(`${email.mail_subject || ''} ${plainBody}`);
+    const verificationLink = extractVerificationLink(safeBody);
+    const idStr = String(email.mail_id);
+    const isStarred = starredMailIds.has(idStr);
+    const closeLabel = mode === 'pane' ? t('btn_close') : t('close_email_title');
+    const starIcon = isStarred ? 'fa-solid fa-star' : 'fa-regular fa-star';
+
+    return `
+        <div class="modal-header">
+            <h2>${safeSubject}</h2>
+            <button class="close-btn" aria-label="${escapeHTML(closeLabel)}">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div class="modal-actions">
+            ${mode === 'pane' ? `
+                <button class="reader-star-btn ${isStarred ? 'starred' : ''}" title="${escapeHTML(t('btn_star'))}" aria-label="${escapeHTML(t('btn_star'))}">
+                    <i class="${starIcon}"></i> ${t('btn_star')}
+                </button>
+            ` : ''}
+            <button class="copy-text-btn" title="${escapeHTML(t('copy_text_title'))}">
+                <i class="fa-solid fa-copy"></i> ${t('btn_copy_text')}
+            </button>
+            <button class="eml-download-btn" title="${escapeHTML(t('save_eml_title'))}">
+                <i class="fa-solid fa-download"></i> ${t('btn_save_eml')}
+            </button>
+            <button class="delete-email-btn" title="${escapeHTML(t('delete_email_title'))}" style="color:var(--error)">
+                <i class="fa-solid fa-trash"></i> ${t('btn_delete')}
+            </button>
+            <button class="print-email-btn" onclick="window.print()" title="${escapeHTML(t('print_email_title'))}">
+                <i class="fa-solid fa-print"></i> ${t('btn_print')}
+            </button>
+        </div>
+        <div class="email-meta">
+            <p><strong>${t('label_from')}</strong> ${safeFrom}</p>
+            <p><strong>${t('label_date')}</strong> ${dateStr}</p>
+            <p><strong>${t('label_to')}</strong> ${escapeHTML(currentEmail)}</p>
+        </div>
+        ${(verificationCode || verificationLink) ? `
+            <div class="otp-strip">
+                ${verificationCode ? `
+                    <div class="otp-strip-values">
+                        <span class="otp-strip-label">${t('label_verification_code')}</span>
+                        <span class="otp-strip-code">${escapeHTML(verificationCode)}</span>
+                    </div>
+                ` : ''}
+                <div class="otp-strip-actions">
+                    ${verificationCode ? `
+                        <button class="primary-button otp-copy-btn" onclick="copyVerificationCode('${escapeHTML(verificationCode)}')">
+                            <i class="fa-regular fa-copy"></i> ${t('btn_copy_code')}
+                        </button>
+                    ` : ''}
+                    ${verificationLink ? `
+                        <a class="secondary-button otp-link-btn" href="${escapeHTML(verificationLink)}" target="_blank" rel="noopener noreferrer">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> ${t('btn_open_verify_link')}
+                        </a>
+                    ` : ''}
+                </div>
+            </div>
+        ` : ''}
+        ${shielded.blocked > 0 ? `
+            <div class="shield-banner">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span class="shield-banner-text">${escapeHTML(shielded.blocked === 1 ? t('shield_blocked_one') : t('shield_blocked').replace('{n}', String(shielded.blocked)))}</span>
+                <div class="shield-banner-actions">
+                    <button class="shield-show-btn">
+                        <i class="fa-regular fa-eye"></i> ${t('btn_show_images')}
+                    </button>
+                    <button class="shield-always-btn">
+                        <i class="fa-solid fa-shield-halved"></i> ${t('btn_always_show_images')}
+                    </button>
+                </div>
+            </div>
+        ` : ''}
+        <div class="email-body">
+            ${safeBody}
+        </div>
+        ${email.mail_attachments?.length ? `
+            <div class="attachments">
+                <h3><i class="fa-solid fa-paperclip"></i> ${t('label_attachments')} (${email.mail_attachments.length})</h3>
+                <div class="attachment-list">
+                    ${email.mail_attachments.map(att => `
+                        <a href="#" onclick="event.preventDefault(); downloadAttachment('${escapeHTML(String(email.mail_id))}', '${escapeHTML(att.name)}')" class="attachment-link">
+                            <i class="fa-solid fa-file-arrow-down"></i>
+                            ${escapeHTML(att.name)}
+                        </a>
+                    `).join('')}
+                </div>
+            </div>
+        ` : ''}
+    `;
+}
+
+function wireEmailViewActions(container, email) {
+    if (!container) return;
+
+    const copyBtn = container.querySelector('.copy-text-btn');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', async () => {
+            const body = container.querySelector('.email-body');
+            const text = body ? body.innerText : '';
+            const copied = await copyToClipboard(text);
+            toast(copied ? t('toast_text_copied') : t('toast_copy_failed'), copied ? 'success' : 'error');
+        });
+    }
+
+    const emlBtn = container.querySelector('.eml-download-btn');
+    if (emlBtn) {
+        emlBtn.addEventListener('click', () => {
+            downloadEmailAsEML(email);
+        });
+    }
+
+    const deleteBtn = container.querySelector('.delete-email-btn');
+    if (deleteBtn) {
+        deleteBtn.addEventListener('click', async () => {
+            const modal = container.closest('.email-modal');
+            await deleteEmail(email.mail_id);
+            if (modal) modal.remove();
+        });
+    }
+
+    const starBtn = container.querySelector('.reader-star-btn');
+    if (starBtn) {
+        starBtn.addEventListener('click', (event) => {
+            toggleStarMail(email.mail_id, event);
+            const isStarred = starredMailIds.has(String(email.mail_id));
+            starBtn.classList.toggle('starred', isStarred);
+            const icon = starBtn.querySelector('i');
+            if (icon) icon.className = isStarred ? 'fa-solid fa-star' : 'fa-regular fa-star';
+        });
+    }
+
+    const restoreShieldedImages = () => {
+        container.querySelectorAll('[data-shield-src]').forEach(el => {
+            el.setAttribute('src', el.getAttribute('data-shield-src'));
+            el.removeAttribute('data-shield-src');
+            el.classList.remove('shield-img');
+        });
+        container.querySelectorAll('[data-shield-srcset]').forEach(el => {
+            el.setAttribute('srcset', el.getAttribute('data-shield-srcset'));
+            el.removeAttribute('data-shield-srcset');
+            el.classList.remove('shield-img');
+        });
+        container.querySelectorAll('.shield-banner').forEach(banner => banner.remove());
+    };
+
+    const shieldShowBtn = container.querySelector('.shield-show-btn');
+    if (shieldShowBtn) {
+        shieldShowBtn.addEventListener('click', () => restoreShieldedImages());
+    }
+
+    const shieldAlwaysBtn = container.querySelector('.shield-always-btn');
+    if (shieldAlwaysBtn) {
+        shieldAlwaysBtn.addEventListener('click', () => {
+            setLoadImagesSetting(true);
+            restoreShieldedImages();
+        });
+    }
+
+    const bodyEl = container.querySelector('.email-body');
+    if (bodyEl) {
+        bodyEl.addEventListener('click', (event) => {
+            const link = event.target.closest('a.link-suspicious');
+            if (!link || !bodyEl.contains(link)) return;
+            event.preventDefault();
+            const href = link.getAttribute('href');
+            if (!href) return;
+            showLinkWarningModal(href, link.getAttribute('data-real-host') || '');
+        });
+    }
+}
+
+// ══════════════════════════════════════════════
+// Split Reader Pane
+// ══════════════════════════════════════════════
+function markActiveMailRow(id) {
+    const idStr = String(id);
+    document.querySelectorAll('#emails tbody tr.is-active, #emails-responsive .email-card.is-active')
+        .forEach(el => el.classList.remove('is-active'));
+    document.querySelectorAll('#emails tbody tr, #emails-responsive .email-card').forEach(el => {
+        if (el.dataset.mailId === idStr) el.classList.add('is-active');
+    });
+}
+
+function restoreRowHighlights() {
+    document.querySelectorAll('#emails tbody tr, #emails-responsive .email-card').forEach(el => {
+        const id = el.dataset.mailId;
+        if (!id) return;
+        if (selectedMailId !== null && id === String(selectedMailId)) el.classList.add('is-selected');
+        if (activeReaderMailId !== null && id === String(activeReaderMailId)) el.classList.add('is-active');
+    });
+}
+
+function openReaderPane(email, id) {
+    if (!elements.readerPane) return;
+
+    elements.readerPane.innerHTML = buildEmailViewHTML(email, 'pane');
+    elements.readerPane.removeAttribute('hidden');
+    document.querySelector('.inbox-core')?.classList.add('has-reader');
+    activeReaderMailId = String(id);
+    markActiveMailRow(id);
+    wireEmailViewActions(elements.readerPane, email);
+
+    const closeBtn = elements.readerPane.querySelector('.close-btn');
+    if (closeBtn) closeBtn.addEventListener('click', () => closeReaderPane());
+}
+
+function closeReaderPane() {
+    if (!elements.readerPane) return;
+
+    elements.readerPane.innerHTML = '';
+    elements.readerPane.setAttribute('hidden', '');
+    document.querySelector('.inbox-core')?.classList.remove('has-reader');
+    activeReaderMailId = null;
+    document.querySelectorAll('#emails tbody tr.is-active, #emails-responsive .email-card.is-active')
+        .forEach(el => el.classList.remove('is-active'));
+}
+
+// ══════════════════════════════════════════════
 // Email Modal
 // ══════════════════════════════════════════════
 function showEmailModal(email) {
-    const safeSubject = escapeHTML(email.mail_subject || '(No subject)');
-    const safeFrom = escapeHTML(email.mail_from || 'Unknown');
-    const safeBody = sanitizeHTML(email.mail_body || '<p>No content</p>');
-    const dateStr = formatFullDate(email.mail_timestamp);
-    const isTr = currentLanguage === 'TR';
-
     const modal = document.createElement('div');
     modal.className = 'email-modal';
 
@@ -1632,57 +2591,13 @@ function showEmailModal(email) {
 
     modal.innerHTML = `
         <div class="email-modal-content">
-            <div class="modal-header">
-                <h2>${safeSubject}</h2>
-                <button class="close-btn" aria-label="${isTr ? 'E-postayı kapat' : 'Close email'}">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-            <div class="modal-actions">
-                <button onclick="navigator.clipboard.writeText(document.querySelector('.email-body').innerText).then(()=>toast('Email text copied!','success'))" title="${isTr ? 'E-posta metnini kopyala' : 'Copy email text'}">
-                    <i class="fa-solid fa-copy"></i> ${isTr ? 'Metni Kopyala' : 'Copy Text'}
-                </button>
-                <button id="eml-download-btn" title="${isTr ? 'EML dosyası olarak kaydet' : 'Save as EML file'}">
-                    <i class="fa-solid fa-download"></i> ${isTr ? 'EML Kaydet' : 'Save EML'}
-                </button>
-                <button onclick="deleteEmail('${escapeHTML(String(email.mail_id))}'); this.closest('.email-modal').remove()" title="${isTr ? 'Bu e-postayı sil' : 'Delete this email'}" style="color:var(--error)">
-                    <i class="fa-solid fa-trash"></i> ${isTr ? 'Sil' : 'Delete'}
-                </button>
-                <button onclick="window.print()" title="${isTr ? 'E-postayı yazdır' : 'Print email'}">
-                    <i class="fa-solid fa-print"></i> ${isTr ? 'Yazdır' : 'Print'}
-                </button>
-            </div>
-            <div class="email-meta">
-                <p><strong>${isTr ? 'Kimden:' : 'From:'}</strong> ${safeFrom}</p>
-                <p><strong>${isTr ? 'Tarih:' : 'Date:'}</strong> ${dateStr}</p>
-                <p><strong>${isTr ? 'Kime:' : 'To:'}</strong> ${escapeHTML(currentEmail)}</p>
-            </div>
-            <div class="email-body">
-                ${safeBody}
-            </div>
-            ${email.mail_attachments?.length ? `
-                <div class="attachments">
-                    <h3><i class="fa-solid fa-paperclip"></i> ${isTr ? 'Ekler' : 'Attachments'} (${email.mail_attachments.length})</h3>
-                    <div class="attachment-list">
-                        ${email.mail_attachments.map(att => `
-                            <a href="#" onclick="event.preventDefault(); downloadAttachment('${escapeHTML(String(email.mail_id))}', '${escapeHTML(att.name)}')" class="attachment-link">
-                                <i class="fa-solid fa-file-arrow-down"></i>
-                                ${escapeHTML(att.name)}
-                            </a>
-                        `).join('')}
-                    </div>
-                </div>
-            ` : ''}
+            ${buildEmailViewHTML(email, 'modal')}
         </div>
     `;
 
-    // Close button
-    modal.querySelector('.close-btn').addEventListener('click', () => modal.remove());
-
-    // Save EML button handler
-    modal.querySelector('#eml-download-btn').addEventListener('click', () => {
-        downloadEmailAsEML(email);
-    });
+    const container = modal.querySelector('.email-modal-content');
+    wireEmailViewActions(container, email);
+    container.querySelector('.close-btn').addEventListener('click', () => modal.remove());
 
     document.body.appendChild(modal);
 
@@ -1751,6 +2666,13 @@ async function deleteEmail(id) {
         knownMailIds.delete(id);
         setStored(CONFIG.KNOWN_IDS_KEY, JSON.stringify([...knownMailIds]));
 
+        if (activeReaderMailId !== null && String(activeReaderMailId) === String(id)) {
+            closeReaderPane();
+        }
+        if (selectedMailId !== null && String(selectedMailId) === String(id)) {
+            selectedMailId = null;
+        }
+
         await refreshMail();
         toast('Email deleted', 'success');
     } catch (error) {
@@ -1784,6 +2706,9 @@ async function deleteAllEmails() {
 
         knownMailIds.clear();
         setStored(CONFIG.KNOWN_IDS_KEY, '[]');
+
+        closeReaderPane();
+        selectedMailId = null;
 
         await refreshMail();
         toast('All emails deleted', 'success');
@@ -1862,6 +2787,10 @@ function loadAutoRefreshSettings() {
 elements.autoRefreshCheckbox.addEventListener('change', function (e) {
     setStored(CONFIG.AUTO_REFRESH_KEY, e.target.checked);
     if (e.target.checked) {
+        if (!notificationPermissionAsked) {
+            notificationPermissionAsked = true;
+            requestNotificationPermission();
+        }
         const secs = parseInt(elements.refreshIntervalSelect.value);
         refreshInterval = setInterval(refreshMail, secs * 1000);
         startCountdown(secs);
@@ -1908,12 +2837,63 @@ elements.emailSearch.addEventListener('input', (e) => performSearch(e.target.val
 // ══════════════════════════════════════════════
 // Keyboard Shortcuts
 // ══════════════════════════════════════════════
+function getSelectableMailItems() {
+    const useCards = window.matchMedia('(max-width: 820px)').matches;
+    const selector = useCards ? '#emails-responsive .email-card' : '#emails tbody tr[data-mail-id]';
+    return [...document.querySelectorAll(selector)].filter(el => el.offsetParent !== null);
+}
+
+function moveMailSelection(delta) {
+    const items = getSelectableMailItems();
+    if (!items.length) return;
+
+    const currentIndex = items.findIndex(el => el.dataset.mailId === String(selectedMailId));
+    let nextIndex;
+    if (currentIndex === -1) {
+        nextIndex = delta > 0 ? 0 : items.length - 1;
+    } else {
+        nextIndex = Math.min(items.length - 1, Math.max(0, currentIndex + delta));
+    }
+
+    document.querySelectorAll('#emails tbody tr.is-selected, #emails-responsive .email-card.is-selected')
+        .forEach(el => el.classList.remove('is-selected'));
+
+    const item = items[nextIndex];
+    selectedMailId = item.dataset.mailId;
+    item.classList.add('is-selected');
+    item.scrollIntoView({ block: 'nearest' });
+}
+
+function openSelectedMail() {
+    if (selectedMailId === null) return;
+    viewEmail(selectedMailId);
+}
+
+function toggleSelectedMailStar() {
+    if (selectedMailId === null) return;
+    toggleStarMail(selectedMailId);
+}
+
+function deleteSelectedMail() {
+    if (selectedMailId === null) return;
+    deleteEmail(selectedMailId);
+}
+
+function isOverlayOpen() {
+    return !!document.querySelector('.email-modal, .shortcuts-overlay, .cmd-palette-modal:not(.hidden)');
+}
+
 const shortcuts = [
     { key: 'r', labelKey: 'shortcut_refresh', action: () => refreshMail() },
     { key: 'n', labelKey: 'shortcut_new', action: () => genEmail() },
     { key: 'c', labelKey: 'shortcut_copy', action: () => copyEmail() },
     { key: '/', labelKey: 'shortcut_search', action: () => { elements.emailSearch.focus(); } },
     { key: '?', labelKey: 'shortcut_help', action: () => showShortcuts() },
+    { key: 'j', altKeys: ['ArrowDown'], display: 'J / ↓', labelKey: 'shortcut_next', action: () => moveMailSelection(1) },
+    { key: 'k', altKeys: ['ArrowUp'], display: 'K / ↑', labelKey: 'shortcut_prev', action: () => moveMailSelection(-1) },
+    { key: 'Enter', altKeys: ['o'], display: 'Enter / O', labelKey: 'shortcut_open', action: () => openSelectedMail() },
+    { key: 's', display: 'S', labelKey: 'shortcut_star', action: () => toggleSelectedMailStar() },
+    { key: 'Delete', altKeys: ['#'], display: 'Del / #', labelKey: 'shortcut_delete', action: () => deleteSelectedMail() },
 ];
 
 document.addEventListener('keydown', (e) => {
@@ -1930,10 +2910,23 @@ document.addEventListener('keydown', (e) => {
         return;
     }
 
-    // Don't trigger with modifier keys (except Shift for ?)
+    // Don't trigger with modifier keys (except Shift for ? and #)
     if (e.ctrlKey || e.altKey || e.metaKey) return;
 
-    const shortcut = shortcuts.find(s => s.key === e.key);
+    // Let focused buttons and links handle Enter natively
+    if (e.key === 'Enter' && e.target.closest && e.target.closest('button, a')) return;
+
+    // Inbox navigation stays out of the way while a modal or palette is open
+    const mailNavKeys = ['j', 'k', 'ArrowDown', 'ArrowUp', 'Enter', 'o', 's', 'Delete', '#'];
+    if (isOverlayOpen() && mailNavKeys.includes(e.key)) return;
+
+    // Arrow keys only navigate once a mail is selected; otherwise let the page scroll
+    if ((e.key === 'ArrowUp' || e.key === 'ArrowDown') && selectedMailId === null) return;
+
+    // These shortcuts need a selected mail, so leave the keypress alone without one
+    if (['Enter', 'o', 's', 'Delete', '#'].includes(e.key) && selectedMailId === null) return;
+
+    const shortcut = shortcuts.find(s => s.key === e.key || (s.altKeys && s.altKeys.includes(e.key)));
     if (shortcut) {
         e.preventDefault();
         shortcut.action();
@@ -1957,7 +2950,7 @@ function showShortcuts() {
                 ${shortcuts.map(s => `
                     <div class="shortcut-item">
                         <span>${t(s.labelKey)}</span>
-                        <kbd>${s.key === '?' ? 'Shift + /' : s.key.toUpperCase()}</kbd>
+                        <kbd>${s.display || (s.key === '?' ? 'Shift + /' : s.key.toUpperCase())}</kbd>
                     </div>
                 `).join('')}
                 <div class="shortcut-item">
@@ -2072,6 +3065,98 @@ function showCustomAliasModal() {
         if (e.key === 'Escape') {
             modal.remove();
             document.removeEventListener('keydown', escHandler);
+        }
+    };
+    document.addEventListener('keydown', escHandler);
+}
+
+// ══════════════════════════════════════════════
+// Address History Modal
+// ══════════════════════════════════════════════
+function showAddressHistory() {
+    // Remove existing history modal
+    document.querySelector('.history-modal')?.remove();
+
+    const modal = document.createElement('div');
+    modal.className = 'email-modal history-modal';
+
+    let escHandler = null;
+    const closeModal = () => {
+        modal.remove();
+        if (escHandler) document.removeEventListener('keydown', escHandler);
+    };
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    modal.innerHTML = `
+        <div class="email-modal-content" style="max-width: 460px;">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-clock-rotate-left"></i> ${t('history_title')}</h2>
+                <button class="close-btn" aria-label="${escapeHTML(t('btn_close'))}">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="history-modal-body">
+                <p class="history-hint">${t('history_hint')}</p>
+                <div class="history-list" id="history-list"></div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    const listEl = modal.querySelector('#history-list');
+
+    const renderList = () => {
+        const entries = loadAddressHistory();
+        if (!entries.length) {
+            listEl.innerHTML = `<p class="history-empty">${t('history_empty')}</p>`;
+            return;
+        }
+
+        listEl.innerHTML = entries.map(item => {
+            const isCurrent = item.email === currentEmail;
+            const safeEmail = escapeHTML(item.email);
+            return `
+                <div class="history-item">
+                    <div class="history-item-main">
+                        <span class="history-address">${safeEmail}</span>
+                        <span class="history-time">${relativeTime(item.createdAt / 1000)}</span>
+                    </div>
+                    <button class="history-use-btn" data-history-email="${safeEmail}" ${isCurrent ? 'disabled' : ''}>
+                        ${isCurrent ? t('label_current') : t('btn_use')}
+                    </button>
+                    <button class="icon-button history-remove-btn" data-history-email="${safeEmail}" aria-label="${escapeHTML(t('btn_remove'))}" title="${escapeHTML(t('btn_remove'))}">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            `;
+        }).join('');
+
+        listEl.querySelectorAll('.history-use-btn:not(:disabled)').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const email = btn.getAttribute('data-history-email');
+                closeModal();
+                restoreAddress(email);
+            });
+        });
+
+        listEl.querySelectorAll('.history-remove-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                removeAddressHistory(btn.getAttribute('data-history-email'));
+                renderList();
+            });
+        });
+    };
+
+    renderList();
+    modal.querySelector('.close-btn').addEventListener('click', closeModal);
+
+    escHandler = (e) => {
+        if (e.key === 'Escape') {
+            e.preventDefault();
+            closeModal();
         }
     };
     document.addEventListener('keydown', escHandler);
@@ -2229,6 +3314,59 @@ function showWarning() {
     document.addEventListener('keydown', escHandler);
 }
 
+// ══════════════════════════════════════════════
+// Link Safety Warning Modal
+// ══════════════════════════════════════════════
+function showLinkWarningModal(href, host) {
+    document.querySelector('.link-warning-modal')?.remove();
+
+    const modal = document.createElement('div');
+    modal.className = 'email-modal link-warning-modal';
+
+    const escHandler = (event) => {
+        if (event.key !== 'Escape') return;
+        event.stopPropagation();
+        closeModal();
+    };
+    const closeModal = () => {
+        modal.remove();
+        document.removeEventListener('keydown', escHandler, true);
+    };
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal();
+    });
+
+    modal.innerHTML = `
+        <div class="email-modal-content link-warning-content" style="max-width: 420px;">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-triangle-exclamation" style="color:var(--warning)"></i> ${t('link_warning_title')}</h2>
+                <button class="close-btn" aria-label="${escapeHTML(t('btn_close'))}">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="link-warning-body">
+                <p class="link-warning-desc">${t('link_warning_desc')}</p>
+                <div class="link-warning-host">${escapeHTML(host)}</div>
+                <div class="link-warning-actions">
+                    <button class="secondary-button link-warning-cancel">${t('btn_cancel')}</button>
+                    <button class="primary-button link-warning-open">${t('btn_open_anyway')}</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    modal.querySelector('.close-btn').addEventListener('click', closeModal);
+    modal.querySelector('.link-warning-cancel').addEventListener('click', closeModal);
+    modal.querySelector('.link-warning-open').addEventListener('click', () => {
+        window.open(href, '_blank', 'noopener,noreferrer');
+        closeModal();
+    });
+
+    document.body.appendChild(modal);
+    document.addEventListener('keydown', escHandler, true);
+}
+
 function downloadEmailAsEML(email) {
     if (!email) return;
 
@@ -2266,13 +3404,56 @@ function downloadEmailAsEML(email) {
 // ══════════════════════════════════════════════
 // Request Notification Permission
 // ══════════════════════════════════════════════
-function requestNotificationPermission() {
-    if ('Notification' in window && Notification.permission === 'default') {
-        // Delay the request to avoid being intrusive
-        setTimeout(() => {
-            Notification.requestPermission();
-        }, 10000);
+async function requestNotificationPermission(explicit = false) {
+    try {
+        if (typeof Notification === 'undefined') return false;
+        if (Notification.permission === 'granted') {
+            if (explicit) toast(t('toast_notif_enabled'), 'success');
+            return true;
+        }
+        if (Notification.permission === 'denied') {
+            if (explicit) toast(t('toast_notif_denied'), 'warning');
+            return false;
+        }
+
+        const permission = await Notification.requestPermission();
+        if (permission === 'granted') {
+            if (explicit) toast(t('toast_notif_enabled'), 'success');
+            return true;
+        }
+        if (permission === 'denied') {
+            if (explicit) toast(t('toast_notif_denied'), 'warning');
+        }
+        return false;
+    } catch {
+        return false;
     }
+}
+
+// ══════════════════════════════════════════════
+// PWA — Install Prompt & Manifest Shortcut
+// ══════════════════════════════════════════════
+window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+});
+
+async function installApp() {
+    if (!deferredInstallPrompt) return;
+    const promptEvent = deferredInstallPrompt;
+    deferredInstallPrompt = null;
+    try {
+        promptEvent.prompt();
+        await promptEvent.userChoice;
+    } catch {
+        // The browser can reject a prompt that was already shown
+    }
+}
+
+async function handleManifestShortcut() {
+    if (new URLSearchParams(location.search).get('action') !== 'new') return;
+    history.replaceState(null, '', location.pathname + location.hash);
+    await genEmail();
 }
 
 // ══════════════════════════════════════════════
@@ -2335,7 +3516,7 @@ async function initializeApp() {
             await genEmail();
         }
         setOnline();
-        requestNotificationPermission();
+        await handleManifestShortcut();
     } catch (e) {
         initAttempts++;
         console.warn(`Init attempt ${initAttempts} failed:`, e.message);
@@ -2374,15 +3555,34 @@ setInterval(() => {
     }
 }, 20000);
 
+// Per-email expiry meters — refresh in place once a minute
+setInterval(refreshExpiryMeters, 60000);
+
 // ══════════════════════════════════════════════
 // Visibility API — pause/resume when tab hidden
 // ══════════════════════════════════════════════
 document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && currentEmail && sessionId) {
-        // Refresh when tab becomes visible again
-        refreshMail();
+    if (document.visibilityState === 'visible') {
+        if (unseenCount > 0) {
+            unseenCount = 0;
+            document.title = t('doc_title');
+        }
+        if (currentEmail && sessionId) {
+            // Refresh when tab becomes visible again
+            refreshMail();
+        }
     }
 });
+
+// Split reader only exists on desktop; close it if the viewport shrinks
+splitReaderMedia.addEventListener('change', (event) => {
+    if (!event.matches) closeReaderPane();
+});
+
+// ══════════════════════════════════════════════
+// PWA — Service Worker Registration
+// ══════════════════════════════════════════════
+if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => {}));
 
 // ══════════════════════════════════════════════
 // Global Exports
@@ -2398,9 +3598,13 @@ window.showShortcuts = showShortcuts;
 window.toast = toast;
 window.showCustomAliasModal = showCustomAliasModal;
 window.showQRCodeModal = showQRCodeModal;
+window.showAddressHistory = showAddressHistory;
+window.restoreAddress = restoreAddress;
 window.downloadEmailAsEML = downloadEmailAsEML;
 window.showWarning = showWarning;
 window.toggleLanguage = toggleLanguage;
+window.copyVerificationCode = copyVerificationCode;
+window.copyLatestCode = copyLatestCode;
 
 // V4.0 Interactive Logic Exports
 window.switchMailbox = switchMailbox;

@@ -1,1 +1,42 @@
-{"short_name":"Temp-mail","name":"Temp-mail","icons":[{"src":"images/temp-mail-icon.png"}],"start_url":"/","background_color":"rgb(0,0,0)","theme_color":"rgb(0,0,0)","display":"standalone","orientation":"portrait"}
+{
+    "name": "TempMail — Disposable Email",
+    "short_name": "TempMail",
+    "id": "./",
+    "start_url": "./",
+    "scope": "./",
+    "display": "standalone",
+    "background_color": "#07080A",
+    "theme_color": "#07080A",
+    "description": "Instant disposable email addresses with live inbox.",
+    "icons": [
+        {
+            "src": "images/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "images/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "images/app-icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "New address",
+            "url": "./?action=new"
+        }
+    ]
+}
