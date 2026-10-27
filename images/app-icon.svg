@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="TempMail">
+    <rect width="512" height="512" fill="#07080A" />
+    <circle cx="256" cy="256" r="158.7" fill="#D4FF3F" />
+    <text
+        x="256"
+        y="262"
+        fill="#0A0C03"
+        font-family="Geist, Arial, sans-serif"
+        font-size="220"
+        font-weight="700"
+        text-anchor="middle"
+        dominant-baseline="central"
+    >@</text>
+</svg>
