@@ -3,7 +3,7 @@
 // Network-first for all same-origin GETs, cached app shell as offline fallback.
 // ─────────────────────────────────────────────
 
-const CACHE = 'tempmail-v5-2';
+const CACHE = 'tempmail-v5-3';
 
 const APP_SHELL = [
     './',
