@@ -1241,7 +1241,7 @@ Configuration and theme handling refresh.
 
 ## 📜 License & thanks
 
-Licensed under a **special license with commercial restrictions** — personal and educational use is allowed; commercial use requires the author's permission. See [LICENSE](LICENSE) and [SECURITY.md](SECURITY.md).
+**Proprietary — all rights reserved.** The source is public to read, not to reuse: no copying, redeploying, modifying or commercial use without the author's written permission. Using the [official site](https://mehmetkahya0.github.io/temp-mail/) is free for everyone. See [LICENSE](LICENSE) and [SECURITY.md](SECURITY.md).
 
 | Thanks to | For |
 |---|---|

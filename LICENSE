@@ -1,22 +1,72 @@
-Copyright [2025] [mehmetkahya0]
+TempMail Proprietary License
 
+Copyright (c) 2025-2026 Mehmet Kahya (github.com/mehmetkahya0)
 All rights reserved.
 
-This project and its source code are proprietary and strictly protected by copyright law. 
 
-You are **NOT** allowed to:
-- Use any part of this codebase in any form.
-- Reproduce, distribute, or publicly display any part of the source code.
-- Modify, copy, fork, or reuse any part of this code.
-- Include this project in any open-source or commercial project.
-- Use the code for any commercial purpose or generate any income from it.
-- Publish or share this project or its derivatives on any platform or repository.
+1. Scope
 
-Any violation of these terms will be considered a **direct copyright infringement**, and legal action will be pursued accordingly.
+This license covers everything in this repository: source code, styles,
+markup, scripts, images, icons, logos, text and documentation (together,
+"the Software").
 
-🚨 **DMCA Notice**: If this project or its contents are found used or distributed without explicit written permission, a DMCA Takedown Request will be filed. My legal counsel will be contacted immediately to proceed with copyright enforcement.
+The source code is publicly visible, but it is NOT open source. Being able to
+see the code does not give you any right to use it.
 
-By viewing or accessing this repository, you agree to respect these terms.
 
-For special use cases or inquiries, please contact the repository owner directly and obtain written consent.
+2. What you may do
 
+  a) Use the official TempMail website at
+     https://mehmetkahya0.github.io/temp-mail/ as an end user.
+  b) View and read the source code on GitHub for personal learning.
+  c) Fork the repository on GitHub only to the extent GitHub's Terms of
+     Service require. A fork grants no rights beyond this license.
+  d) Link to the official website or to this repository.
+
+
+3. What you may NOT do
+
+Without the author's prior written permission, you may not:
+
+  a) Copy, reproduce or download the Software, in whole or in part, for any
+     purpose other than viewing it as described in section 2.
+  b) Host, deploy, mirror or publish the Software, or any copy or modified
+     version of it, on any domain, server or platform.
+  c) Modify the Software, create derivative works from it, or reuse any of its
+     code, design, assets or branding in another project.
+  d) Use the Software, or any part of it, for any commercial purpose. This
+     includes selling it, offering it as a service, placing advertising on a
+     copy of it, or using it to generate income in any other way.
+  e) Distribute, sublicense, rent or transfer the Software to anyone.
+  f) Remove or change this license, copyright notices or attribution.
+  g) Use the Software, or any part of it, to train or fine-tune machine
+     learning models.
+
+
+4. Permission requests
+
+For any use not allowed in section 2, contact the author and obtain written
+permission first:
+
+  Email:  mehmetkahyakas5@gmail.com
+  GitHub: https://github.com/mehmetkahya0
+
+
+5. Enforcement
+
+Any use outside this license is copyright infringement. The author may file
+DMCA takedown notices and take any other legal action available.
+
+
+6. Third-party services
+
+The Software uses third-party services such as the Guerrilla Mail API. Those
+services are governed by their own terms. This license grants no rights to
+them.
+
+
+7. No warranty
+
+The Software is provided "as is", without warranty of any kind. The author is
+not liable for any claim, damage or other liability arising from the Software
+or its use.
