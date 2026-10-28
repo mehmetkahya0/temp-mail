@@ -1,4 +1,7 @@
+# Note: Google only reads robots.txt from the host root
+# (https://mehmetkahya0.github.io/robots.txt), so this file is informational.
+# Submit the sitemap below in Google Search Console instead.
 User-agent: *
-Disallow:
+Allow: /
 
-Sitemap: https://mehmetkahya0.github.io/temp-mail/sitemap.xml 
+Sitemap: https://mehmetkahya0.github.io/temp-mail/sitemap.xml
